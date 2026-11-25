@@ -8,10 +8,10 @@
       "heading": "Festliche Beleuchtung, die Ihre Stadt zum Strahlen bringt",
       "button": { "label": "Anfrage stellen", "href": "/kontakt/?bereich=weihnachten" },
       "slides": [
-        { "image": "weihnachten/marktplatz-weihnachtsbaum", "title": "Marktplatz Weihnachtsbaum" },
-        { "image": "weihnachten/lichterketten-fussgaengerzone", "title": "Lichterketten Fußgängerzone" },
-        { "image": "weihnachten/lichttor-ortseingang", "title": "Lichttor Ortseingang" },
-        { "image": "weihnachten/beleuchtete-fassade", "title": "Beleuchtete Fassade" }
+        { "image": "christmas/marktplatz-weihnachtsbaum", "title": "Marktplatz Weihnachtsbaum" },
+        { "image": "christmas/lichterketten-fussgaengerzone", "title": "Lichterketten Fußgängerzone" },
+        { "image": "christmas/lichttor-ortseingang", "title": "Lichttor Ortseingang" },
+        { "image": "christmas/beleuchtete-fassade", "title": "Beleuchtete Fassade" }
       ]
     },
     "subnav": [
@@ -36,13 +36,13 @@
             "title": "Städte & Kommunen",
             "text": "Innenstädte, Marktplätze, Ortseingänge und Straßenzüge.",
             "href": "/weihnachtsbeleuchtung/staedte-kommunen/",
-            "image": "weihnachten/tannengirlanden-rathaus"
+            "image": "christmas/tannengirlanden-rathaus"
           },
           {
             "title": "Gewerbe",
             "text": "Einkaufszentren, Hotels, Autohäuser und Firmengebäude.",
             "href": "/weihnachtsbeleuchtung/gewerbe/",
-            "image": "weihnachten/sternenhimmel-einkaufszentrum"
+            "image": "christmas/sternenhimmel-einkaufszentrum"
           }
         ]
       },
@@ -56,25 +56,25 @@
           "Platzhalter: Einlagerung außerhalb der Saison"
         ],
         "link": { "label": "Montagetermin anfragen", "href": "/kontakt/?bereich=weihnachten" },
-        "image": "weihnachten/lichttor-ortseingang"
+        "image": "christmas/lichttor-ortseingang"
       },
       {
         "id": "wartung",
         "heading": "Wartung",
         "text": "Platzhaltertext: Während der Saison sind wir schnell zur Stelle, wenn etwas ausfällt. Nach der Saison prüfen, reparieren und lagern wir Ihre Beleuchtung ein.",
         "link": { "label": "Wartungsvertrag anfragen", "href": "/kontakt/?bereich=weihnachten" },
-        "image": "weihnachten/beleuchtete-fassade"
+        "image": "christmas/beleuchtete-fassade"
       }
     ],
     "gallery": {
       "id": "referenzen",
       "heading": "Referenzen",
-      "folder": "weihnachten",
+      "folder": "christmas",
       "count": 3,
       "link": { "label": "Alle Referenzen ansehen", "href": "/weihnachtsbeleuchtung/referenzen/" }
     }
   },
-  "staedte": {
+  "municipalities": {
     "seo": {
       "title": "Weihnachtsbeleuchtung für Städte & Kommunen",
       "description": "Weihnachtsbeleuchtung für Innenstädte, Marktplätze und Ortseingänge: Lichtkonzept, Montage, Wartung und Einlagerung für Städte und Gemeinden."
@@ -100,7 +100,7 @@
     ],
     "actions": [{ "label": "Unverbindlich anfragen", "href": "/kontakt/?bereich=weihnachten" }]
   },
-  "gewerbe": {
+  "business": {
     "seo": {
       "title": "Weihnachtsbeleuchtung für Gewerbe & Unternehmen",
       "description": "Festliche Beleuchtung für Einkaufszentren, Hotels, Autohäuser und Firmengebäude – individuell geplant, montiert und gewartet."
@@ -125,14 +125,14 @@
     ],
     "actions": [{ "label": "Unverbindlich anfragen", "href": "/kontakt/?bereich=weihnachten" }]
   },
-  "referenzen": {
+  "references": {
     "seo": {
       "title": "Referenzen Weihnachtsbeleuchtung",
       "description": "Ausgewählte Projekte unserer Weihnachtsbeleuchtung für Städte, Kommunen und Gewerbe – Bildergalerie mit Beispielen."
     },
     "title": "Referenzen Weihnachtsbeleuchtung",
     "lead": "Platzhaltertext: Eine Auswahl unserer Projekte. Klicken Sie auf ein Bild für die Großansicht.",
-    "folder": "weihnachten",
+    "folder": "christmas",
     "action": { "label": "Ihr Projekt anfragen", "href": "/kontakt/?bereich=weihnachten" }
   }
 }

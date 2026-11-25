@@ -153,7 +153,7 @@ section { padding: 120px 0; }
 .contact .lead { color: #4c524f; }
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; max-width: 980px; margin: 56px auto 0; }
 .card { padding: 34px; border: 1px solid #8e928f; background: transparent; transition: box-shadow .4s, background-color .4s; }
-.card[data-hervorgehoben] { background: #fff; box-shadow: 0 0 0 4px var(--accent); }
+.card[data-highlighted] { background: #fff; box-shadow: 0 0 0 4px var(--accent); }
 .card .eyebrow { color: #4c524f; }
 .card h2 { margin-top: 8px; font: 400 32px/1.2 var(--display); letter-spacing: .03em; text-transform: uppercase; }
 .card dl { margin-top: 22px; }

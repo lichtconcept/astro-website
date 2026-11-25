@@ -1,6 +1,6 @@
 ---
 // =============================================================================
-// BereichsStart – Aufbau der Startseiten beider Bereiche:
+// AreaHome – Aufbau der Startseiten beider Bereiche:
 // Slider → Sub-Menü (Anker) → Einleitung → Abschnitte → Referenzen-Vorschau.
 // Alle Inhalte kommen als "landing"-Objekt aus src/content/pages/. Die "id" eines
 // Abschnitts muss zum "href" im Sub-Menü passen (Prüfung: npm run check:site).
@@ -32,5 +32,5 @@ const { landing } = Astro.props;
   <a class="btn" href={landing.intro.button.href} data-in="up">{landing.intro.button.label} <span class="arr" aria-hidden="true">→</span></a>
 </section>
 
-{landing.sections.map((abschnitt, i) => <SectionText abschnitt={abschnitt} index={i + 1} />)}
+{landing.sections.map((section, i) => <SectionText section={section} index={i + 1} />)}
 <SectionGallery gallery={landing.gallery} index={landing.sections.length + 1} />

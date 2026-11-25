@@ -1,11 +1,11 @@
 ---
-// Werbetechnik – Startseite des Bereichs. Aufbau: src/components/BereichsStart.astro,
-// Inhalte: src/content/pages/werbetechnik.json → "landing".
-import LayoutSeite from '../../layouts/LayoutSeite.astro';
-import BereichsStart from '../../components/BereichsStart.astro';
-import { werbetechnik } from '../../lib/content';
+// Werbetechnik – Startseite des Bereichs. Aufbau: src/components/AreaHome.astro,
+// Inhalte: src/content/pages/signage.json → "landing".
+import LayoutPage from '../../layouts/LayoutPage.astro';
+import AreaHome from '../../components/AreaHome.astro';
+import { signage } from '../../lib/content';
 ---
 
-<LayoutSeite seo={werbetechnik.landing.seo} bereich="werbetechnik">
-  <BereichsStart landing={werbetechnik.landing} />
-</LayoutSeite>
+<LayoutPage seo={signage.landing.seo} area="signage">
+  <AreaHome landing={signage.landing} />
+</LayoutPage>

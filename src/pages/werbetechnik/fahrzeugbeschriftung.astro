@@ -1,10 +1,10 @@
 ---
-// Werbetechnik – Unterseite. Inhalte: src/content/pages/werbetechnik.json → "fahrzeuge".
-import LayoutSeite from '../../layouts/LayoutSeite.astro';
-import Textseite from '../../components/Textseite.astro';
-import { werbetechnik } from '../../lib/content';
+// Werbetechnik – Unterseite. Inhalte: src/content/pages/signage.json → "vehicles".
+import LayoutPage from '../../layouts/LayoutPage.astro';
+import TextPage from '../../components/TextPage.astro';
+import { signage } from '../../lib/content';
 ---
 
-<LayoutSeite seo={werbetechnik.fahrzeuge.seo} bereich="werbetechnik">
-  <Textseite inhalt={werbetechnik.fahrzeuge} />
-</LayoutSeite>
+<LayoutPage seo={signage.vehicles.seo} area="signage">
+  <TextPage content={signage.vehicles} />
+</LayoutPage>

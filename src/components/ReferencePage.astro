@@ -1,0 +1,29 @@
+---
+// =============================================================================
+// ReferencePage – Seitenrumpf der Referenzen-Seiten beider Bereiche.
+//
+// NEUE BILDER: einfach in den Ordner src/assets/<bereich>/ legen (jpg, jpeg, png
+// oder webp) UND in src/content/images.json einen Eintrag mit Alt-Text
+// (und optional Unterschrift) ergänzen. Sortierung: nach Dateiname.
+// =============================================================================
+import ReferenceGallery from './ReferenceGallery.astro';
+import { folderImages } from '../lib/images';
+import type { ReferencePageContent } from '../lib/content';
+
+interface Props {
+  content: ReferencePageContent;
+}
+
+const { content } = Astro.props;
+---
+
+<article class="page wide">
+  <div class="page-in">
+    <h1 data-in="down">{content.title}</h1>
+    <p class="lead-text" data-in="up">{content.lead}</p>
+  </div>
+  <ReferenceGallery images={folderImages(content.folder)} />
+  <p class="section-cta">
+    <a class="btn" href={content.action.href}>{content.action.label} <span class="arr" aria-hidden="true">→</span></a>
+  </p>
+</article>

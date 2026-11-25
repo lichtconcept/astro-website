@@ -1,10 +1,10 @@
 ---
-// Inhalte: src/content/legal.json → "impressum" (rechtlich geprüften Text dort einsetzen).
-import LayoutSeite from '../layouts/LayoutSeite.astro';
-import Textseite from '../components/Textseite.astro';
+// Inhalte: src/content/legal.json → "imprint" (rechtlich geprüften Text dort einsetzen).
+import LayoutPage from '../layouts/LayoutPage.astro';
+import TextPage from '../components/TextPage.astro';
 import { legal } from '../lib/content';
 ---
 
-<LayoutSeite seo={legal.impressum.seo}>
-  <Textseite inhalt={legal.impressum} />
-</LayoutSeite>
+<LayoutPage seo={legal.imprint.seo}>
+  <TextPage content={legal.imprint} />
+</LayoutPage>

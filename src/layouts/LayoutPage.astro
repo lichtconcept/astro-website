@@ -1,0 +1,31 @@
+---
+// =============================================================================
+// LayoutPage – Layout für alle Seiten mit Kopfzeile und Fußzeile.
+//   area="christmas" → Seiten unter /weihnachtsbeleuchtung/ (Gold auf Nachtblau)
+//   area="signage"   → Seiten unter /werbetechnik/ (Himmelblau auf Anthrazit)
+//   ohne area        → gemeinsame Seiten (Über uns, Kontakt, Impressum, Datenschutz, 404)
+// Menüs und Beschriftungen stehen in src/content/site.json.
+// =============================================================================
+import LayoutBase from './LayoutBase.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import Footer from '../components/Footer.astro';
+import type { Area, Seo } from '../lib/content';
+
+interface Props {
+  seo: Seo;
+  area?: Area;
+  /** Kopfzeile von Anfang an dunkel (Seiten mit hellem Hintergrund) */
+  solidHeader?: boolean;
+}
+
+const { seo, area, solidHeader = false } = Astro.props;
+---
+
+<LayoutBase seo={seo} area={area}>
+  <slot name="head" slot="head" />
+  <SiteHeader area={area} solid={solidHeader} />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+</LayoutBase>

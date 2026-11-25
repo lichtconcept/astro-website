@@ -4,7 +4,7 @@
 // (die ersten Bilder eines Ordners aus src/assets/). Texte: src/content/pages/.
 // =============================================================================
 import { Image } from 'astro:assets';
-import { ordnerBilder } from '../lib/bilder';
+import { folderImages } from '../lib/images';
 import type { Landing } from '../lib/content';
 
 interface Props {
@@ -13,17 +13,17 @@ interface Props {
 }
 
 const { gallery, index } = Astro.props;
-const vorschau = ordnerBilder(gallery.folder).slice(0, gallery.count);
+const preview = folderImages(gallery.folder).slice(0, gallery.count);
 ---
 
 <section id={gallery.id} class:list={{ alt: index % 2 === 1 }} aria-labelledby={`${gallery.id}-h`}>
   <h2 id={`${gallery.id}-h`} class="h2" data-in="down">{gallery.heading}</h2>
   <div class="grid">
     {
-      vorschau.map((b, i) => (
+      preview.map((image, i) => (
         <figure data-in="up" style={`transition-delay:${i * 0.12}s`}>
           <span class="thumb">
-            <Image src={b.src} alt={b.alt} widths={[400, 800]} sizes="(min-width: 1100px) 30vw, (min-width: 640px) 50vw, 100vw" loading="lazy" />
+            <Image src={image.src} alt={image.alt} widths={[400, 800]} sizes="(min-width: 1100px) 30vw, (min-width: 640px) 50vw, 100vw" loading="lazy" />
           </span>
         </figure>
       ))

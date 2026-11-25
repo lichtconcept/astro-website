@@ -1,11 +1,11 @@
 ---
-// Fehlerseite (wird als dist/404.html gebaut). Inhalte: src/content/pages/allgemein.json → "notFound".
+// Fehlerseite (wird als dist/404.html gebaut). Inhalte: src/content/pages/general.json → "notFound".
 // Im Webserver als Fehlerseite eintragen (siehe README.md).
-import LayoutSeite from '../layouts/LayoutSeite.astro';
-import Textseite from '../components/Textseite.astro';
-import { allgemein } from '../lib/content';
+import LayoutPage from '../layouts/LayoutPage.astro';
+import TextPage from '../components/TextPage.astro';
+import { general } from '../lib/content';
 ---
 
-<LayoutSeite seo={allgemein.notFound.seo}>
-  <Textseite inhalt={allgemein.notFound} zentriert />
-</LayoutSeite>
+<LayoutPage seo={general.notFound.seo}>
+  <TextPage content={general.notFound} centered />
+</LayoutPage>

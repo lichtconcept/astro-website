@@ -6,23 +6,23 @@
   "heading": "{name} – Weihnachtsbeleuchtung und Werbetechnik",
   "halves": [
     {
-      "area": "weihnachten",
+      "area": "christmas",
       "href": "/weihnachtsbeleuchtung/",
       "eyebrow": "Für Städte, Kommunen & Gewerbe",
       "title": "Weihnachtsbeleuchtung",
       "text": "Planung, Montage und Wartung festlicher Beleuchtung – alles aus einer Hand.",
       "button": "Bereich entdecken",
-      "poster": "startseite/weihnachten-poster",
+      "poster": "home/weihnachten-poster",
       "video": "weihnachten-loop"
     },
     {
-      "area": "werbetechnik",
+      "area": "signage",
       "href": "/werbetechnik/",
       "eyebrow": "Für Unternehmen jeder Größe",
       "title": "Werbetechnik",
       "text": "Lichtwerbung, Fahrzeugbeschriftung und Beschilderung, die gesehen wird.",
       "button": "Bereich entdecken",
-      "poster": "startseite/werbetechnik-poster",
+      "poster": "home/werbetechnik-poster",
       "video": "werbetechnik-loop"
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "weihnachten": {
+  "christmas": {
     "beleuchtete-fassade": {
       "alt": "Festlich beleuchtete Fassade"
     },
@@ -21,7 +21,7 @@
       "alt": "Tannengirlanden mit Beleuchtung am Rathaus"
     }
   },
-  "werbetechnik": {
+  "signage": {
     "bauschild-wohnanlage": {
       "alt": "Bauschild vor einer Wohnanlage"
     },

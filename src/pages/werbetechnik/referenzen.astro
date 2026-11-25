@@ -1,10 +1,10 @@
 ---
-// Werbetechnik – Referenzen. Bilder: src/assets/werbetechnik/, Texte: src/content/pages/werbetechnik.json → "referenzen".
-import LayoutSeite from '../../layouts/LayoutSeite.astro';
-import Referenzseite from '../../components/Referenzseite.astro';
-import { werbetechnik } from '../../lib/content';
+// Werbetechnik – Referenzen. Bilder: src/assets/signage/, Texte: src/content/pages/signage.json → "references".
+import LayoutPage from '../../layouts/LayoutPage.astro';
+import ReferencePage from '../../components/ReferencePage.astro';
+import { signage } from '../../lib/content';
 ---
 
-<LayoutSeite seo={werbetechnik.referenzen.seo} bereich="werbetechnik">
-  <Referenzseite inhalt={werbetechnik.referenzen} />
-</LayoutSeite>
+<LayoutPage seo={signage.references.seo} area="signage">
+  <ReferencePage content={signage.references} />
+</LayoutPage>

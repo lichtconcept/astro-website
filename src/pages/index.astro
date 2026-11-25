@@ -3,13 +3,13 @@
 // Startseite – 50/50 Split-Screen-Weiche
 // Desktop: links Weihnachtsbeleuchtung, rechts Werbetechnik.
 // Mobil:   oben Weihnachtsbeleuchtung, unten Werbetechnik.
-// Jede Hälfte ist komplett anklickbar. Texte: src/content/pages/start.json.
+// Jede Hälfte ist komplett anklickbar. Texte: src/content/pages/home.json.
 //
 // HINTERGRUND-VIDEOS: Dateien einfach in public/videos/ ablegen:
 //   weihnachten-loop.webm + weihnachten-loop.mp4
 //   werbetechnik-loop.webm + werbetechnik-loop.mp4
 // Fehlen sie, wird automatisch nur das Standbild (Poster) angezeigt.
-// STANDBILDER (Poster): src/assets/startseite/*-poster.jpg
+// STANDBILDER (Poster): src/assets/home/*-poster.jpg
 //
 // Die Videos werden über Git LFS versioniert (siehe README.md). Wurde das
 // Projekt ohne LFS geklont, liegen statt der Videos nur kleine Pointer-
@@ -18,49 +18,49 @@
 import { closeSync, existsSync, openSync, readSync } from 'node:fs';
 import { join } from 'node:path';
 import { Image, getImage } from 'astro:assets';
-import LayoutWeiche from '../layouts/LayoutWeiche.astro';
-import { firma, localBusinessJsonLd } from '../config/firma';
-import { start } from '../lib/content';
-import { bildDatei } from '../lib/bilder';
+import LayoutHome from '../layouts/LayoutHome.astro';
+import { company, localBusinessJsonLd } from '../config/company';
+import { home } from '../lib/content';
+import { imageFile } from '../lib/images';
 
 // Beim Build prüfen, ob echte Videodateien vorhanden sind (kein LFS-Pointer)
-const videoOrdner = join(process.cwd(), 'public', 'videos');
-function istVideo(dateiname: string): boolean {
-  const pfad = join(videoOrdner, dateiname);
-  if (!existsSync(pfad)) return false;
-  const anfang = Buffer.alloc(40);
-  const fd = openSync(pfad, 'r');
-  readSync(fd, anfang, 0, 40, 0);
+const videoDir = join(process.cwd(), 'public', 'videos');
+function isVideo(fileName: string): boolean {
+  const path = join(videoDir, fileName);
+  if (!existsSync(path)) return false;
+  const firstBytes = Buffer.alloc(40);
+  const fd = openSync(path, 'r');
+  readSync(fd, firstBytes, 0, 40, 0);
   closeSync(fd);
-  return !anfang.toString('utf8').startsWith('version https://git-lfs');
+  return !firstBytes.toString('utf8').startsWith('version https://git-lfs');
 }
 
-const eintraege = await Promise.all(
-  start.halves.map(async (h) => {
-    const poster = bildDatei(h.poster);
+const entries = await Promise.all(
+  home.halves.map(async (h) => {
+    const poster = imageFile(h.poster);
     const posterUrl = (await getImage({ src: poster, width: 1280, format: 'webp' })).src;
-    return { ...h, poster, posterUrl, webm: istVideo(`${h.video}.webm`), mp4: istVideo(`${h.video}.mp4`) };
+    return { ...h, poster, posterUrl, webm: isVideo(`${h.video}.webm`), mp4: isVideo(`${h.video}.mp4`) };
   }),
 );
 
 const jsonLd = JSON.stringify(localBusinessJsonLd(Astro.site));
 ---
 
-<LayoutWeiche seo={start.seo}>
+<LayoutHome seo={home.seo}>
   <script type="application/ld+json" slot="head" set:html={jsonLd} />
 
   <!-- Genau eine H1 pro Seite: für Screenreader und Google, optisch versteckt -->
-  <h1 class="sr-only">{start.heading}</h1>
+  <h1 class="sr-only">{home.heading}</h1>
 
   <div class="start-logo">
     <img src="/favicon.svg" alt="" width="26" height="26" />
-    <span>{firma.name}</span>
+    <span>{company.name}</span>
   </div>
 
   <div class="split-screen">
     {
-      eintraege.map((h) => (
-        <a href={h.href} data-bereich={h.area} class="half">
+      entries.map((h) => (
+        <a href={h.href} data-area={h.area} class="half">
           {/* Standbild – immer vorhanden, auch ohne Video */}
           <Image
             src={h.poster}
@@ -82,7 +82,7 @@ const jsonLd = JSON.stringify(localBusinessJsonLd(Astro.site));
               preload="metadata"
               poster={h.posterUrl}
               aria-hidden="true"
-              data-hintergrund-video
+              data-background-video
             >
               {h.webm && <source src={`/videos/${h.video}.webm`} type="video/webm" />}
               {h.mp4 && <source src={`/videos/${h.video}.mp4`} type="video/mp4" />}
@@ -103,10 +103,10 @@ const jsonLd = JSON.stringify(localBusinessJsonLd(Astro.site));
   <!-- Bei "Bewegung reduzieren" Videos komplett entfernen (spart auch Datenvolumen) -->
   <script is:inline>
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.querySelectorAll('[data-hintergrund-video]').forEach(function (v) {
+      document.querySelectorAll('[data-background-video]').forEach(function (v) {
         v.pause();
         v.remove();
       });
     }
   </script>
-</LayoutWeiche>
+</LayoutHome>

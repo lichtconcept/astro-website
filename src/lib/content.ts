@@ -2,25 +2,28 @@
 // Content-Loader – der EINZIGE Ort, der die JSON-Dateien aus src/content/ lädt.
 //
 // Seiten und Komponenten enthalten keine Texte, sondern lesen sie von hier.
-// - Platzhalter wie {name}, {ort}, {telefon} in den JSON-Texten werden mit den
-//   Firmendaten aus src/config/firma.ts gefüllt (eine Quelle für Firmendaten).
+// - Platzhalter wie {name}, {city}, {phone} in den JSON-Texten werden mit den
+//   Firmendaten aus src/config/company.ts gefüllt (eine Quelle für Firmendaten).
 // - Die Typen unten sorgen dafür, dass `npm run check` fehlende Felder meldet.
 // =============================================================================
-import { firma } from '../config/firma';
+import { company } from '../config/company';
 import siteJson from '../content/site.json';
-import bilderJson from '../content/bilder.json';
-import startJson from '../content/pages/start.json';
-import weihnachtenJson from '../content/pages/weihnachten.json';
-import werbetechnikJson from '../content/pages/werbetechnik.json';
-import allgemeinJson from '../content/pages/allgemein.json';
+import imagesJson from '../content/images.json';
+import homeJson from '../content/pages/home.json';
+import christmasJson from '../content/pages/christmas.json';
+import signageJson from '../content/pages/signage.json';
+import generalJson from '../content/pages/general.json';
 import legalJson from '../content/legal.json';
 
 // --- Typen ---------------------------------------------------------------------
+/** Die beiden Bereiche: Weihnachtsbeleuchtung und Werbetechnik */
+export type Area = 'christmas' | 'signage';
+
 export interface Link { label: string; href: string }
 export interface ActionLink extends Link { style?: string }
 export interface Seo { title: string; description: string }
 
-export interface NavigationBereich {
+export interface NavigationArea {
   name: string;
   badge: string;
   home: string;
@@ -44,7 +47,7 @@ export interface Site {
     sectionsNav: string;
     gallery: { dialog: string; close: string };
   };
-  navigation: Record<'weihnachten' | 'werbetechnik' | 'neutral', NavigationBereich>;
+  navigation: Record<Area | 'neutral', NavigationArea>;
   startFooter: { label: string; links: Link[] };
   footer: {
     about: string;
@@ -60,11 +63,11 @@ export interface Site {
   };
 }
 
-export interface Start {
+export interface Home {
   seo: Seo;
   heading: string;
   halves: {
-    area: 'weihnachten' | 'werbetechnik';
+    area: Area;
     href: string;
     eyebrow: string;
     title: string;
@@ -76,7 +79,7 @@ export interface Start {
 }
 
 export interface Card { title: string; text: string; href: string; image: string }
-export interface Abschnitt {
+export interface Section {
   id: string;
   heading: string;
   text: string;
@@ -90,12 +93,12 @@ export interface Landing {
   hero: { heading: string; button: Link; slides: { image: string; title: string }[] };
   subnav: Link[];
   intro: { eyebrow: string; title: string; text: string; button: Link };
-  sections: Abschnitt[];
+  sections: Section[];
   gallery: { id: string; heading: string; folder: string; count: number; link: Link };
 }
 
 /** Textseite: Detailseiten, Über uns, Impressum, Datenschutz, 404 */
-export interface Textseite {
+export interface TextPageContent {
   seo: Seo;
   title: string;
   lead?: string;
@@ -109,7 +112,7 @@ export interface Textseite {
   actions?: ActionLink[];
 }
 
-export interface Referenzseite {
+export interface ReferencePageContent {
   seo: Seo;
   title: string;
   lead: string;
@@ -117,56 +120,57 @@ export interface Referenzseite {
   action: Link;
 }
 
-export interface Kontakt {
+export interface Contact {
   seo: Seo;
   title: string;
   lead: string;
   labels: { area: string; person: string; phone: string; email: string; write: string; general: string; phoneShort: string };
-  blocks: { id: 'weihnachten' | 'werbetechnik'; subject: string }[];
+  /** param = Wert in der URL, z. B. /kontakt/?bereich=weihnachten */
+  blocks: { area: Area; param: string; subject: string }[];
 }
 
-export type BildInfo = { alt: string; caption?: string };
+export type ImageInfo = { alt: string; caption?: string };
 
 // --- Firmendaten in Texte einsetzen ----------------------------------------------
-const werte: Record<string, string> = {
-  name: firma.name,
-  kurzname: firma.kurzname,
-  strasse: firma.adresse.strasse,
-  plz: firma.adresse.plz,
-  ort: firma.adresse.ort,
-  telefon: firma.telefon,
-  email: firma.email,
-  jahr: String(new Date().getFullYear()),
+const values: Record<string, string> = {
+  name: company.name,
+  shortName: company.shortName,
+  street: company.address.street,
+  zip: company.address.zip,
+  city: company.address.city,
+  phone: company.phone,
+  email: company.email,
+  year: String(new Date().getFullYear()),
 };
 
-function fuelle<T>(wert: T): T {
-  if (typeof wert === 'string') {
-    return wert.replace(/\{(\w+)\}/g, (treffer, schluessel: string) => {
-      if (!(schluessel in werte)) throw new Error(`Unbekannter Platzhalter ${treffer} in src/content/`);
-      return werte[schluessel];
+function interpolate<T>(value: T): T {
+  if (typeof value === 'string') {
+    return value.replace(/\{(\w+)\}/g, (match, key: string) => {
+      if (!(key in values)) throw new Error(`Unbekannter Platzhalter ${match} in src/content/`);
+      return values[key];
     }) as T;
   }
-  if (Array.isArray(wert)) return wert.map(fuelle) as T;
-  if (wert && typeof wert === 'object')
-    return Object.fromEntries(Object.entries(wert).map(([k, v]) => [k, fuelle(v)])) as T;
-  return wert;
+  if (Array.isArray(value)) return value.map(interpolate) as T;
+  if (value && typeof value === 'object')
+    return Object.fromEntries(Object.entries(value).map(([k, v]) => [k, interpolate(v)])) as T;
+  return value;
 }
 
 // --- Exporte ----------------------------------------------------------------------
-export const site: Site = fuelle(siteJson as Site);
-export const start: Start = fuelle(startJson as Start);
-export const weihnachten: {
+export const site: Site = interpolate(siteJson as Site);
+export const home: Home = interpolate(homeJson as Home);
+export const christmas: {
   landing: Landing;
-  staedte: Textseite;
-  gewerbe: Textseite;
-  referenzen: Referenzseite;
-} = fuelle(weihnachtenJson as never);
-export const werbetechnik: {
+  municipalities: TextPageContent;
+  business: TextPageContent;
+  references: ReferencePageContent;
+} = interpolate(christmasJson as never);
+export const signage: {
   landing: Landing;
-  lichtwerbung: Textseite;
-  fahrzeuge: Textseite;
-  referenzen: Referenzseite;
-} = fuelle(werbetechnikJson as never);
-export const allgemein: { ueberUns: Textseite; kontakt: Kontakt; notFound: Textseite } = fuelle(allgemeinJson as never);
-export const legal: { impressum: Textseite; datenschutz: Textseite } = fuelle(legalJson as never);
-export const bilderTexte: Record<string, Record<string, BildInfo>> = bilderJson;
+  illuminatedSigns: TextPageContent;
+  vehicles: TextPageContent;
+  references: ReferencePageContent;
+} = interpolate(signageJson as never);
+export const general: { about: TextPageContent; contact: Contact; notFound: TextPageContent } = interpolate(generalJson as never);
+export const legal: { imprint: TextPageContent; privacy: TextPageContent } = interpolate(legalJson as never);
+export const imageTexts: Record<string, Record<string, ImageInfo>> = imagesJson;

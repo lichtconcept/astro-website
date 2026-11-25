@@ -1,23 +1,23 @@
 ---
 // =============================================================================
 // LayoutBase – Grundgerüst für ALLE Seiten (<html>, <head>, SEO-Meta-Tags).
-// Wird nicht direkt von Seiten benutzt, sondern von LayoutWeiche und LayoutSeite.
+// Wird nicht direkt von Seiten benutzt, sondern von LayoutHome und LayoutPage.
 // Texte (Titel, Beschreibung) kommen von der Seite aus src/content/.
 // =============================================================================
 import '../styles/global.css';
-import { firma } from '../config/firma';
-import { site, type Seo } from '../lib/content';
+import { company } from '../config/company';
+import { site, type Area, type Seo } from '../lib/content';
 
 interface Props {
   seo: Seo;
   /** Bereich der Seite – steuert die Farben (siehe src/styles/global.css). */
-  bereich?: 'weihnachten' | 'werbetechnik';
+  area?: Area;
 }
 
-const { seo, bereich } = Astro.props;
+const { seo, area } = Astro.props;
 
 // Vollständiger Titel: "<Seitentitel> | <Firmenname>"
-const vollerTitel = seo.title.includes(firma.name) ? seo.title : `${seo.title} | ${firma.name}`;
+const fullTitle = seo.title.includes(company.name) ? seo.title : `${seo.title} | ${company.name}`;
 
 // Canonical-URL = Domain aus astro.config.mjs + aktueller Pfad
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -28,7 +28,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{vollerTitel}</title>
+    <title>{fullTitle}</title>
     <meta name="description" content={seo.description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -37,15 +37,15 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <!-- Open Graph (Vorschau beim Teilen in sozialen Netzwerken / Messengern) -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={site.locale} />
-    <meta property="og:site_name" content={firma.name} />
-    <meta property="og:title" content={vollerTitel} />
+    <meta property="og:site_name" content={company.name} />
+    <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={seo.description} />
     <meta property="og:url" content={canonical} />
 
     <!-- Platz für seitenspezifische Ergänzungen, z. B. strukturierte Daten -->
     <slot name="head" />
   </head>
-  <body data-bereich={bereich}>
+  <body data-area={area}>
     <slot />
     <script>
       import '../scripts/site.ts';

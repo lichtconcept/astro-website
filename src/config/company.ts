@@ -1,42 +1,41 @@
 // =============================================================================
 // FIRMENDATEN – zentrale Stelle für Name, Adresse, Telefon und E-Mail.
-// Wird verwendet in: Footer, Kontaktseite, Logo, strukturierten Daten (JSON-LD).
-//
-// ALLE WERTE SIND PLATZHALTER und müssen durch die echten Daten ersetzt werden.
+// Wird verwendet in: Footer, Kontaktseite, Logo, strukturierten Daten (JSON-LD)
+// und in den Texten aus src/content/ (Platzhalter wie {name} oder {city}).
 // =============================================================================
 
-export const firma = {
+export const company = {
   name: 'Lichtconcept GmbH',
-  kurzname: 'Lichtconcept',
+  shortName: 'Lichtconcept',
 
-  adresse: {
-    strasse: 'Am Entenfeld 10',
-    plz: '83236',
-    ort: 'Übersee',
-    land: 'DE',
+  address: {
+    street: 'Am Entenfeld 10',
+    zip: '83236',
+    city: 'Übersee',
+    country: 'DE',
   },
 
-  telefon: '+49 8642 595209-0',
+  phone: '+49 8642 595209-0',
   email: 'mail@lichtconcept.net',
 
   // Ansprechpartner je Bereich (Kontaktseite)
-  weihnachten: {
-    titel: 'Weihnachtsbeleuchtung',
-    ansprechpartner: 'Elke Kroner und Anna Neuhauser',
-    telefon: '+49 8642 595209-0',
+  christmas: {
+    title: 'Weihnachtsbeleuchtung',
+    contactPerson: 'Elke Kroner und Anna Neuhauser',
+    phone: '+49 8642 595209-0',
     email: 'mail@lichtconcept.net',
   },
-  werbetechnik: {
-    titel: 'Werbetechnik',
-    ansprechpartner: 'Joachim Schlund',
-    telefon: '+49 8642 595209-5',
+  signage: {
+    title: 'Werbetechnik',
+    contactPerson: 'Joachim Schlund',
+    phone: '+49 8642 595209-5',
     email: 'werbetechnik@lichtconcept.net',
   },
 } as const;
 
 /** Telefonnummer für tel:-Links (ohne Leerzeichen und Bindestriche). */
-export function telLink(nummer: string): string {
-  return 'tel:' + nummer.replace(/[^\d+]/g, '');
+export function telHref(phone: string): string {
+  return 'tel:' + phone.replace(/[^\d+]/g, '');
 }
 
 /** JSON-LD "LocalBusiness" für Suchmaschinen (Startseite + Über uns). */
@@ -44,16 +43,16 @@ export function localBusinessJsonLd(site: URL | undefined) {
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: firma.name,
+    name: company.name,
     url: site?.href,
-    telephone: firma.telefon,
-    email: firma.email,
+    telephone: company.phone,
+    email: company.email,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: firma.adresse.strasse,
-      postalCode: firma.adresse.plz,
-      addressLocality: firma.adresse.ort,
-      addressCountry: firma.adresse.land,
+      streetAddress: company.address.street,
+      postalCode: company.address.zip,
+      addressLocality: company.address.city,
+      addressCountry: company.address.country,
     },
     description:
       'Professionelle Weihnachtsbeleuchtung für Städte, Kommunen und Gewerbe sowie Werbetechnik: Lichtwerbung, Fahrzeugbeschriftung und Beschilderung.',

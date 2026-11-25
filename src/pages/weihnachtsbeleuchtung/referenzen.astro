@@ -1,10 +1,10 @@
 ---
-// Weihnachtsbeleuchtung – Referenzen. Bilder: src/assets/weihnachten/, Texte: src/content/pages/weihnachten.json → "referenzen".
-import LayoutSeite from '../../layouts/LayoutSeite.astro';
-import Referenzseite from '../../components/Referenzseite.astro';
-import { weihnachten } from '../../lib/content';
+// Weihnachtsbeleuchtung – Referenzen. Bilder: src/assets/christmas/, Texte: src/content/pages/christmas.json → "references".
+import LayoutPage from '../../layouts/LayoutPage.astro';
+import ReferencePage from '../../components/ReferencePage.astro';
+import { christmas } from '../../lib/content';
 ---
 
-<LayoutSeite seo={weihnachten.referenzen.seo} bereich="weihnachten">
-  <Referenzseite inhalt={weihnachten.referenzen} />
-</LayoutSeite>
+<LayoutPage seo={christmas.references.seo} area="christmas">
+  <ReferencePage content={christmas.references} />
+</LayoutPage>

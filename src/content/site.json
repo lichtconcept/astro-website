@@ -13,11 +13,11 @@
     }
   },
   "navigation": {
-    "weihnachten": {
+    "christmas": {
       "name": "Weihnachtsbeleuchtung",
       "badge": "Weihnachtsbeleuchtung",
       "home": "/weihnachtsbeleuchtung/",
-      "homeLabel": "{kurzname} Weihnachtsbeleuchtung – Übersicht",
+      "homeLabel": "{shortName} Weihnachtsbeleuchtung – Übersicht",
       "navLabel": "Navigation Weihnachtsbeleuchtung",
       "navLabelMore": "Navigation Weihnachtsbeleuchtung, weitere Punkte",
       "navLabelMobile": "Navigation Weihnachtsbeleuchtung (mobil)",
@@ -30,11 +30,11 @@
       "cta": { "label": "Anfrage stellen", "href": "/kontakt/?bereich=weihnachten" },
       "switch": { "label": "Zur Werbetechnik ⇄", "href": "/werbetechnik/" }
     },
-    "werbetechnik": {
+    "signage": {
       "name": "Werbetechnik",
       "badge": "Werbetechnik",
       "home": "/werbetechnik/",
-      "homeLabel": "{kurzname} Werbetechnik – Übersicht",
+      "homeLabel": "{shortName} Werbetechnik – Übersicht",
       "navLabel": "Navigation Werbetechnik",
       "navLabelMore": "Navigation Werbetechnik, weitere Punkte",
       "navLabelMobile": "Navigation Werbetechnik (mobil)",
@@ -51,7 +51,7 @@
       "name": "",
       "badge": "",
       "home": "/",
-      "homeLabel": "{kurzname} – Startseite",
+      "homeLabel": "{shortName} – Startseite",
       "navLabel": "Hauptnavigation",
       "navLabelMore": "Hauptnavigation, weitere Punkte",
       "navLabelMobile": "Hauptnavigation (mobil)",
@@ -73,7 +73,7 @@
     ]
   },
   "footer": {
-    "about": "Weihnachtsbeleuchtung und Werbetechnik aus {ort}.",
+    "about": "Weihnachtsbeleuchtung und Werbetechnik aus {city}.",
     "areasHeading": "Unsere Bereiche",
     "areasLabel": "Bereiche",
     "areas": [
@@ -90,6 +90,6 @@
     ],
     "contactHeading": "Kontakt",
     "phonePrefix": "Tel.",
-    "copyright": "© {jahr} {name}"
+    "copyright": "© {year} {name}"
   }
 }

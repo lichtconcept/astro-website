@@ -1,5 +1,5 @@
 {
-  "impressum": {
+  "imprint": {
     "seo": {
       "title": "Impressum",
       "description": "Impressum und Anbieterkennzeichnung von {name}."
@@ -7,14 +7,14 @@
     "title": "Impressum",
     "lead": "Platzhalter – bitte durch das rechtlich geprüfte Impressum ersetzen.",
     "sections": [
-      { "heading": "Angaben gemäß § 5 DDG", "lines": ["{name}", "{strasse}", "{plz} {ort}"] },
+      { "heading": "Angaben gemäß § 5 DDG", "lines": ["{name}", "{street}", "{zip} {city}"] },
       { "heading": "Vertreten durch", "paragraphs": ["Platzhalter: Geschäftsführer/in"] },
-      { "heading": "Kontakt", "lines": ["Telefon: {telefon}", "E-Mail: {email}"] },
+      { "heading": "Kontakt", "lines": ["Telefon: {phone}", "E-Mail: {email}"] },
       { "heading": "Registereintrag", "paragraphs": ["Platzhalter: Registergericht, Registernummer"] },
       { "heading": "Umsatzsteuer-ID", "paragraphs": ["Platzhalter: DE000000000"] }
     ]
   },
-  "datenschutz": {
+  "privacy": {
     "seo": {
       "title": "Datenschutzerklärung",
       "description": "Informationen zum Datenschutz und zur Verarbeitung personenbezogener Daten bei {name}."
@@ -22,7 +22,7 @@
     "title": "Datenschutzerklärung",
     "lead": "Platzhalter – bitte durch die rechtlich geprüfte Datenschutzerklärung ersetzen.",
     "sections": [
-      { "heading": "Verantwortlicher", "lines": ["{name}, {strasse}, {plz} {ort}", "E-Mail: {email}"] },
+      { "heading": "Verantwortlicher", "lines": ["{name}, {street}, {zip} {city}", "E-Mail: {email}"] },
       {
         "heading": "Hosting und Server-Logfiles",
         "paragraphs": ["Platzhaltertext: Angaben zum Hosting und zu den vom Webserver gespeicherten Zugriffsdaten."]

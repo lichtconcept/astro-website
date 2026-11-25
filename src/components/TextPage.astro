@@ -1,32 +1,32 @@
 ---
 // =============================================================================
-// Textseite – Seitenrumpf für Unterseiten, Über uns, Impressum, Datenschutz, 404.
-// Alle Inhalte kommen als Objekt aus src/content/ (Typ "Textseite" in src/lib/content.ts):
+// TextPage – Seitenrumpf für Unterseiten, Über uns, Impressum, Datenschutz, 404.
+// Alle Inhalte kommen als Objekt aus src/content/ (Typ "TextPageContent" in src/lib/content.ts):
 //   title, lead, sections[{ heading, paragraphs, lines, list, linkList }], actions[]
 // =============================================================================
-import type { Textseite } from '../lib/content';
+import type { TextPageContent } from '../lib/content';
 
 interface Props {
-  inhalt: Textseite;
+  content: TextPageContent;
   /** Überschrift und Buttons zentrieren (z. B. 404) */
-  zentriert?: boolean;
+  centered?: boolean;
 }
 
-const { inhalt, zentriert = false } = Astro.props;
+const { content, centered = false } = Astro.props;
 ---
 
-<article class:list={['page', { center: zentriert }]}>
+<article class:list={['page', { center: centered }]}>
   <div class="page-in">
-    <h1 data-in="down">{inhalt.title}</h1>
-    {inhalt.lead && <p class="lead-text" data-in="up">{inhalt.lead}</p>}
+    <h1 data-in="down">{content.title}</h1>
+    {content.lead && <p class="lead-text" data-in="up">{content.lead}</p>}
 
     {
-      inhalt.sections?.map((s) => (
+      content.sections?.map((s) => (
         <section class="page-sec">
           <h2>{s.heading}</h2>
           {s.paragraphs?.map((p) => <p>{p}</p>)}
-          {s.lines && <p>{s.lines.map((zeile, i) => (<>{i > 0 && <br />}{zeile}</>))}</p>}
-          {s.list && <ul>{s.list.map((punkt) => <li>{punkt}</li>)}</ul>}
+          {s.lines && <p>{s.lines.map((line, i) => (<>{i > 0 && <br />}{line}</>))}</p>}
+          {s.list && <ul>{s.list.map((item) => <li>{item}</li>)}</ul>}
           {s.linkList && (
             <ul>
               {s.linkList.map((l) => (
@@ -39,9 +39,9 @@ const { inhalt, zentriert = false } = Astro.props;
     }
 
     {
-      inhalt.actions && (
+      content.actions && (
         <p class="actions">
-          {inhalt.actions.map((a) =>
+          {content.actions.map((a) =>
             a.style === 'link' ? (
               <a href={a.href}>{a.label}</a>
             ) : (

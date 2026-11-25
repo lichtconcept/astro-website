@@ -1,0 +1,82 @@
+---
+// =============================================================================
+// ReferenceGallery – responsives Bilder-Raster mit Großansicht.
+//
+// Benutzung (siehe src/components/ReferencePage.astro):
+//   <ReferenceGallery images={folderImages('christmas')} />
+//
+// - Bilder werden von Astro automatisch verkleinert und als WebP ausgeliefert.
+// - Klick auf ein Bild öffnet eine Großansicht (natives <dialog>-Element).
+// - Ohne JavaScript öffnet der Klick einfach das große Bild.
+// - Alt-Texte und Unterschriften: src/content/images.json. Beschriftungen: site.json.
+// =============================================================================
+import { Image, getImage } from 'astro:assets';
+import { site } from '../lib/content';
+import type { ImageEntry } from '../lib/images';
+
+interface Props {
+  images: ImageEntry[];
+}
+
+const { images } = Astro.props;
+
+// Für jedes Bild zusätzlich eine große Version für die Großansicht erzeugen
+const entries = await Promise.all(
+  images.map(async (image) => ({
+    ...image,
+    full: await getImage({ src: image.src, width: 1920, format: 'webp' }),
+  })),
+);
+---
+
+<div class="grid" data-gallery>
+  {
+    entries.map((image, i) => (
+      <figure data-in="up" style={`transition-delay:${(i % 3) * 0.1}s`}>
+        <a href={image.full.src} data-full={image.full.src} class="thumb">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            widths={[400, 800, 1200]}
+            sizes="(min-width: 1100px) 30vw, (min-width: 640px) 50vw, 100vw"
+            loading="lazy"
+          />
+        </a>
+        {image.caption && <figcaption>{image.caption}</figcaption>}
+      </figure>
+    ))
+  }
+</div>
+
+<!-- Großansicht -->
+<dialog id="gallery-dialog" class="lightbox" aria-label={site.labels.gallery.dialog}>
+  <form method="dialog">
+    <button>{site.labels.gallery.close}</button>
+  </form>
+  <img alt="" />
+  <p></p>
+</dialog>
+
+<script>
+  // Klick auf ein Galerie-Bild öffnet die Großansicht statt einer neuen Seite.
+  const dialog = document.getElementById('gallery-dialog') as HTMLDialogElement | null;
+  const fullImage = dialog?.querySelector('img');
+  const caption = dialog?.querySelector('p');
+
+  document.querySelectorAll<HTMLAnchorElement>('[data-gallery] a[data-full]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      if (!dialog || !fullImage || !caption) return;
+      event.preventDefault();
+      const thumbnail = link.querySelector('img');
+      fullImage.src = link.dataset.full ?? link.href;
+      fullImage.alt = thumbnail?.alt ?? '';
+      caption.textContent = link.parentElement?.querySelector('figcaption')?.textContent ?? '';
+      dialog.showModal();
+    });
+  });
+
+  // Klick auf den dunklen Hintergrund schließt die Großansicht
+  dialog?.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+</script>

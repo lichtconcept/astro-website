@@ -1,11 +1,11 @@
 {
-  "ueberUns": {
+  "about": {
     "seo": {
       "title": "Über uns",
-      "description": "Lernen Sie {name} kennen: Ihr Partner für professionelle Weihnachtsbeleuchtung und Werbetechnik aus {ort}."
+      "description": "Lernen Sie {name} kennen: Ihr Partner für professionelle Weihnachtsbeleuchtung und Werbetechnik aus {city}."
     },
     "title": "Über uns",
-    "lead": "Platzhaltertext: {name} ist ein Familienunternehmen aus {ort}. Seit vielen Jahren sind wir in zwei Bereichen zu Hause: professionelle Weihnachtsbeleuchtung und Werbetechnik.",
+    "lead": "Platzhaltertext: {name} ist ein Familienunternehmen aus {city}. Seit vielen Jahren sind wir in zwei Bereichen zu Hause: professionelle Weihnachtsbeleuchtung und Werbetechnik.",
     "sections": [
       {
         "heading": "Zwei Bereiche – ein Team",
@@ -24,7 +24,7 @@
     ],
     "actions": [{ "label": "Kontakt aufnehmen", "href": "/kontakt/" }]
   },
-  "kontakt": {
+  "contact": {
     "seo": {
       "title": "Kontakt",
       "description": "Kontakt zu unseren Ansprechpartnern für Weihnachtsbeleuchtung und Werbetechnik – telefonisch oder per E-Mail."
@@ -41,8 +41,8 @@
       "phoneShort": "Tel."
     },
     "blocks": [
-      { "id": "weihnachten", "subject": "Anfrage Weihnachtsbeleuchtung" },
-      { "id": "werbetechnik", "subject": "Anfrage Werbetechnik" }
+      { "area": "christmas", "param": "weihnachten", "subject": "Anfrage Weihnachtsbeleuchtung" },
+      { "area": "signage", "param": "werbetechnik", "subject": "Anfrage Werbetechnik" }
     ]
   },
   "notFound": {

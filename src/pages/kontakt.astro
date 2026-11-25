@@ -3,37 +3,37 @@
 // Kontakt
 // Zwei Kontaktblöcke (je Bereich). Kommt man über einen Anfrage-Button
 // (z. B. /kontakt/?bereich=weihnachten), wird der passende Block hervorgehoben.
-// Texte: src/content/pages/allgemein.json → "kontakt". Kontaktdaten: src/config/firma.ts.
+// Texte: src/content/pages/contact.json → "seo". Kontaktdaten: src/config/company.ts.
 // =============================================================================
-import LayoutSeite from '../layouts/LayoutSeite.astro';
-import { firma, telLink } from '../config/firma';
-import { allgemein } from '../lib/content';
+import LayoutPage from '../layouts/LayoutPage.astro';
+import { company, telHref } from '../config/company';
+import { general } from '../lib/content';
 
-const k = allgemein.kontakt;
-const bloecke = k.blocks.map((b) => ({ ...b, ...firma[b.id] }));
+const contact = general.contact;
+const cards = contact.blocks.map((block) => ({ ...block, ...company[block.area] }));
 ---
 
-<LayoutSeite seo={k.seo} kopfDunkel>
+<LayoutPage seo={contact.seo} solidHeader>
   <article class="contact">
-    <h1 data-in="down">{k.title}</h1>
-    <p class="lead" data-in="up">{k.lead}</p>
+    <h1 data-in="down">{contact.title}</h1>
+    <p class="lead" data-in="up">{contact.lead}</p>
 
     <div class="cards">
       {
-        bloecke.map((b) => (
-          <section id={b.id} data-bereich={b.id} data-kontakt-block class="card" data-in="up">
-            <p class="eyebrow">{k.labels.area}</p>
-            <h2>{b.titel}</h2>
+        cards.map((card) => (
+          <section id={card.param} data-area={card.area} data-contact-card={card.param} class="card" data-in="up">
+            <p class="eyebrow">{contact.labels.area}</p>
+            <h2>{card.title}</h2>
             <dl>
-              <dt>{k.labels.person}</dt>
-              <dd>{b.ansprechpartner}</dd>
-              <dt>{k.labels.phone}</dt>
-              <dd><a href={telLink(b.telefon)}>{b.telefon}</a></dd>
-              <dt>{k.labels.email}</dt>
-              <dd><a href={`mailto:${b.email}`}>{b.email}</a></dd>
+              <dt>{contact.labels.person}</dt>
+              <dd>{card.contactPerson}</dd>
+              <dt>{contact.labels.phone}</dt>
+              <dd><a href={telHref(card.phone)}>{card.phone}</a></dd>
+              <dt>{contact.labels.email}</dt>
+              <dd><a href={`mailto:${card.email}`}>{card.email}</a></dd>
             </dl>
-            <a href={`mailto:${b.email}?subject=${encodeURIComponent(b.subject)}`} class="btn">
-              {k.labels.write} <span class="arr" aria-hidden="true">→</span>
+            <a href={`mailto:${card.email}?subject=${encodeURIComponent(card.subject)}`} class="btn">
+              {contact.labels.write} <span class="arr" aria-hidden="true">→</span>
             </a>
           </section>
         ))
@@ -41,20 +41,20 @@ const bloecke = k.blocks.map((b) => ({ ...b, ...firma[b.id] }));
     </div>
 
     <p class="general">
-      {k.labels.general}: {firma.name}, {firma.adresse.strasse}, {firma.adresse.plz} {firma.adresse.ort} · {k.labels.phoneShort}{' '}
-      <a href={telLink(firma.telefon)}>{firma.telefon}</a>
+      {contact.labels.general}: {company.name}, {company.address.street}, {company.address.zip} {company.address.city} · {contact.labels.phoneShort}{' '}
+      <a href={telHref(company.phone)}>{company.phone}</a>
     </p>
   </article>
 
   <!-- Passenden Kontaktblock hervorheben, z. B. bei /kontakt/?bereich=werbetechnik -->
   <script is:inline>
     (function () {
-      var bereich = new URLSearchParams(window.location.search).get('bereich');
-      if (!bereich) return;
-      var block = document.querySelector('[data-kontakt-block][data-bereich="' + CSS.escape(bereich) + '"]');
-      if (!block) return;
-      block.setAttribute('data-hervorgehoben', '');
-      block.scrollIntoView({ block: 'nearest' });
+      var param = new URLSearchParams(window.location.search).get('bereich');
+      if (!param) return;
+      var card = document.querySelector('[data-contact-card="' + CSS.escape(param) + '"]');
+      if (!card) return;
+      card.setAttribute('data-highlighted', '');
+      card.scrollIntoView({ block: 'nearest' });
     })();
   </script>
-</LayoutSeite>
+</LayoutPage>

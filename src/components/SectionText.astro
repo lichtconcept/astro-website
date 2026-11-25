@@ -5,55 +5,55 @@
 // Der Parameter "index" lässt Bild und Text abwechselnd die Seite tauschen.
 // =============================================================================
 import { Image } from 'astro:assets';
-import { bild } from '../lib/bilder';
-import { site, type Abschnitt } from '../lib/content';
+import { findImage } from '../lib/images';
+import { site, type Section } from '../lib/content';
 
 interface Props {
-  abschnitt: Abschnitt;
+  section: Section;
   index: number;
 }
 
-const { abschnitt: a, index } = Astro.props;
-const hauptbild = a.image ? bild(a.image) : undefined;
-const karten = (a.cards ?? []).map((k) => ({ ...k, ...bild(k.image) }));
+const { section, index } = Astro.props;
+const mainImage = section.image ? findImage(section.image) : undefined;
+const cards = (section.cards ?? []).map((card) => ({ ...card, ...findImage(card.image) }));
 ---
 
-<section id={a.id} class:list={{ alt: index % 2 === 1 }} aria-labelledby={`${a.id}-h`}>
+<section id={section.id} class:list={{ alt: index % 2 === 1 }} aria-labelledby={`${section.id}-h`}>
   {
-    hauptbild ? (
+    mainImage ? (
       <div class:list={['split', { flip: index % 2 === 1 }]}>
         <div class="split-txt" data-in={index % 2 === 1 ? 'right' : 'left'}>
-          <h2 id={`${a.id}-h`} class="split-h">{a.heading}</h2>
-          <p>{a.text}</p>
-          {a.list && <ul>{a.list.map((punkt) => <li>{punkt}</li>)}</ul>}
-          {a.link && <a class="btn" href={a.link.href}>{a.link.label} <span class="arr" aria-hidden="true">→</span></a>}
+          <h2 id={`${section.id}-h`} class="split-h">{section.heading}</h2>
+          <p>{section.text}</p>
+          {section.list && <ul>{section.list.map((item) => <li>{item}</li>)}</ul>}
+          {section.link && <a class="btn" href={section.link.href}>{section.link.label} <span class="arr" aria-hidden="true">→</span></a>}
         </div>
         <div class="ph" data-in={index % 2 === 1 ? 'left' : 'right'}>
-          <Image src={hauptbild.src} alt={hauptbild.alt} widths={[600, 900, 1200]} sizes="(min-width: 1100px) 45vw, 100vw" loading="lazy" />
+          <Image src={mainImage.src} alt={mainImage.alt} widths={[600, 900, 1200]} sizes="(min-width: 1100px) 45vw, 100vw" loading="lazy" />
         </div>
       </div>
     ) : (
       <div class="sec-head">
-        <h2 id={`${a.id}-h`} class="h2" data-in="down">{a.heading}</h2>
-        <p data-in="up">{a.text}</p>
+        <h2 id={`${section.id}-h`} class="h2" data-in="down">{section.heading}</h2>
+        <p data-in="up">{section.text}</p>
       </div>
     )
   }
   {
-    karten.length > 0 && (
+    cards.length > 0 && (
       <div class="svc">
-        {karten.map((k, i) => (
-          <a href={k.href} data-in="up" style={`transition-delay:${i * 0.12}s`}>
+        {cards.map((card, i) => (
+          <a href={card.href} data-in="up" style={`transition-delay:${i * 0.12}s`}>
             <div class="top">
               <span class="more">
                 {site.labels.more}
                 <svg viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M8 46 46 8M18 8h28v28" /></svg>
               </span>
-              <h3>{k.title}</h3>
-              <p>{k.text}</p>
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
             </div>
             <div class="ph">
-              <Image src={k.src} alt={k.alt} widths={[400, 800]} sizes="(min-width: 1100px) 30vw, 100vw" loading="lazy" />
+              <Image src={card.src} alt={card.alt} widths={[400, 800]} sizes="(min-width: 1100px) 30vw, 100vw" loading="lazy" />
             </div>
           </a>
         ))}

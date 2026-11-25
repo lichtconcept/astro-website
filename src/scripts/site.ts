@@ -3,100 +3,100 @@
 // Jeder Block ist optional: gibt es das Element auf der Seite nicht, passiert nichts.
 // Enthält KEINE Texte – alle Beschriftungen kommen aus src/content/.
 // =============================================================================
-const wurzel = document.documentElement;
-const ruhig = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const alle = <T extends Element>(selektor: string, ort: ParentNode = document) =>
-  Array.from(ort.querySelectorAll<T>(selektor));
+const root = document.documentElement;
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const queryAll = <T extends Element>(selector: string, scope: ParentNode = document) =>
+  Array.from(scope.querySelectorAll<T>(selector));
 
-if (!ruhig) wurzel.classList.add('anim');
+if (!reducedMotion) root.classList.add('anim');
 
 // Kopfzeile: nach dem ersten Scrollen dunkel; Handy-Menü
-const leiste = document.querySelector<HTMLElement>('[data-top-bar]');
+const topBar = document.querySelector<HTMLElement>('[data-top-bar]');
 const burger = document.querySelector<HTMLButtonElement>('[data-burger]');
-if (leiste) {
-  const beimScrollen = () => leiste.classList.toggle('solid', scrollY > 40);
-  addEventListener('scroll', beimScrollen, { passive: true });
-  beimScrollen();
-  const umschalten = (offen: boolean) => {
-    leiste.classList.toggle('open', offen);
-    burger?.setAttribute('aria-expanded', String(offen));
+if (topBar) {
+  const onScroll = () => topBar.classList.toggle('solid', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  const setMenuOpen = (open: boolean) => {
+    topBar.classList.toggle('open', open);
+    burger?.setAttribute('aria-expanded', String(open));
   };
-  burger?.addEventListener('click', () => umschalten(!leiste.classList.contains('open')));
-  alle<HTMLAnchorElement>('[data-panel] a').forEach((a) => a.addEventListener('click', () => umschalten(false)));
-  addEventListener('keydown', (e) => e.key === 'Escape' && umschalten(false));
+  burger?.addEventListener('click', () => setMenuOpen(!topBar.classList.contains('open')));
+  queryAll<HTMLAnchorElement>('[data-panel] a').forEach((a) => a.addEventListener('click', () => setMenuOpen(false)));
+  addEventListener('keydown', (e) => e.key === 'Escape' && setMenuOpen(false));
 }
 
 // Slider: Überblendung alle 5 s, die Buchstaben des Titels steigen nacheinander auf
-const folien = alle<HTMLElement>('[data-slide]');
-if (folien.length) {
-  const balken = alle<HTMLElement>('[data-bars] i');
-  const zaehler = document.querySelector('[data-cur]');
-  const DAUER = 5000;
-  let aktuell = 0;
+const slides = queryAll<HTMLElement>('[data-slide]');
+if (slides.length) {
+  const bars = queryAll<HTMLElement>('[data-bars] i');
+  const counter = document.querySelector('[data-cur]');
+  const DELAY = 5000;
+  let current = 0;
   let timer: ReturnType<typeof setTimeout> | undefined;
 
-  folien.forEach((folie) => {
-    const titel = folie.querySelector('h2');
-    if (!titel) return;
-    const text = titel.textContent ?? '';
-    titel.setAttribute('aria-label', text);
-    titel.textContent = '';
-    let nr = 0;
+  slides.forEach((slide) => {
+    const title = slide.querySelector('h2');
+    if (!title) return;
+    const text = title.textContent ?? '';
+    title.setAttribute('aria-label', text);
+    title.textContent = '';
+    let letterIndex = 0;
     // Wortweise aufteilen, damit Wörter nie mitten im Wort umbrechen
-    text.split(' ').forEach((wort, w) => {
-      if (w > 0) titel.appendChild(document.createTextNode(' '));
-      const huelle = document.createElement('span');
-      huelle.className = 'w';
-      huelle.setAttribute('aria-hidden', 'true');
-      [...wort].forEach((zeichen) => {
-        const buchstabe = document.createElement('span');
-        buchstabe.className = 'l';
-        buchstabe.textContent = zeichen;
-        buchstabe.style.setProperty('--i', String(nr++));
-        huelle.appendChild(buchstabe);
+    text.split(' ').forEach((word, w) => {
+      if (w > 0) title.appendChild(document.createTextNode(' '));
+      const wrapper = document.createElement('span');
+      wrapper.className = 'w';
+      wrapper.setAttribute('aria-hidden', 'true');
+      [...word].forEach((char) => {
+        const letter = document.createElement('span');
+        letter.className = 'l';
+        letter.textContent = char;
+        letter.style.setProperty('--i', String(letterIndex++));
+        wrapper.appendChild(letter);
       });
-      titel.appendChild(huelle);
+      title.appendChild(wrapper);
     });
   });
 
-  const zeige = (n: number) => {
-    aktuell = (n + folien.length) % folien.length;
-    folien.forEach((folie, i) => {
-      folie.classList.toggle('on', i === aktuell);
-      folie.setAttribute('aria-hidden', String(i !== aktuell));
-      const knopf = folie.querySelector<HTMLElement>('.btn');
-      if (knopf) knopf.tabIndex = i === aktuell ? 0 : -1;
+  const show = (n: number) => {
+    current = (n + slides.length) % slides.length;
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('on', i === current);
+      slide.setAttribute('aria-hidden', String(i !== current));
+      const button = slide.querySelector<HTMLElement>('.btn');
+      if (button) button.tabIndex = i === current ? 0 : -1;
     });
-    balken.forEach((b, i) => (b.className = i < aktuell ? 'done' : ''));
-    if (zaehler) zaehler.textContent = String(aktuell + 1).padStart(2, '0');
-    if (!ruhig && balken[aktuell]) {
-      void balken[aktuell].offsetWidth; // Animation neu starten
-      balken[aktuell].style.setProperty('--dur', DAUER + 'ms');
-      balken[aktuell].className = 'run';
+    bars.forEach((bar, i) => (bar.className = i < current ? 'done' : ''));
+    if (counter) counter.textContent = String(current + 1).padStart(2, '0');
+    if (!reducedMotion && bars[current]) {
+      void bars[current].offsetWidth; // Animation neu starten
+      bars[current].style.setProperty('--dur', DELAY + 'ms');
+      bars[current].className = 'run';
     }
     clearTimeout(timer);
-    if (!ruhig) timer = setTimeout(() => zeige(aktuell + 1), DAUER);
+    if (!reducedMotion) timer = setTimeout(() => show(current + 1), DELAY);
   };
 
-  document.querySelector('[data-prev]')?.addEventListener('click', () => zeige(aktuell - 1));
-  document.querySelector('[data-next]')?.addEventListener('click', () => zeige(aktuell + 1));
-  document.addEventListener('visibilitychange', () => (document.hidden ? clearTimeout(timer) : zeige(aktuell)));
-  zeige(0);
+  document.querySelector('[data-prev]')?.addEventListener('click', () => show(current - 1));
+  document.querySelector('[data-next]')?.addEventListener('click', () => show(current + 1));
+  document.addEventListener('visibilitychange', () => (document.hidden ? clearTimeout(timer) : show(current)));
+  show(0);
 }
 
 // Einblenden beim Scrollen
-const einblenden = alle<HTMLElement>('[data-in]');
-if (!ruhig && 'IntersectionObserver' in window) {
-  const beobachter = new IntersectionObserver(
-    (eintraege) =>
-      eintraege.forEach((e) => {
+const revealElements = queryAll<HTMLElement>('[data-in]');
+if (!reducedMotion && 'IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(
+    (entries) =>
+      entries.forEach((e) => {
         if (!e.isIntersecting) return;
         e.target.classList.add('in');
-        beobachter.unobserve(e.target);
+        observer.unobserve(e.target);
       }),
     { rootMargin: '0px 0px -12% 0px' },
   );
-  einblenden.forEach((el) => beobachter.observe(el));
+  revealElements.forEach((el) => observer.observe(el));
 } else {
-  einblenden.forEach((el) => el.classList.add('in'));
+  revealElements.forEach((el) => el.classList.add('in'));
 }

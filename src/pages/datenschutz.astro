@@ -1,10 +1,10 @@
 ---
-// Inhalte: src/content/legal.json → "datenschutz" (rechtlich geprüften Text dort einsetzen).
-import LayoutSeite from '../layouts/LayoutSeite.astro';
-import Textseite from '../components/Textseite.astro';
+// Inhalte: src/content/legal.json → "privacy" (rechtlich geprüften Text dort einsetzen).
+import LayoutPage from '../layouts/LayoutPage.astro';
+import TextPage from '../components/TextPage.astro';
 import { legal } from '../lib/content';
 ---
 
-<LayoutSeite seo={legal.datenschutz.seo}>
-  <Textseite inhalt={legal.datenschutz} />
-</LayoutSeite>
+<LayoutPage seo={legal.privacy.seo}>
+  <TextPage content={legal.privacy} />
+</LayoutPage>
