@@ -8,10 +8,10 @@
       "heading": "Festliche Beleuchtung, die Ihre Stadt zum Strahlen bringt",
       "button": { "label": "Anfrage stellen", "href": "/kontakt/?bereich=weihnachten" },
       "slides": [
-        { "image": "christmas/marktplatz-weihnachtsbaum", "title": "Marktplatz Weihnachtsbaum" },
-        { "image": "christmas/lichterketten-fussgaengerzone", "title": "Lichterketten Fußgängerzone" },
-        { "image": "christmas/lichttor-ortseingang", "title": "Lichttor Ortseingang" },
-        { "image": "christmas/beleuchtete-fassade", "title": "Beleuchtete Fassade" }
+        { "image": "weihnachten/marktplatz-weihnachtsbaum", "title": "Marktplatz Weihnachtsbaum" },
+        { "image": "weihnachten/lichterketten-fussgaengerzone", "title": "Lichterketten Fußgängerzone" },
+        { "image": "weihnachten/lichttor-ortseingang", "title": "Lichttor Ortseingang" },
+        { "image": "weihnachten/beleuchtete-fassade", "title": "Beleuchtete Fassade" }
       ]
     },
     "subnav": [
@@ -36,13 +36,13 @@
             "title": "Städte & Kommunen",
             "text": "Innenstädte, Marktplätze, Ortseingänge und Straßenzüge.",
             "href": "/weihnachtsbeleuchtung/staedte-kommunen/",
-            "image": "christmas/tannengirlanden-rathaus"
+            "image": "weihnachten/tannengirlanden-rathaus"
           },
           {
             "title": "Gewerbe",
             "text": "Einkaufszentren, Hotels, Autohäuser und Firmengebäude.",
             "href": "/weihnachtsbeleuchtung/gewerbe/",
-            "image": "christmas/sternenhimmel-einkaufszentrum"
+            "image": "weihnachten/sternenhimmel-einkaufszentrum"
           }
         ]
       },
@@ -56,20 +56,20 @@
           "Platzhalter: Einlagerung außerhalb der Saison"
         ],
         "link": { "label": "Montagetermin anfragen", "href": "/kontakt/?bereich=weihnachten" },
-        "image": "christmas/lichttor-ortseingang"
+        "image": "weihnachten/lichttor-ortseingang"
       },
       {
         "id": "wartung",
         "heading": "Wartung",
         "text": "Platzhaltertext: Während der Saison sind wir schnell zur Stelle, wenn etwas ausfällt. Nach der Saison prüfen, reparieren und lagern wir Ihre Beleuchtung ein.",
         "link": { "label": "Wartungsvertrag anfragen", "href": "/kontakt/?bereich=weihnachten" },
-        "image": "christmas/beleuchtete-fassade"
+        "image": "weihnachten/beleuchtete-fassade"
       }
     ],
     "gallery": {
       "id": "referenzen",
       "heading": "Referenzen",
-      "folder": "christmas",
+      "folder": "weihnachten",
       "count": 3,
       "link": { "label": "Alle Referenzen ansehen", "href": "/weihnachtsbeleuchtung/referenzen/" }
     }
@@ -132,7 +132,7 @@
     },
     "title": "Referenzen Weihnachtsbeleuchtung",
     "lead": "Platzhaltertext: Eine Auswahl unserer Projekte. Klicken Sie auf ein Bild für die Großansicht.",
-    "folder": "christmas",
+    "folder": "weihnachten",
     "action": { "label": "Ihr Projekt anfragen", "href": "/kontakt/?bereich=weihnachten" }
   }
 }

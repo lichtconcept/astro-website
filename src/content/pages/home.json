@@ -6,7 +6,7 @@
   "heading": "{name} – Weihnachtsbeleuchtung und Werbetechnik",
   "halves": [
     {
-      "area": "christmas",
+      "area": "weihnachten",
       "href": "/weihnachtsbeleuchtung/",
       "eyebrow": "Für Städte, Kommunen & Gewerbe",
       "title": "Weihnachtsbeleuchtung",
@@ -16,7 +16,7 @@
       "video": "weihnachten-loop"
     },
     {
-      "area": "signage",
+      "area": "werbetechnik",
       "href": "/werbetechnik/",
       "eyebrow": "Für Unternehmen jeder Größe",
       "title": "Werbetechnik",

@@ -10,14 +10,14 @@ import { company } from '../config/company';
 import siteJson from '../content/site.json';
 import imagesJson from '../content/images.json';
 import homeJson from '../content/pages/home.json';
-import christmasJson from '../content/pages/christmas.json';
-import signageJson from '../content/pages/signage.json';
+import weihnachtenJson from '../content/pages/weihnachten.json';
+import werbetechnikJson from '../content/pages/werbetechnik.json';
 import generalJson from '../content/pages/general.json';
 import legalJson from '../content/legal.json';
 
 // --- Typen ---------------------------------------------------------------------
 /** Die beiden Bereiche: Weihnachtsbeleuchtung und Werbetechnik */
-export type Area = 'christmas' | 'signage';
+export type Area = 'weihnachten' | 'werbetechnik';
 
 export interface Link { label: string; href: string }
 export interface ActionLink extends Link { style?: string }
@@ -125,8 +125,8 @@ export interface Contact {
   title: string;
   lead: string;
   labels: { area: string; person: string; phone: string; email: string; write: string; general: string; phoneShort: string };
-  /** param = Wert in der URL, z. B. /kontakt/?bereich=weihnachten */
-  blocks: { area: Area; param: string; subject: string }[];
+  /** area ist zugleich der Wert in der URL, z. B. /kontakt/?bereich=weihnachten */
+  blocks: { area: Area; subject: string }[];
 }
 
 export type ImageInfo = { alt: string; caption?: string };
@@ -159,18 +159,18 @@ function interpolate<T>(value: T): T {
 // --- Exporte ----------------------------------------------------------------------
 export const site: Site = interpolate(siteJson as Site);
 export const home: Home = interpolate(homeJson as Home);
-export const christmas: {
+export const weihnachten: {
   landing: Landing;
   municipalities: TextPageContent;
   business: TextPageContent;
   references: ReferencePageContent;
-} = interpolate(christmasJson as never);
-export const signage: {
+} = interpolate(weihnachtenJson as never);
+export const werbetechnik: {
   landing: Landing;
   illuminatedSigns: TextPageContent;
   vehicles: TextPageContent;
   references: ReferencePageContent;
-} = interpolate(signageJson as never);
+} = interpolate(werbetechnikJson as never);
 export const general: { about: TextPageContent; contact: Contact; notFound: TextPageContent } = interpolate(generalJson as never);
 export const legal: { imprint: TextPageContent; privacy: TextPageContent } = interpolate(legalJson as never);
 export const imageTexts: Record<string, Record<string, ImageInfo>> = imagesJson;

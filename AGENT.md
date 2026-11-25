@@ -4,7 +4,7 @@ Guidance for coding agents working in this repository. [README.md](README.md) (G
 
 ## Project
 
-Static website of Lichtconcept GmbH with two business areas: Christmas lighting (`/weihnachtsbeleuchtung/`) and signage (`/werbetechnik/`). Astro 7, Tailwind CSS v4, TypeScript. No CMS, no database, no backend. The visible site is German only.
+Static website of Lichtconcept GmbH with two business areas: Weihnachtsbeleuchtung, Christmas lighting (`/weihnachtsbeleuchtung/`), and Werbetechnik, sign making (`/werbetechnik/`). Astro 7, Tailwind CSS v4, TypeScript. No CMS, no database, no backend. The visible site is German only.
 
 ## Commands
 
@@ -39,11 +39,12 @@ Before reporting a change as done, run `build`, `check`, `check:content` and `ch
 | Code comments, README.md | German |
 | Visible site content, build and check-script messages | German |
 | URLs: file names in `src/pages/`, query parameters, anchor IDs | German |
+| Business area names: `weihnachten`, `werbetechnik` | German |
 | Media file names in `src/assets/` and `public/videos/` | German |
 
 Do not copy a German identifier convention into new code, and do not translate public URLs.
 
-The areas are `christmas` and `signage` in code, but `weihnachten` and `werbetechnik` in URLs (`/kontakt/?bereich=weihnachten`). `contact.blocks[]` in `general.json` maps `area` to the URL value `param`.
+The two business areas are the exception to the English rule: they are `weihnachten` and `werbetechnik` everywhere (type `Area`, `data-area`, JSON keys and files, asset folders, `company.ts`). Do not translate them. The same value is used in URLs (`/kontakt/?bereich=weihnachten`).
 
 The package name `firmen-website` is still German.
 
@@ -66,7 +67,7 @@ src/layouts/             LayoutBase (head, SEO) → LayoutHome (start page), Lay
 src/components/          SiteHeader, Footer, SectionHero, SectionText, SectionGallery,
                          AreaHome, TextPage, ReferencePage, ReferenceGallery
 src/content/site.json    navigation, footer, shared labels
-src/content/pages/       home, christmas, signage, general (about, contact, 404)
+src/content/pages/       home, weihnachten, werbetechnik, general (about, contact, 404)
 src/content/legal.json   imprint, privacy
 src/content/images.json  alt texts and captions, by folder and file name
 src/lib/content.ts       only importer of the JSON files: types and placeholders
@@ -83,7 +84,7 @@ scripts/                 check-site.mjs, check-content.mjs
 
 - Import content from `src/lib/content.ts`, never from the JSON files directly.
 - Texts may use `{name}`, `{shortName}`, `{street}`, `{zip}`, `{city}`, `{phone}`, `{email}` and `{year}`. An unknown placeholder fails the build.
-- Image references are `folder/file-name` without extension, for example `christmas/lichttor-ortseingang`.
+- Image references are `folder/file-name` without extension, for example `weihnachten/lichttor-ortseingang`.
 - Every image used in a slider, card, section or gallery needs an entry in `images.json`; a missing file or entry fails the build. Decorative start-page posters need none.
 - Galleries show all images of a folder, sorted by file name.
 

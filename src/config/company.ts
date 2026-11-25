@@ -19,13 +19,13 @@ export const company = {
   email: 'mail@lichtconcept.net',
 
   // Ansprechpartner je Bereich (Kontaktseite)
-  christmas: {
+  weihnachten: {
     title: 'Weihnachtsbeleuchtung',
     contactPerson: 'Elke Kroner und Anna Neuhauser',
     phone: '+49 8642 595209-0',
     email: 'mail@lichtconcept.net',
   },
-  signage: {
+  werbetechnik: {
     title: 'Werbetechnik',
     contactPerson: 'Joachim Schlund',
     phone: '+49 8642 595209-5',

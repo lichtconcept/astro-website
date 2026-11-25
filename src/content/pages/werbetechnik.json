@@ -8,10 +8,10 @@
       "heading": "Werbung, die Tag und Nacht für Sie arbeitet",
       "button": { "label": "Projekt anfragen", "href": "/kontakt/?bereich=werbetechnik" },
       "slides": [
-        { "image": "signage/leuchtreklame-fassade", "title": "Leuchtreklame Fassade" },
-        { "image": "signage/fahrzeugbeschriftung-transporter", "title": "Fahrzeugbeschriftung" },
-        { "image": "signage/pylon-autohaus", "title": "Pylon Autohaus" },
-        { "image": "signage/schaufensterbeschriftung", "title": "Schaufensterbeschriftung" }
+        { "image": "werbetechnik/leuchtreklame-fassade", "title": "Leuchtreklame Fassade" },
+        { "image": "werbetechnik/fahrzeugbeschriftung-transporter", "title": "Fahrzeugbeschriftung" },
+        { "image": "werbetechnik/pylon-autohaus", "title": "Pylon Autohaus" },
+        { "image": "werbetechnik/schaufensterbeschriftung", "title": "Schaufensterbeschriftung" }
       ]
     },
     "subnav": [
@@ -32,14 +32,14 @@
         "heading": "Lichtwerbung",
         "text": "Platzhaltertext: Leuchtbuchstaben, Leuchtkästen und Pylone in LED-Technik – energiesparend, langlebig und auch nachts gut sichtbar.",
         "link": { "label": "Mehr zur Lichtwerbung", "href": "/werbetechnik/lichtwerbung/" },
-        "image": "signage/leuchtbuchstaben-praxis"
+        "image": "werbetechnik/leuchtbuchstaben-praxis"
       },
       {
         "id": "fahrzeuge",
         "heading": "Fahrzeugbeschriftung",
         "text": "Platzhaltertext: Vom einzelnen Firmenwagen bis zur ganzen Flotte – Teil- oder Vollfolierung, passgenau verklebt.",
         "link": { "label": "Mehr zur Fahrzeugbeschriftung", "href": "/werbetechnik/fahrzeugbeschriftung/" },
-        "image": "signage/fahrzeugbeschriftung-transporter"
+        "image": "werbetechnik/fahrzeugbeschriftung-transporter"
       },
       {
         "id": "beschilderung",
@@ -51,13 +51,13 @@
           "Platzhalter: Schaufenster- und Glasdekor"
         ],
         "link": { "label": "Beschilderung anfragen", "href": "/kontakt/?bereich=werbetechnik" },
-        "image": "signage/bauschild-wohnanlage"
+        "image": "werbetechnik/bauschild-wohnanlage"
       }
     ],
     "gallery": {
       "id": "referenzen",
       "heading": "Referenzen",
-      "folder": "signage",
+      "folder": "werbetechnik",
       "count": 3,
       "link": { "label": "Alle Referenzen ansehen", "href": "/werbetechnik/referenzen/" }
     }
@@ -115,7 +115,7 @@
     },
     "title": "Referenzen Werbetechnik",
     "lead": "Platzhaltertext: Eine Auswahl unserer Projekte. Klicken Sie auf ein Bild für die Großansicht.",
-    "folder": "signage",
+    "folder": "werbetechnik",
     "action": { "label": "Ihr Projekt anfragen", "href": "/kontakt/?bereich=werbetechnik" }
   }
 }

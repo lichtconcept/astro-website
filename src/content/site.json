@@ -13,7 +13,7 @@
     }
   },
   "navigation": {
-    "christmas": {
+    "weihnachten": {
       "name": "Weihnachtsbeleuchtung",
       "badge": "Weihnachtsbeleuchtung",
       "home": "/weihnachtsbeleuchtung/",
@@ -30,7 +30,7 @@
       "cta": { "label": "Anfrage stellen", "href": "/kontakt/?bereich=weihnachten" },
       "switch": { "label": "Zur Werbetechnik ⇄", "href": "/werbetechnik/" }
     },
-    "signage": {
+    "werbetechnik": {
       "name": "Werbetechnik",
       "badge": "Werbetechnik",
       "home": "/werbetechnik/",

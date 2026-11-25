@@ -41,8 +41,8 @@
       "phoneShort": "Tel."
     },
     "blocks": [
-      { "area": "christmas", "param": "weihnachten", "subject": "Anfrage Weihnachtsbeleuchtung" },
-      { "area": "signage", "param": "werbetechnik", "subject": "Anfrage Werbetechnik" }
+      { "area": "weihnachten", "subject": "Anfrage Weihnachtsbeleuchtung" },
+      { "area": "werbetechnik", "subject": "Anfrage Werbetechnik" }
     ]
   },
   "notFound": {

@@ -11,19 +11,19 @@ Kein CMS, keine Datenbank: Texte und Bilder liegen direkt in den Dateien. `npm r
 
 | Was                                  | Wo                                                                                         |
 | ------------------------------------ | ------------------------------------------------------------------------------------------ |
-| **Texte einer Seite**                | `src/content/pages/*.json` (`home` = Startseite, `christmas` = Weihnachtsbeleuchtung, `signage` = Werbetechnik, `general` = Über uns, Kontakt, 404) und `src/content/legal.json` (Impressum, Datenschutz). **In den `.astro`-Dateien steht kein Text.** |
+| **Texte einer Seite**                | `src/content/pages/*.json` (`home` = Startseite, `weihnachten` = Weihnachtsbeleuchtung, `werbetechnik` = Werbetechnik, `general` = Über uns, Kontakt, 404) und `src/content/legal.json` (Impressum, Datenschutz). **In den `.astro`-Dateien steht kein Text.** |
 | **Seitentitel & Google-Beschreibung**| in der JSON-Datei der Seite: Block `seo` (`title`, `description`; jede Seite braucht eigene Werte) |
 | **Firmenname, Adresse, Telefon, E-Mail** | `src/config/company.ts`. In den JSON-Texten stehen dafür Platzhalter wie `{name}`, `{city}`, `{phone}`, `{email}` |
 | **Farben**                           | `src/styles/global.css`, Abschnitt 1 – je Bereich Hintergrund- und Akzentfarben             |
-| **Menüpunkte, Buttons im Header**    | `src/content/site.json` → `navigation` (je Bereich `christmas`, `signage`, `neutral`) |
-| **Sprungmenü auf den Hauptseiten**   | `subnav` in `src/content/pages/christmas.json` bzw. `signage.json` (`href` = `id` des Abschnitts) |
+| **Menüpunkte, Buttons im Header**    | `src/content/site.json` → `navigation` (je Bereich `weihnachten`, `werbetechnik`, `neutral`) |
+| **Sprungmenü auf den Hauptseiten**   | `subnav` in `src/content/pages/weihnachten.json` bzw. `werbetechnik.json` (`href` = `id` des Abschnitts) |
 | **Links im Footer**                  | `src/content/site.json` → `footer` und `startFooter` (Mini-Footer der Startseite)           |
 | **Texte der Startseite (Split-Screen)** | `src/content/pages/home.json` → `halves`                                               |
 | **Logo / Favicon**                   | `public/favicon.svg` (wird auch als Logo im Header verwendet)                             |
 
 ### Bilder
 
-- **Referenz-Galerien:** Bild einfach in `src/assets/christmas/` (Weihnachtsbeleuchtung) bzw. `src/assets/signage/` (Werbetechnik) legen (`.jpg`, `.png`, `.webp`). Es erscheint dann automatisch in der Galerie und in der Vorschau auf der Bereichs-Hauptseite.
+- **Referenz-Galerien:** Bild einfach in `src/assets/weihnachten/` (Weihnachtsbeleuchtung) bzw. `src/assets/werbetechnik/` (Werbetechnik) legen (`.jpg`, `.png`, `.webp`). Es erscheint dann automatisch in der Galerie und in der Vorschau auf der Bereichs-Hauptseite.
   - Dateinamen sprechend wählen, z. B. `marktplatz-musterstadt.jpg`.
   - **Pflicht:** in `src/content/images.json` einen Eintrag mit Alt-Text ergänzen (Schlüssel: Ordner → Dateiname ohne Endung). Fehlt er, bricht der Build mit einer Meldung ab.
   - Reihenfolge = alphabetisch nach Dateiname (bei Bedarf `01-…`, `02-…` voranstellen).
@@ -64,7 +64,7 @@ ffmpeg -i quelle.mov -an -vf scale=1280:-2 -c:v libx264 -crf 26 -preset slow -mo
 | `/werbetechnik/referenzen/`                 | `src/pages/werbetechnik/referenzen.astro`          |
 | `/ueber-uns/`, `/kontakt/`, `/impressum/`, `/datenschutz/` | `src/pages/<name>.astro`            |
 
-**Benennung:** Bezeichner im Code (Dateien in `src/` außerhalb von `pages/`, Variablen, JSON-Schlüssel) sind englisch; Kommentare, README und sichtbare Texte deutsch. Dateinamen in `src/pages/` sind deutsch, weil sie die URLs bestimmen. In URLs heißen die Bereiche weiter `weihnachten`/`werbetechnik` (`/kontakt/?bereich=weihnachten`), im Code `christmas`/`signage`.
+**Benennung:** Bezeichner im Code (Dateien in `src/` außerhalb von `pages/`, Variablen, JSON-Schlüssel) sind englisch; Kommentare, README und sichtbare Texte deutsch. Ausnahmen: Die beiden Geschäftsbereiche heißen auch im Code `weihnachten` und `werbetechnik` (wie in `/kontakt/?bereich=weihnachten`), und die Dateinamen in `src/pages/` sind deutsch, weil sie die URLs bestimmen.
 
 **Regeln:** Jede Seite hat genau eine `<h1>`-Überschrift. Interne Links immer mit `/` am Ende schreiben (`/kontakt/`, nicht `/kontakt`). Bitte keine Schriften, Skripte oder Bilder von fremden Servern einbinden (Datenschutz).
 

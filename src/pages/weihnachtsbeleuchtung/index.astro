@@ -1,11 +1,11 @@
 ---
 // Weihnachtsbeleuchtung – Startseite des Bereichs. Aufbau: src/components/AreaHome.astro,
-// Inhalte: src/content/pages/christmas.json → "landing".
+// Inhalte: src/content/pages/weihnachten.json → "landing".
 import LayoutPage from '../../layouts/LayoutPage.astro';
 import AreaHome from '../../components/AreaHome.astro';
-import { christmas } from '../../lib/content';
+import { weihnachten } from '../../lib/content';
 ---
 
-<LayoutPage seo={christmas.landing.seo} area="christmas">
-  <AreaHome landing={christmas.landing} />
+<LayoutPage seo={weihnachten.landing.seo} area="weihnachten">
+  <AreaHome landing={weihnachten.landing} />
 </LayoutPage>

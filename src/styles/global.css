@@ -3,8 +3,8 @@
    -----------------------------------------------------------------------------
    Hier (und in site.css) steckt NUR das Aussehen. Texte stehen in src/content/.
 
-   Farben: Jede Seite setzt am <body> das Attribut data-area="christmas"
-   oder data-area="signage" (neutrale Seiten: kein Attribut).
+   Farben: Jede Seite setzt am <body> das Attribut data-area="weihnachten"
+   oder data-area="werbetechnik" (neutrale Seiten: kein Attribut).
    Je nach Bereich gelten die passenden Variablen aus Abschnitt 1.
    ============================================================================= */
 
@@ -34,7 +34,7 @@
 }
 
 /* Weihnachtsbeleuchtung: Gold auf Nachtblau */
-[data-area="christmas"] {
+[data-area="weihnachten"] {
   --bg: #0b1226;
   --bg-2: #070c1a;
   --accent: #f5b301;
@@ -43,7 +43,7 @@
 }
 
 /* Werbetechnik: Himmelblau auf Anthrazit */
-[data-area="signage"] {
+[data-area="werbetechnik"] {
   --bg: #16191d;
   --bg-2: #0e1013;
   --accent: #38bdf8;

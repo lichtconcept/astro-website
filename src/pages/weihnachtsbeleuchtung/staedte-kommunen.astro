@@ -1,10 +1,10 @@
 ---
-// Weihnachtsbeleuchtung – Unterseite. Inhalte: src/content/pages/christmas.json → "municipalities".
+// Weihnachtsbeleuchtung – Unterseite. Inhalte: src/content/pages/weihnachten.json → "municipalities".
 import LayoutPage from '../../layouts/LayoutPage.astro';
 import TextPage from '../../components/TextPage.astro';
-import { christmas } from '../../lib/content';
+import { weihnachten } from '../../lib/content';
 ---
 
-<LayoutPage seo={christmas.municipalities.seo} area="christmas">
-  <TextPage content={christmas.municipalities} />
+<LayoutPage seo={weihnachten.municipalities.seo} area="weihnachten">
+  <TextPage content={weihnachten.municipalities} />
 </LayoutPage>

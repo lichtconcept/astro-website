@@ -1,6 +1,6 @@
 // =============================================================================
 // Bild-Helfer: löst Bildverweise aus den Content-Dateien auf.
-// Verweis = Pfad unter src/assets/ ohne Endung, z. B. "christmas/lichttor-ortseingang".
+// Verweis = Pfad unter src/assets/ ohne Endung, z. B. "weihnachten/lichttor-ortseingang".
 // Alt-Texte und Bildunterschriften stehen in src/content/images.json
 // (Schlüssel: Ordner → Dateiname ohne Endung).
 // Fehlt eine Datei oder ein Alt-Text, bricht der Build mit einer klaren Meldung ab.
@@ -34,7 +34,7 @@ export function imageFile(ref: string): ImageMetadata {
   return match[1].default;
 }
 
-/** Bildverweis wie "christmas/lichttor-ortseingang" → Bild + Texte */
+/** Bildverweis wie "weihnachten/lichttor-ortseingang" → Bild + Texte */
 export function findImage(ref: string): ImageEntry {
   const [folder, name] = ref.split('/');
   return { src: imageFile(ref), ...textsFor(folder, name) };

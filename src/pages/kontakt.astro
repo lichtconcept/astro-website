@@ -21,7 +21,7 @@ const cards = contact.blocks.map((block) => ({ ...block, ...company[block.area] 
     <div class="cards">
       {
         cards.map((card) => (
-          <section id={card.param} data-area={card.area} data-contact-card={card.param} class="card" data-in="up">
+          <section id={card.area} data-area={card.area} data-contact-card={card.area} class="card" data-in="up">
             <p class="eyebrow">{contact.labels.area}</p>
             <h2>{card.title}</h2>
             <dl>
@@ -49,9 +49,9 @@ const cards = contact.blocks.map((block) => ({ ...block, ...company[block.area] 
   <!-- Passenden Kontaktblock hervorheben, z. B. bei /kontakt/?bereich=werbetechnik -->
   <script is:inline>
     (function () {
-      var param = new URLSearchParams(window.location.search).get('bereich');
-      if (!param) return;
-      var card = document.querySelector('[data-contact-card="' + CSS.escape(param) + '"]');
+      var area = new URLSearchParams(window.location.search).get('bereich');
+      if (!area) return;
+      var card = document.querySelector('[data-contact-card="' + CSS.escape(area) + '"]');
       if (!card) return;
       card.setAttribute('data-highlighted', '');
       card.scrollIntoView({ block: 'nearest' });
