@@ -1,0 +1,7 @@
+# robots.txt – erlaubt allen Suchmaschinen das Crawlen der gesamten Website.
+# PLATZHALTER: Domain unten durch die echte Domain ersetzen
+# (gleicher Wert wie "site" in astro.config.mjs).
+User-agent: *
+Allow: /
+
+Sitemap: https://ihre-firma.de/sitemap-index.xml

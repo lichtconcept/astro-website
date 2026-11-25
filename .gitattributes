@@ -1,0 +1,5 @@
+# Große Binärdateien über Git LFS versionieren (https://git-lfs.com).
+# Voraussetzung: git-lfs ist installiert und `git lfs install` wurde einmal ausgeführt.
+# Neue Dateien dieser Typen in public/videos/ landen dann automatisch in LFS.
+public/videos/*.mp4  filter=lfs diff=lfs merge=lfs -text
+public/videos/*.webm filter=lfs diff=lfs merge=lfs -text

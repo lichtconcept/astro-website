@@ -1,0 +1,88 @@
+---
+// =============================================================================
+// Kontakt
+// Zwei Kontaktblöcke (je Bereich). Kommt man über einen Anfrage-Button
+// (z. B. /kontakt/?bereich=weihnachten), wird der passende Block hervorgehoben.
+// Kontaktdaten stehen in src/config/firma.ts.
+// =============================================================================
+import LayoutNeutral from '../layouts/LayoutNeutral.astro';
+import { firma, telLink } from '../config/firma';
+
+const bloecke = [
+  { id: 'weihnachten', ...firma.weihnachten, betreff: 'Anfrage Weihnachtsbeleuchtung' },
+  { id: 'werbetechnik', ...firma.werbetechnik, betreff: 'Anfrage Werbetechnik' },
+] as const;
+---
+
+<LayoutNeutral
+  title="Kontakt"
+  description="Kontakt zu unseren Ansprechpartnern für Weihnachtsbeleuchtung und Werbetechnik – telefonisch oder per E-Mail."
+>
+  <div class="mx-auto max-w-5xl px-4 py-12 sm:py-16">
+    <h1 class="mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Kontakt</h1>
+    <p class="mb-10 max-w-2xl text-slate-700">
+      Platzhaltertext: Sie erreichen uns telefonisch oder per E-Mail. Wählen Sie den passenden Ansprechpartner für
+      Ihr Anliegen.
+    </p>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        bloecke.map((b) => (
+          <section
+            id={b.id}
+            data-bereich={b.id}
+            data-kontakt-block
+            class="rounded-xl border border-slate-200 p-6 transition-shadow data-[hervorgehoben]:shadow-lg data-[hervorgehoben]:ring-4 data-[hervorgehoben]:ring-akzent"
+          >
+            <p class="mb-1 text-xs font-semibold tracking-widest text-slate-500 uppercase">Bereich</p>
+            <h2 class="mb-4 text-2xl font-bold text-slate-900">{b.titel}</h2>
+            <p class="mb-1 text-slate-700">Ansprechpartner: {b.ansprechpartner}</p>
+            <p class="mb-1 text-slate-700">
+              Telefon:{' '}
+              <a href={telLink(b.telefon)} class="font-semibold underline decoration-akzent decoration-2 underline-offset-4">
+                {b.telefon}
+              </a>
+            </p>
+            <p class="mb-6 text-slate-700">
+              E-Mail:{' '}
+              <a href={`mailto:${b.email}`} class="underline decoration-akzent decoration-2 underline-offset-4">
+                {b.email}
+              </a>
+            </p>
+            <a href={`mailto:${b.email}?subject=${encodeURIComponent(b.betreff)}`} class="btn-akzent">
+              E-Mail schreiben →
+            </a>
+          </section>
+        ))
+      }
+    </div>
+
+    <!--
+      PLATZHALTER KONTAKTFORMULAR
+      Ein Formular braucht ein Backend zum Versenden (z. B. ein kleines PHP-Skript
+      auf dem Server oder einen DSGVO-konformen Formular-Dienst). Später hier einfügen:
+
+      <form action="/pfad-zum-formular-skript" method="post">
+        <input type="hidden" name="bereich" value="" />  (per Skript aus ?bereich= befüllen)
+        …Name, E-Mail, Nachricht, Datenschutz-Checkbox…
+      </form>
+    -->
+
+    <p class="mt-10 text-sm text-slate-600">
+      Allgemein: {firma.name}, {firma.adresse.strasse}, {firma.adresse.plz} {firma.adresse.ort} · Tel.{' '}
+      <a href={telLink(firma.telefon)} class="underline">{firma.telefon}</a>
+    </p>
+  </div>
+
+  <!-- Passenden Kontaktblock hervorheben, z. B. bei /kontakt/?bereich=werbetechnik -->
+  <script is:inline>
+    (function () {
+      var bereich = new URLSearchParams(window.location.search).get('bereich');
+      if (!bereich) return;
+      var block = document.querySelector('[data-kontakt-block][data-bereich="' + CSS.escape(bereich) + '"]');
+      if (!block) return;
+      block.setAttribute('data-hervorgehoben', '');
+      block.scrollIntoView({ block: 'nearest' });
+    })();
+  </script>
+</LayoutNeutral>

@@ -1,0 +1,6 @@
+<!-- PLATZHALTER-Logo: durch das echte Firmenlogo (SVG) ersetzen. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#0b1d3a"/>
+  <path d="M32 9l5.6 14.4L53 24l-12 9.6L45 49 32 40.6 19 49l4-15.4L11 24l15.4-.6z" fill="#f5b301"/>
+  <rect x="10" y="52" width="44" height="4" rx="2" fill="#38bdf8"/>
+</svg>

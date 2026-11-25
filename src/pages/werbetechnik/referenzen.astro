@@ -1,0 +1,47 @@
+---
+// =============================================================================
+// Werbetechnik – Referenzen
+//
+// NEUE BILDER: einfach in den Ordner src/assets/werbetechnik/ legen
+// (jpg, jpeg, png oder webp). Sie erscheinen automatisch in der Galerie,
+// sortiert nach Dateiname. Der Alt-Text wird aus dem Dateinamen erzeugt.
+//
+// Optional: eigenen Alt-Text oder eine Bildunterschrift festlegen.
+// Schlüssel = Dateiname OHNE Endung.
+// =============================================================================
+import type { ImageMetadata } from 'astro';
+import LayoutWerbung from '../../layouts/LayoutWerbung.astro';
+import ReferenzGalerie from '../../components/ReferenzGalerie.astro';
+import { galerieAusOrdner, type BildTexte } from '../../lib/galerie';
+
+const texte: BildTexte = {
+  'leuchtreklame-fassade': {
+    alt: 'Leuchtreklame mit Einzelbuchstaben an einer Firmenfassade',
+    caption: 'Platzhalter: Leuchtbuchstaben, Musterfirma AG',
+  },
+  'fahrzeugbeschriftung-transporter': { caption: 'Platzhalter: Flottenbeschriftung Transporter' },
+};
+
+const bilder = galerieAusOrdner(
+  import.meta.glob<{ default: ImageMetadata }>('/src/assets/werbetechnik/*.{jpg,jpeg,png,webp}', { eager: true }),
+  texte,
+);
+---
+
+<LayoutWerbung
+  title="Referenzen Werbetechnik"
+  description="Ausgewählte Projekte aus Lichtwerbung, Fahrzeugbeschriftung und Beschilderung – Bildergalerie mit Beispielen unserer Werbetechnik."
+>
+  <div class="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+    <h1 class="mb-4 text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl">Referenzen Werbetechnik</h1>
+    <p class="mb-8 max-w-3xl text-slate-700">
+      Platzhaltertext: Eine Auswahl unserer Projekte. Klicken Sie auf ein Bild für die Großansicht.
+    </p>
+
+    <ReferenzGalerie bilder={bilder} />
+
+    <p class="mt-10">
+      <a href="/kontakt/?bereich=werbetechnik" class="btn-akzent">Ihr Projekt anfragen →</a>
+    </p>
+  </div>
+</LayoutWerbung>
