@@ -18,6 +18,12 @@ export const company = {
   phone: '+49 8642 595209-0',
   email: 'mail@lichtconcept.net',
 
+  // Geschäftsführung (Impressum)
+  managingDirector: {
+    title: 'Geschäftsführer',
+    name: 'Peter Poremba',
+  },
+
   // Ansprechpartner je Bereich (Kontaktseite)
   weihnachten: {
     title: 'Weihnachtsbeleuchtung',

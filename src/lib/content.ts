@@ -140,6 +140,8 @@ const values: Record<string, string> = {
   city: company.address.city,
   phone: company.phone,
   email: company.email,
+  managingDirectorTitle: company.managingDirector.title,
+  managingDirector: company.managingDirector.name,
   year: String(new Date().getFullYear()),
 };
 
