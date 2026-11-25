@@ -14,7 +14,7 @@ export default defineConfig({
   // Wird für Canonical-URLs, Open-Graph-Tags und die Sitemap verwendet.
   // Die gleiche Domain muss auch in public/robots.txt angepasst werden.
   // ---------------------------------------------------------------------------
-  site: 'https://ihre-firma.de',
+  site: 'https://astro.lichtconcept.net',
 
   // Rein statische Website: `npm run build` erzeugt fertige HTML-Dateien in dist/.
   output: 'static',

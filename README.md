@@ -103,7 +103,7 @@ Neue oder ersetzte Videos ganz normal mit `git add` / `git commit` / `git push` 
 
 ```bash
 npm run build && npm run check:site
-rsync -av --delete dist/ user@server:/var/www/ihre-firma/
+rsync -av --delete dist/ user@server:/var/www/astro.lichtconcept.net/
 ```
 
 Jede Seite liegt als `<pfad>/index.html` vor, die 404-Seite als `404.html`.
@@ -111,7 +111,7 @@ Jede Seite liegt als `<pfad>/index.html` vor, die 404-Seite als `404.html`.
 **Nginx**
 
 ```nginx
-root /var/www/ihre-firma;
+root /var/www/astro.lichtconcept.net;
 location / { try_files $uri $uri/ =404; }
 error_page 404 /404.html;
 ```
@@ -119,8 +119,8 @@ error_page 404 /404.html;
 **Caddy**
 
 ```caddy
-ihre-firma.de {
-    root * /var/www/ihre-firma
+astro.lichtconcept.net {
+    root * /var/www/astro.lichtconcept.net
     file_server
     handle_errors {
         rewrite * /404.html

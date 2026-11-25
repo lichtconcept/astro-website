@@ -4,4 +4,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ihre-firma.de/sitemap-index.xml
+Sitemap: https://astro.lichtconcept.net/sitemap-index.xml
