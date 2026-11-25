@@ -1,0 +1,128 @@
+---
+// =============================================================================
+// Weihnachtsbeleuchtung – Hauptseite
+// Alle wichtigen Leistungen untereinander. Das Sub-Menü springt per Anker
+// (#planung, #montage, …) zu den Abschnitten. Die "id" eines Abschnitts muss
+// zum "href" im Sub-Menü passen.
+// =============================================================================
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import LayoutWeihnachten from '../../layouts/LayoutWeihnachten.astro';
+import { galerieAusOrdner } from '../../lib/galerie';
+
+// Sub-Menü (Anker-Navigation)
+const subMenue = [
+  { text: 'Planung', href: '#planung' },
+  { text: 'Montage', href: '#montage' },
+  { text: 'Wartung', href: '#wartung' },
+  { text: 'Referenzen', href: '#referenzen' },
+];
+
+// Vorschau: die ersten 3 Bilder aus src/assets/weihnachten/
+const vorschau = galerieAusOrdner(
+  import.meta.glob<{ default: ImageMetadata }>('/src/assets/weihnachten/*.{jpg,jpeg,png,webp}', { eager: true }),
+).slice(0, 3);
+
+const kontakt = '/kontakt/?bereich=weihnachten';
+---
+
+<LayoutWeihnachten
+  title="Weihnachtsbeleuchtung für Städte, Kommunen & Gewerbe"
+  description="Professionelle Weihnachtsbeleuchtung: Planung, Montage und Wartung für Städte, Kommunen und Gewerbe – alles aus einer Hand."
+>
+  <!-- Einstieg -->
+  <section class="bg-grund text-white">
+    <div class="mx-auto max-w-6xl px-4 py-14 sm:py-20">
+      <p class="mb-2 text-sm font-semibold tracking-widest text-akzent uppercase">Weihnachtsbeleuchtung</p>
+      <h1 class="mb-4 max-w-3xl text-3xl font-bold sm:text-5xl">Festliche Beleuchtung, die Ihre Stadt zum Strahlen bringt</h1>
+      <p class="mb-8 max-w-2xl text-lg text-white/80">
+        Platzhaltertext: Wir planen, montieren und warten professionelle Weihnachtsbeleuchtung – für Innenstädte,
+        Gemeinden, Einkaufszentren und Unternehmen.
+      </p>
+      <a href={kontakt} class="btn-akzent">Anfrage stellen →</a>
+    </div>
+  </section>
+
+  <!-- Sticky Sub-Menü (klebt unter dem Header) -->
+  <nav aria-label="Abschnitte dieser Seite" class="sticky top-16 z-20 border-b border-white/10 bg-grund-hell text-white">
+    <ul class="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-4 text-sm whitespace-nowrap">
+      {
+        subMenue.map((p) => (
+          <li>
+            <a href={p.href} class="block px-3 py-3 transition-colors hover:text-akzent">
+              {p.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <!-- Abschnitt: Planung -->
+  <section id="planung" class="mx-auto max-w-6xl px-4 py-14">
+    <h2 class="mb-3 text-2xl font-bold text-slate-900 sm:text-3xl">Planung</h2>
+    <p class="mb-6 max-w-3xl leading-relaxed text-slate-700">
+      Platzhaltertext: Von der ersten Idee bis zum fertigen Lichtkonzept – wir beraten vor Ort, erstellen
+      Visualisierungen und kalkulieren transparent.
+    </p>
+    <div class="grid gap-4 sm:grid-cols-2">
+      <a href="/weihnachtsbeleuchtung/staedte-kommunen/" class="rounded-lg border border-slate-200 p-5 transition-shadow hover:shadow-md">
+        <h3 class="mb-1 font-semibold text-slate-900">Städte & Kommunen →</h3>
+        <p class="text-sm text-slate-600">Innenstädte, Marktplätze, Ortseingänge und Straßenzüge.</p>
+      </a>
+      <a href="/weihnachtsbeleuchtung/gewerbe/" class="rounded-lg border border-slate-200 p-5 transition-shadow hover:shadow-md">
+        <h3 class="mb-1 font-semibold text-slate-900">Gewerbe →</h3>
+        <p class="text-sm text-slate-600">Einkaufszentren, Hotels, Autohäuser und Firmengebäude.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Abschnitt: Montage -->
+  <section id="montage" class="bg-slate-50">
+    <div class="mx-auto max-w-6xl px-4 py-14">
+      <h2 class="mb-3 text-2xl font-bold text-slate-900 sm:text-3xl">Montage</h2>
+      <p class="mb-4 max-w-3xl leading-relaxed text-slate-700">
+        Platzhaltertext: Eigene Montageteams mit Hubsteigern montieren termingerecht und sicher – auch nachts, damit
+        der Betrieb in der Innenstadt ungestört bleibt.
+      </p>
+      <ul class="mb-6 list-disc space-y-1 pl-6 text-slate-700">
+        <li>Platzhalter: Auf- und Abbau inklusive</li>
+        <li>Platzhalter: Prüfung nach DIN VDE</li>
+        <li>Platzhalter: Einlagerung außerhalb der Saison</li>
+      </ul>
+      <a href={kontakt} class="font-semibold text-slate-900 underline decoration-akzent decoration-2 underline-offset-4 hover:text-slate-600">Montagetermin anfragen →</a>
+    </div>
+  </section>
+
+  <!-- Abschnitt: Wartung -->
+  <section id="wartung" class="mx-auto max-w-6xl px-4 py-14">
+    <h2 class="mb-3 text-2xl font-bold text-slate-900 sm:text-3xl">Wartung</h2>
+    <p class="mb-6 max-w-3xl leading-relaxed text-slate-700">
+      Platzhaltertext: Während der Saison sind wir schnell zur Stelle, wenn etwas ausfällt. Nach der Saison prüfen,
+      reparieren und lagern wir Ihre Beleuchtung ein.
+    </p>
+    <a href={kontakt} class="font-semibold text-slate-900 underline decoration-akzent decoration-2 underline-offset-4 hover:text-slate-600">Wartungsvertrag anfragen →</a>
+  </section>
+
+  <!-- Abschnitt: Referenzen (Vorschau) -->
+  <section id="referenzen" class="bg-grund text-white">
+    <div class="mx-auto max-w-6xl px-4 py-14">
+      <h2 class="mb-6 text-2xl font-bold sm:text-3xl">Referenzen</h2>
+      <div class="mb-6 grid gap-4 sm:grid-cols-3">
+        {
+          vorschau.map((bild) => (
+            <Image
+              src={bild.src}
+              alt={bild.alt}
+              widths={[400, 800]}
+              sizes="(min-width: 1152px) 370px, (min-width: 640px) 33vw, 100vw"
+              loading="lazy"
+              class="aspect-[3/2] w-full rounded-lg object-cover"
+            />
+          ))
+        }
+      </div>
+      <a href="/weihnachtsbeleuchtung/referenzen/" class="btn-akzent">Alle Referenzen ansehen →</a>
+    </div>
+  </section>
+</LayoutWeihnachten>

@@ -1,0 +1,46 @@
+---
+// =============================================================================
+// LayoutWeiche – Minimal-Layout für die Startseite (Split-Screen-Weiche).
+// Kein Bereichs-Header, nur der Seiteninhalt + ein fixierter Mini-Footer.
+// =============================================================================
+import LayoutBase from './LayoutBase.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+// Links im Mini-Footer
+const footerLinks = [
+  { text: 'Über uns', href: '/ueber-uns/' },
+  { text: 'Kontakt', href: '/kontakt/' },
+  { text: 'Impressum', href: '/impressum/' },
+  { text: 'Datenschutz', href: '/datenschutz/' },
+];
+---
+
+<LayoutBase title={title} description={description}>
+  <slot name="head" slot="head" />
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="fixed inset-x-0 bottom-0 z-20 bg-slate-950/70 backdrop-blur-sm">
+    <nav aria-label="Rechtliches und Kontakt">
+      <ul class="flex flex-wrap justify-center gap-x-5 gap-y-1 px-4 py-2 text-xs text-white/80 sm:text-sm">
+        {
+          footerLinks.map((link) => (
+            <li>
+              <a href={link.href} class="hover:text-white hover:underline">
+                {link.text}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </footer>
+</LayoutBase>

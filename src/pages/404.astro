@@ -1,0 +1,17 @@
+---
+// Fehlerseite "Seite nicht gefunden" (wird als dist/404.html gebaut).
+// Im Webserver als Fehlerseite eintragen (siehe README.md).
+import LayoutNeutral from '../layouts/LayoutNeutral.astro';
+---
+
+<LayoutNeutral title="Seite nicht gefunden" description="Die angeforderte Seite wurde leider nicht gefunden.">
+  <article class="inhalt text-center">
+    <h1>Seite nicht gefunden</h1>
+    <p>Die gesuchte Seite existiert nicht (mehr). Wählen Sie einen Bereich:</p>
+    <p class="mt-8 flex flex-wrap justify-center gap-4">
+      <a href="/weihnachtsbeleuchtung/" class="btn-akzent">Weihnachtsbeleuchtung</a>
+      <a href="/werbetechnik/" class="btn-akzent">Werbetechnik</a>
+    </p>
+    <p><a href="/" class="underline">Zur Startseite</a></p>
+  </article>
+</LayoutNeutral>

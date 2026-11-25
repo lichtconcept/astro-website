@@ -1,0 +1,25 @@
+---
+// =============================================================================
+// LayoutWerbung – Layout für alle Seiten unter /werbetechnik/.
+// Farbschema Sky-Blau/Anthrazit (Farben: src/styles/global.css).
+// =============================================================================
+import LayoutBase from './LayoutBase.astro';
+import HeaderWerbung from '../components/HeaderWerbung.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<LayoutBase title={title} description={description} bereich="werbetechnik">
+  <slot name="head" slot="head" />
+  <HeaderWerbung />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+</LayoutBase>

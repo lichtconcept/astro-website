@@ -1,0 +1,37 @@
+---
+// Über uns
+import LayoutNeutral from '../layouts/LayoutNeutral.astro';
+import { firma, localBusinessJsonLd } from '../config/firma';
+
+const jsonLd = JSON.stringify(localBusinessJsonLd(Astro.site));
+---
+
+<LayoutNeutral
+  title="Über uns"
+  description={`Lernen Sie ${firma.name} kennen: Ihr Partner für professionelle Weihnachtsbeleuchtung und Werbetechnik aus ${firma.adresse.ort}.`}
+>
+  <script type="application/ld+json" slot="head" set:html={jsonLd} />
+
+  <article class="inhalt">
+    <h1>Über uns</h1>
+    <p>
+      Platzhaltertext: {firma.name} ist ein Familienunternehmen aus {firma.adresse.ort}. Seit vielen Jahren sind wir in
+      zwei Bereichen zu Hause: professionelle Weihnachtsbeleuchtung und Werbetechnik.
+    </p>
+
+    <h2>Zwei Bereiche – ein Team</h2>
+    <p>
+      Platzhaltertext: Beide Bereiche profitieren voneinander – Know-how in Lichttechnik, eigene Montageteams und
+      kurze Wege.
+    </p>
+    <ul>
+      <li><a href="/weihnachtsbeleuchtung/" class="underline">Weihnachtsbeleuchtung</a> für Städte, Kommunen und Gewerbe</li>
+      <li><a href="/werbetechnik/" class="underline">Werbetechnik</a>: Lichtwerbung, Fahrzeugbeschriftung, Beschilderung</li>
+    </ul>
+
+    <h2>Unser Team</h2>
+    <p>Platzhaltertext: Hier können später Team-Fotos und Kurzvorstellungen ergänzt werden.</p>
+
+    <p class="mt-8"><a href="/kontakt/" class="btn-akzent">Kontakt aufnehmen →</a></p>
+  </article>
+</LayoutNeutral>
