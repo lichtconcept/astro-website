@@ -1,34 +1,10 @@
 ---
-// Impressum – PLATZHALTER! Muss durch das rechtlich geprüfte Impressum ersetzt werden.
-import LayoutNeutral from '../layouts/LayoutNeutral.astro';
-import { firma } from '../config/firma';
+// Inhalte: src/content/legal.json → "impressum" (rechtlich geprüften Text dort einsetzen).
+import LayoutSeite from '../layouts/LayoutSeite.astro';
+import Textseite from '../components/Textseite.astro';
+import { legal } from '../lib/content';
 ---
 
-<LayoutNeutral title="Impressum" description={`Impressum und Anbieterkennzeichnung von ${firma.name}.`}>
-  <article class="inhalt">
-    <h1>Impressum</h1>
-    <p><strong>Platzhalter – bitte durch das rechtlich geprüfte Impressum ersetzen.</strong></p>
-
-    <h2>Angaben gemäß § 5 DDG</h2>
-    <p>
-      {firma.name}<br />
-      {firma.adresse.strasse}<br />
-      {firma.adresse.plz} {firma.adresse.ort}
-    </p>
-
-    <h2>Vertreten durch</h2>
-    <p>Platzhalter: Geschäftsführer/in</p>
-
-    <h2>Kontakt</h2>
-    <p>
-      Telefon: {firma.telefon}<br />
-      E-Mail: {firma.email}
-    </p>
-
-    <h2>Registereintrag</h2>
-    <p>Platzhalter: Registergericht, Registernummer</p>
-
-    <h2>Umsatzsteuer-ID</h2>
-    <p>Platzhalter: DE000000000</p>
-  </article>
-</LayoutNeutral>
+<LayoutSeite seo={legal.impressum.seo}>
+  <Textseite inhalt={legal.impressum} />
+</LayoutSeite>

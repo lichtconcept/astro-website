@@ -1,0 +1,46 @@
+{
+  "weihnachten": {
+    "beleuchtete-fassade": {
+      "alt": "Festlich beleuchtete Fassade"
+    },
+    "lichterketten-fussgaengerzone": {
+      "alt": "Lichterketten über einer Fußgängerzone",
+      "caption": "Platzhalter: Fußgängerzone Beispielort"
+    },
+    "lichttor-ortseingang": {
+      "alt": "Lichttor am Ortseingang"
+    },
+    "marktplatz-weihnachtsbaum": {
+      "alt": "Beleuchteter Weihnachtsbaum auf dem Marktplatz",
+      "caption": "Platzhalter: Marktplatz Musterstadt, 2025"
+    },
+    "sternenhimmel-einkaufszentrum": {
+      "alt": "Sternenhimmel aus Lichtern in einem Einkaufszentrum"
+    },
+    "tannengirlanden-rathaus": {
+      "alt": "Tannengirlanden mit Beleuchtung am Rathaus"
+    }
+  },
+  "werbetechnik": {
+    "bauschild-wohnanlage": {
+      "alt": "Bauschild vor einer Wohnanlage"
+    },
+    "fahrzeugbeschriftung-transporter": {
+      "alt": "Beschrifteter Transporter",
+      "caption": "Platzhalter: Flottenbeschriftung Transporter"
+    },
+    "leuchtbuchstaben-praxis": {
+      "alt": "Leuchtbuchstaben an einer Praxis"
+    },
+    "leuchtreklame-fassade": {
+      "alt": "Leuchtreklame mit Einzelbuchstaben an einer Firmenfassade",
+      "caption": "Platzhalter: Leuchtbuchstaben, Musterfirma AG"
+    },
+    "pylon-autohaus": {
+      "alt": "Beleuchteter Pylon vor einem Autohaus"
+    },
+    "schaufensterbeschriftung": {
+      "alt": "Beschriftetes Schaufenster"
+    }
+  }
+}

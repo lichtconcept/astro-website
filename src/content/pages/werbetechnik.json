@@ -1,0 +1,121 @@
+{
+  "landing": {
+    "seo": {
+      "title": "Werbetechnik: Lichtwerbung, Fahrzeugbeschriftung & Beschilderung",
+      "description": "Werbetechnik aus einer Hand: Leuchtreklame, Fahrzeugbeschriftung, Schilder und Beschriftungen – von der Gestaltung bis zur Montage."
+    },
+    "hero": {
+      "heading": "Werbung, die Tag und Nacht für Sie arbeitet",
+      "button": { "label": "Projekt anfragen", "href": "/kontakt/?bereich=werbetechnik" },
+      "slides": [
+        { "image": "werbetechnik/leuchtreklame-fassade", "title": "Leuchtreklame Fassade" },
+        { "image": "werbetechnik/fahrzeugbeschriftung-transporter", "title": "Fahrzeugbeschriftung" },
+        { "image": "werbetechnik/pylon-autohaus", "title": "Pylon Autohaus" },
+        { "image": "werbetechnik/schaufensterbeschriftung", "title": "Schaufensterbeschriftung" }
+      ]
+    },
+    "subnav": [
+      { "label": "Lichtwerbung", "href": "#lichtwerbung" },
+      { "label": "Fahrzeuge", "href": "#fahrzeuge" },
+      { "label": "Beschilderung", "href": "#beschilderung" },
+      { "label": "Referenzen", "href": "#referenzen" }
+    ],
+    "intro": {
+      "eyebrow": "Werbetechnik",
+      "title": "Werbung, die Tag und Nacht für Sie arbeitet",
+      "text": "Platzhaltertext: Von der Leuchtreklame über die Fahrzeugbeschriftung bis zum Bauschild – wir gestalten, produzieren und montieren.",
+      "button": { "label": "Projekt anfragen", "href": "/kontakt/?bereich=werbetechnik" }
+    },
+    "sections": [
+      {
+        "id": "lichtwerbung",
+        "heading": "Lichtwerbung",
+        "text": "Platzhaltertext: Leuchtbuchstaben, Leuchtkästen und Pylone in LED-Technik – energiesparend, langlebig und auch nachts gut sichtbar.",
+        "link": { "label": "Mehr zur Lichtwerbung", "href": "/werbetechnik/lichtwerbung/" },
+        "image": "werbetechnik/leuchtbuchstaben-praxis"
+      },
+      {
+        "id": "fahrzeuge",
+        "heading": "Fahrzeugbeschriftung",
+        "text": "Platzhaltertext: Vom einzelnen Firmenwagen bis zur ganzen Flotte – Teil- oder Vollfolierung, passgenau verklebt.",
+        "link": { "label": "Mehr zur Fahrzeugbeschriftung", "href": "/werbetechnik/fahrzeugbeschriftung/" },
+        "image": "werbetechnik/fahrzeugbeschriftung-transporter"
+      },
+      {
+        "id": "beschilderung",
+        "heading": "Beschilderung",
+        "text": "Platzhaltertext: Firmenschilder, Bauschilder, Leitsysteme und Schaufensterbeschriftungen – individuell gestaltet und fachgerecht montiert.",
+        "list": [
+          "Platzhalter: Firmen- und Praxisschilder",
+          "Platzhalter: Bau- und Werbeschilder",
+          "Platzhalter: Schaufenster- und Glasdekor"
+        ],
+        "link": { "label": "Beschilderung anfragen", "href": "/kontakt/?bereich=werbetechnik" },
+        "image": "werbetechnik/bauschild-wohnanlage"
+      }
+    ],
+    "gallery": {
+      "id": "referenzen",
+      "heading": "Referenzen",
+      "folder": "werbetechnik",
+      "count": 3,
+      "link": { "label": "Alle Referenzen ansehen", "href": "/werbetechnik/referenzen/" }
+    }
+  },
+  "lichtwerbung": {
+    "seo": {
+      "title": "Lichtwerbung & Leuchtreklame",
+      "description": "Leuchtbuchstaben, Leuchtkästen und Pylone in LED-Technik: Lichtwerbung von der Gestaltung über die Produktion bis zur Montage."
+    },
+    "title": "Lichtwerbung & Leuchtreklame",
+    "lead": "Platzhaltertext: Mit Lichtwerbung ist Ihr Unternehmen rund um die Uhr sichtbar. Wir setzen auf langlebige, energiesparende LED-Technik.",
+    "sections": [
+      {
+        "heading": "Produkte",
+        "list": [
+          "Platzhalter: Einzelbuchstaben, selbstleuchtend oder hinterleuchtet",
+          "Platzhalter: Leuchtkästen und Nasenschilder",
+          "Platzhalter: Pylone und Werbestelen"
+        ]
+      },
+      {
+        "heading": "Genehmigung & Montage",
+        "paragraphs": ["Platzhaltertext: Wir unterstützen bei der Genehmigung und übernehmen Elektroanschluss und Montage."]
+      }
+    ],
+    "actions": [{ "label": "Projekt anfragen", "href": "/kontakt/?bereich=werbetechnik" }]
+  },
+  "fahrzeuge": {
+    "seo": {
+      "title": "Fahrzeugbeschriftung & Folierung",
+      "description": "Fahrzeugbeschriftung für Pkw, Transporter und Lkw: Teil- und Vollfolierung, Flottenbeschriftung – gestaltet, produziert und verklebt."
+    },
+    "title": "Fahrzeugbeschriftung",
+    "lead": "Platzhaltertext: Ihr Fahrzeug ist eine fahrende Werbefläche. Wir gestalten und verkleben Beschriftungen für Einzelfahrzeuge und ganze Flotten.",
+    "sections": [
+      {
+        "heading": "Leistungen",
+        "list": [
+          "Platzhalter: Teilbeschriftung mit Logo und Kontaktdaten",
+          "Platzhalter: Vollfolierung und Farbwechsel",
+          "Platzhalter: Flottenbeschriftung im einheitlichen Design"
+        ]
+      },
+      {
+        "heading": "Ablauf",
+        "paragraphs": ["Platzhaltertext: Fahrzeug vermessen → Entwurf → Freigabe → Produktion → Verklebung in unserer Halle."]
+      }
+    ],
+    "actions": [{ "label": "Projekt anfragen", "href": "/kontakt/?bereich=werbetechnik" }]
+  },
+  "referenzen": {
+    "seo": {
+      "title": "Referenzen Werbetechnik",
+      "description": "Ausgewählte Projekte aus Lichtwerbung, Fahrzeugbeschriftung und Beschilderung – Bildergalerie mit Beispielen unserer Werbetechnik."
+    },
+    "title": "Referenzen Werbetechnik",
+    "lead": "Platzhaltertext: Eine Auswahl unserer Projekte. Klicken Sie auf ein Bild für die Großansicht.",
+    "folder": "werbetechnik",
+    "action": { "label": "Ihr Projekt anfragen", "href": "/kontakt/?bereich=werbetechnik" }
+  }
+}

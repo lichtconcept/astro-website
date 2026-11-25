@@ -1,0 +1,61 @@
+{
+  "ueberUns": {
+    "seo": {
+      "title": "Über uns",
+      "description": "Lernen Sie {name} kennen: Ihr Partner für professionelle Weihnachtsbeleuchtung und Werbetechnik aus {ort}."
+    },
+    "title": "Über uns",
+    "lead": "Platzhaltertext: {name} ist ein Familienunternehmen aus {ort}. Seit vielen Jahren sind wir in zwei Bereichen zu Hause: professionelle Weihnachtsbeleuchtung und Werbetechnik.",
+    "sections": [
+      {
+        "heading": "Zwei Bereiche – ein Team",
+        "paragraphs": [
+          "Platzhaltertext: Beide Bereiche profitieren voneinander – Know-how in Lichttechnik, eigene Montageteams und kurze Wege."
+        ],
+        "linkList": [
+          { "label": "Weihnachtsbeleuchtung", "href": "/weihnachtsbeleuchtung/", "text": "für Städte, Kommunen und Gewerbe" },
+          { "label": "Werbetechnik", "href": "/werbetechnik/", "text": ": Lichtwerbung, Fahrzeugbeschriftung, Beschilderung" }
+        ]
+      },
+      {
+        "heading": "Unser Team",
+        "paragraphs": ["Platzhaltertext: Hier können später Team-Fotos und Kurzvorstellungen ergänzt werden."]
+      }
+    ],
+    "actions": [{ "label": "Kontakt aufnehmen", "href": "/kontakt/" }]
+  },
+  "kontakt": {
+    "seo": {
+      "title": "Kontakt",
+      "description": "Kontakt zu unseren Ansprechpartnern für Weihnachtsbeleuchtung und Werbetechnik – telefonisch oder per E-Mail."
+    },
+    "title": "Kontakt",
+    "lead": "Platzhaltertext: Sie erreichen uns telefonisch oder per E-Mail. Wählen Sie den passenden Ansprechpartner für Ihr Anliegen.",
+    "labels": {
+      "area": "Bereich",
+      "person": "Ansprechpartner",
+      "phone": "Telefon",
+      "email": "E-Mail",
+      "write": "E-Mail schreiben",
+      "general": "Allgemein",
+      "phoneShort": "Tel."
+    },
+    "blocks": [
+      { "id": "weihnachten", "subject": "Anfrage Weihnachtsbeleuchtung" },
+      { "id": "werbetechnik", "subject": "Anfrage Werbetechnik" }
+    ]
+  },
+  "notFound": {
+    "seo": {
+      "title": "Seite nicht gefunden",
+      "description": "Die angeforderte Seite wurde leider nicht gefunden."
+    },
+    "title": "Seite nicht gefunden",
+    "lead": "Die gesuchte Seite existiert nicht (mehr). Wählen Sie einen Bereich:",
+    "actions": [
+      { "label": "Weihnachtsbeleuchtung", "href": "/weihnachtsbeleuchtung/" },
+      { "label": "Werbetechnik", "href": "/werbetechnik/" },
+      { "label": "Zur Startseite", "href": "/", "style": "link" }
+    ]
+  }
+}

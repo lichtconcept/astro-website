@@ -1,0 +1,29 @@
+{
+  "seo": {
+    "title": "{name} – Weihnachtsbeleuchtung & Werbetechnik",
+    "description": "Professionelle Weihnachtsbeleuchtung für Städte, Kommunen und Gewerbe sowie Werbetechnik: Lichtwerbung, Fahrzeugbeschriftung und Beschilderung."
+  },
+  "heading": "{name} – Weihnachtsbeleuchtung und Werbetechnik",
+  "halves": [
+    {
+      "area": "weihnachten",
+      "href": "/weihnachtsbeleuchtung/",
+      "eyebrow": "Für Städte, Kommunen & Gewerbe",
+      "title": "Weihnachtsbeleuchtung",
+      "text": "Planung, Montage und Wartung festlicher Beleuchtung – alles aus einer Hand.",
+      "button": "Bereich entdecken",
+      "poster": "startseite/weihnachten-poster",
+      "video": "weihnachten-loop"
+    },
+    {
+      "area": "werbetechnik",
+      "href": "/werbetechnik/",
+      "eyebrow": "Für Unternehmen jeder Größe",
+      "title": "Werbetechnik",
+      "text": "Lichtwerbung, Fahrzeugbeschriftung und Beschilderung, die gesehen wird.",
+      "button": "Bereich entdecken",
+      "poster": "startseite/werbetechnik-poster",
+      "video": "werbetechnik-loop"
+    }
+  ]
+}

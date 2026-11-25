@@ -1,0 +1,61 @@
+---
+// =============================================================================
+// SiteHeader – Kopfzeile aller Seiten (außer der Startseite).
+// Aussehen: kavelle (Logo mittig, Menü links und rechts, Burger auf dem Handy).
+// Menüpunkte, Buttons und Beschriftungen: src/content/site.json → "navigation".
+// =============================================================================
+import { firma } from '../config/firma';
+import { site } from '../lib/content';
+
+interface Props {
+  bereich?: 'weihnachten' | 'werbetechnik';
+  /** Kopfzeile von Anfang an dunkel (für Seiten mit hellem Hintergrund, z. B. Kontakt) */
+  dunkel?: boolean;
+}
+
+const { bereich, dunkel = false } = Astro.props;
+const nav = site.navigation[bereich ?? 'neutral'];
+
+// Menü in zwei Hälften teilen: links und rechts vom Logo
+const mitte = Math.ceil(nav.menu.length / 2);
+const links = nav.menu.slice(0, mitte);
+const rechts = nav.menu.slice(mitte);
+
+// Aktuellen Pfad immer mit "/" am Ende vergleichen
+const pfad = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : Astro.url.pathname + '/';
+const aktuell = (href: string) => (href === pfad ? 'page' : undefined);
+---
+
+<header class:list={['top-bar', { always: dunkel }]} data-top-bar>
+  <nav class="nav-l" aria-label={nav.navLabel}>
+    {links.map((p) => <a href={p.href} aria-current={aktuell(p.href)}>{p.label}</a>)}
+  </nav>
+
+  <a class="logo" href={nav.home} aria-label={nav.homeLabel.replace('{kurzname}', firma.kurzname)}>
+    <img src="/favicon.svg" alt="" width="34" height="34" />
+    <span>
+      <span class="name">{firma.kurzname}</span>
+      {nav.badge && <span class="badge">{nav.badge}</span>}
+    </span>
+  </a>
+
+  <div class="right">
+    <nav class="nav-r" aria-label={nav.navLabelMore}>
+      {rechts.map((p) => <a href={p.href} aria-current={aktuell(p.href)}>{p.label}</a>)}
+    </nav>
+    {nav.cta && <a href={nav.cta.href} class="btn cta">{nav.cta.label}</a>}
+    {nav.switch && <a href={nav.switch.href} class="switch"><span>{nav.switch.label}</span></a>}
+    <button class="burger" type="button" aria-label={site.labels.menu} aria-expanded="false" data-burger>
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h18M3 16h18" /></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Menü für Handy und Tablet (wird per Burger-Button geöffnet) -->
+<nav class="panel" aria-label={nav.navLabelMobile} data-panel>
+  <ul>
+    {nav.menu.map((p) => <li><a href={p.href} aria-current={aktuell(p.href)}>{p.label}</a></li>)}
+  </ul>
+  {nav.cta && <a href={nav.cta.href} class="btn">{nav.cta.label}</a>}
+  {nav.switch && <a href={nav.switch.href} class="switch"><span>{nav.switch.label}</span></a>}
+</nav>

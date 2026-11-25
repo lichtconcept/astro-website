@@ -1,0 +1,36 @@
+---
+// =============================================================================
+// BereichsStart – Aufbau der Startseiten beider Bereiche:
+// Slider → Sub-Menü (Anker) → Einleitung → Abschnitte → Referenzen-Vorschau.
+// Alle Inhalte kommen als "landing"-Objekt aus src/content/pages/. Die "id" eines
+// Abschnitts muss zum "href" im Sub-Menü passen (Prüfung: npm run check:site).
+// =============================================================================
+import SectionHero from './SectionHero.astro';
+import SectionText from './SectionText.astro';
+import SectionGallery from './SectionGallery.astro';
+import { site, type Landing } from '../lib/content';
+
+interface Props {
+  landing: Landing;
+}
+
+const { landing } = Astro.props;
+---
+
+<SectionHero hero={landing.hero} />
+
+<nav aria-label={site.labels.sectionsNav} class="subnav">
+  <ul>
+    {landing.subnav.map((p) => <li><a href={p.href}>{p.label}</a></li>)}
+  </ul>
+</nav>
+
+<section class="intro">
+  <p class="eyebrow" data-in="down">{landing.intro.eyebrow}</p>
+  <h2 class="h2" data-in="down">{landing.intro.title}</h2>
+  <p class="lead" data-in="up">{landing.intro.text}</p>
+  <a class="btn" href={landing.intro.button.href} data-in="up">{landing.intro.button.label} <span class="arr" aria-hidden="true">→</span></a>
+</section>
+
+{landing.sections.map((abschnitt, i) => <SectionText abschnitt={abschnitt} index={i + 1} />)}
+<SectionGallery gallery={landing.gallery} index={landing.sections.length + 1} />

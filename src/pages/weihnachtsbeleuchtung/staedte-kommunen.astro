@@ -1,32 +1,10 @@
 ---
-// Weihnachtsbeleuchtung – Detailseite "Städte & Kommunen"
-import LayoutWeihnachten from '../../layouts/LayoutWeihnachten.astro';
+// Weihnachtsbeleuchtung – Unterseite. Inhalte: src/content/pages/weihnachten.json → "staedte".
+import LayoutSeite from '../../layouts/LayoutSeite.astro';
+import Textseite from '../../components/Textseite.astro';
+import { weihnachten } from '../../lib/content';
 ---
 
-<LayoutWeihnachten
-  title="Weihnachtsbeleuchtung für Städte & Kommunen"
-  description="Weihnachtsbeleuchtung für Innenstädte, Marktplätze und Ortseingänge: Lichtkonzept, Montage, Wartung und Einlagerung für Städte und Gemeinden."
->
-  <article class="inhalt">
-    <h1>Weihnachtsbeleuchtung für Städte & Kommunen</h1>
-    <p>
-      Platzhaltertext: Wir unterstützen Städte und Gemeinden mit durchdachten Lichtkonzepten für Innenstädte,
-      Marktplätze, Straßenzüge und Ortseingänge.
-    </p>
-
-    <h2>Unsere Leistungen</h2>
-    <ul>
-      <li>Platzhalter: Lichtkonzept und Visualisierung</li>
-      <li>Platzhalter: Straßenüberspannungen und Lichttore</li>
-      <li>Platzhalter: Großbäume und Baumbeleuchtung</li>
-      <li>Platzhalter: Miet- oder Kaufmodelle</li>
-    </ul>
-
-    <h2>Ablauf</h2>
-    <p>Platzhaltertext: Beratung vor Ort → Angebot → Montage → Betreuung während der Saison → Demontage und Einlagerung.</p>
-
-    <p class="mt-8">
-      <a href="/kontakt/?bereich=weihnachten" class="btn-akzent">Unverbindlich anfragen →</a>
-    </p>
-  </article>
-</LayoutWeihnachten>
+<LayoutSeite seo={weihnachten.staedte.seo} bereich="weihnachten">
+  <Textseite inhalt={weihnachten.staedte} />
+</LayoutSeite>

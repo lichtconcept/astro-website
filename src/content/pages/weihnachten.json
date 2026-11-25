@@ -1,0 +1,138 @@
+{
+  "landing": {
+    "seo": {
+      "title": "Weihnachtsbeleuchtung für Städte, Kommunen & Gewerbe",
+      "description": "Professionelle Weihnachtsbeleuchtung: Planung, Montage und Wartung für Städte, Kommunen und Gewerbe – alles aus einer Hand."
+    },
+    "hero": {
+      "heading": "Festliche Beleuchtung, die Ihre Stadt zum Strahlen bringt",
+      "button": { "label": "Anfrage stellen", "href": "/kontakt/?bereich=weihnachten" },
+      "slides": [
+        { "image": "weihnachten/marktplatz-weihnachtsbaum", "title": "Marktplatz Weihnachtsbaum" },
+        { "image": "weihnachten/lichterketten-fussgaengerzone", "title": "Lichterketten Fußgängerzone" },
+        { "image": "weihnachten/lichttor-ortseingang", "title": "Lichttor Ortseingang" },
+        { "image": "weihnachten/beleuchtete-fassade", "title": "Beleuchtete Fassade" }
+      ]
+    },
+    "subnav": [
+      { "label": "Planung", "href": "#planung" },
+      { "label": "Montage", "href": "#montage" },
+      { "label": "Wartung", "href": "#wartung" },
+      { "label": "Referenzen", "href": "#referenzen" }
+    ],
+    "intro": {
+      "eyebrow": "Weihnachtsbeleuchtung",
+      "title": "Festliche Beleuchtung, die Ihre Stadt zum Strahlen bringt",
+      "text": "Platzhaltertext: Wir planen, montieren und warten professionelle Weihnachtsbeleuchtung – für Innenstädte, Gemeinden, Einkaufszentren und Unternehmen.",
+      "button": { "label": "Anfrage stellen", "href": "/kontakt/?bereich=weihnachten" }
+    },
+    "sections": [
+      {
+        "id": "planung",
+        "heading": "Planung",
+        "text": "Platzhaltertext: Von der ersten Idee bis zum fertigen Lichtkonzept – wir beraten vor Ort, erstellen Visualisierungen und kalkulieren transparent.",
+        "cards": [
+          {
+            "title": "Städte & Kommunen",
+            "text": "Innenstädte, Marktplätze, Ortseingänge und Straßenzüge.",
+            "href": "/weihnachtsbeleuchtung/staedte-kommunen/",
+            "image": "weihnachten/tannengirlanden-rathaus"
+          },
+          {
+            "title": "Gewerbe",
+            "text": "Einkaufszentren, Hotels, Autohäuser und Firmengebäude.",
+            "href": "/weihnachtsbeleuchtung/gewerbe/",
+            "image": "weihnachten/sternenhimmel-einkaufszentrum"
+          }
+        ]
+      },
+      {
+        "id": "montage",
+        "heading": "Montage",
+        "text": "Platzhaltertext: Eigene Montageteams mit Hubsteigern montieren termingerecht und sicher – auch nachts, damit der Betrieb in der Innenstadt ungestört bleibt.",
+        "list": [
+          "Platzhalter: Auf- und Abbau inklusive",
+          "Platzhalter: Prüfung nach DIN VDE",
+          "Platzhalter: Einlagerung außerhalb der Saison"
+        ],
+        "link": { "label": "Montagetermin anfragen", "href": "/kontakt/?bereich=weihnachten" },
+        "image": "weihnachten/lichttor-ortseingang"
+      },
+      {
+        "id": "wartung",
+        "heading": "Wartung",
+        "text": "Platzhaltertext: Während der Saison sind wir schnell zur Stelle, wenn etwas ausfällt. Nach der Saison prüfen, reparieren und lagern wir Ihre Beleuchtung ein.",
+        "link": { "label": "Wartungsvertrag anfragen", "href": "/kontakt/?bereich=weihnachten" },
+        "image": "weihnachten/beleuchtete-fassade"
+      }
+    ],
+    "gallery": {
+      "id": "referenzen",
+      "heading": "Referenzen",
+      "folder": "weihnachten",
+      "count": 3,
+      "link": { "label": "Alle Referenzen ansehen", "href": "/weihnachtsbeleuchtung/referenzen/" }
+    }
+  },
+  "staedte": {
+    "seo": {
+      "title": "Weihnachtsbeleuchtung für Städte & Kommunen",
+      "description": "Weihnachtsbeleuchtung für Innenstädte, Marktplätze und Ortseingänge: Lichtkonzept, Montage, Wartung und Einlagerung für Städte und Gemeinden."
+    },
+    "title": "Weihnachtsbeleuchtung für Städte & Kommunen",
+    "lead": "Platzhaltertext: Wir unterstützen Städte und Gemeinden mit durchdachten Lichtkonzepten für Innenstädte, Marktplätze, Straßenzüge und Ortseingänge.",
+    "sections": [
+      {
+        "heading": "Unsere Leistungen",
+        "list": [
+          "Platzhalter: Lichtkonzept und Visualisierung",
+          "Platzhalter: Straßenüberspannungen und Lichttore",
+          "Platzhalter: Großbäume und Baumbeleuchtung",
+          "Platzhalter: Miet- oder Kaufmodelle"
+        ]
+      },
+      {
+        "heading": "Ablauf",
+        "paragraphs": [
+          "Platzhaltertext: Beratung vor Ort → Angebot → Montage → Betreuung während der Saison → Demontage und Einlagerung."
+        ]
+      }
+    ],
+    "actions": [{ "label": "Unverbindlich anfragen", "href": "/kontakt/?bereich=weihnachten" }]
+  },
+  "gewerbe": {
+    "seo": {
+      "title": "Weihnachtsbeleuchtung für Gewerbe & Unternehmen",
+      "description": "Festliche Beleuchtung für Einkaufszentren, Hotels, Autohäuser und Firmengebäude – individuell geplant, montiert und gewartet."
+    },
+    "title": "Weihnachtsbeleuchtung für Gewerbe",
+    "lead": "Platzhaltertext: Ob Einkaufszentrum, Hotel, Autohaus oder Firmensitz – mit der passenden Beleuchtung wird Ihr Gebäude in der Adventszeit zum Blickfang.",
+    "sections": [
+      {
+        "heading": "Typische Projekte",
+        "list": [
+          "Platzhalter: Fassaden- und Dachbeleuchtung",
+          "Platzhalter: Dekoration von Eingangsbereichen",
+          "Platzhalter: Weihnachtsbäume für Innenhöfe und Foyers"
+        ]
+      },
+      {
+        "heading": "Rundum-Service",
+        "paragraphs": [
+          "Platzhaltertext: Wir kümmern uns um alles – von der Planung über die Montage bis zur Einlagerung nach der Saison."
+        ]
+      }
+    ],
+    "actions": [{ "label": "Unverbindlich anfragen", "href": "/kontakt/?bereich=weihnachten" }]
+  },
+  "referenzen": {
+    "seo": {
+      "title": "Referenzen Weihnachtsbeleuchtung",
+      "description": "Ausgewählte Projekte unserer Weihnachtsbeleuchtung für Städte, Kommunen und Gewerbe – Bildergalerie mit Beispielen."
+    },
+    "title": "Referenzen Weihnachtsbeleuchtung",
+    "lead": "Platzhaltertext: Eine Auswahl unserer Projekte. Klicken Sie auf ein Bild für die Großansicht.",
+    "folder": "weihnachten",
+    "action": { "label": "Ihr Projekt anfragen", "href": "/kontakt/?bereich=weihnachten" }
+  }
+}

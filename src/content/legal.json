@@ -1,0 +1,48 @@
+{
+  "impressum": {
+    "seo": {
+      "title": "Impressum",
+      "description": "Impressum und Anbieterkennzeichnung von {name}."
+    },
+    "title": "Impressum",
+    "lead": "Platzhalter – bitte durch das rechtlich geprüfte Impressum ersetzen.",
+    "sections": [
+      { "heading": "Angaben gemäß § 5 DDG", "lines": ["{name}", "{strasse}", "{plz} {ort}"] },
+      { "heading": "Vertreten durch", "paragraphs": ["Platzhalter: Geschäftsführer/in"] },
+      { "heading": "Kontakt", "lines": ["Telefon: {telefon}", "E-Mail: {email}"] },
+      { "heading": "Registereintrag", "paragraphs": ["Platzhalter: Registergericht, Registernummer"] },
+      { "heading": "Umsatzsteuer-ID", "paragraphs": ["Platzhalter: DE000000000"] }
+    ]
+  },
+  "datenschutz": {
+    "seo": {
+      "title": "Datenschutzerklärung",
+      "description": "Informationen zum Datenschutz und zur Verarbeitung personenbezogener Daten bei {name}."
+    },
+    "title": "Datenschutzerklärung",
+    "lead": "Platzhalter – bitte durch die rechtlich geprüfte Datenschutzerklärung ersetzen.",
+    "sections": [
+      { "heading": "Verantwortlicher", "lines": ["{name}, {strasse}, {plz} {ort}", "E-Mail: {email}"] },
+      {
+        "heading": "Hosting und Server-Logfiles",
+        "paragraphs": ["Platzhaltertext: Angaben zum Hosting und zu den vom Webserver gespeicherten Zugriffsdaten."]
+      },
+      {
+        "heading": "Keine externen Dienste",
+        "paragraphs": [
+          "Platzhaltertext: Diese Website lädt keine Schriften, Skripte oder Inhalte von Drittanbietern und setzt keine Cookies."
+        ]
+      },
+      {
+        "heading": "Kontaktaufnahme per E-Mail oder Telefon",
+        "paragraphs": ["Platzhaltertext: Verarbeitung Ihrer Angaben zur Bearbeitung der Anfrage."]
+      },
+      {
+        "heading": "Ihre Rechte",
+        "paragraphs": [
+          "Platzhaltertext: Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch, Datenübertragbarkeit, Beschwerde."
+        ]
+      }
+    ]
+  }
+}

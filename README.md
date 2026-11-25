@@ -11,23 +11,23 @@ Kein CMS, keine Datenbank: Texte und Bilder liegen direkt in den Dateien. `npm r
 
 | Was                                  | Wo                                                                                         |
 | ------------------------------------ | ------------------------------------------------------------------------------------------ |
-| **Texte einer Seite**                | `src/pages/…` – jede Datei ist eine Seite (siehe Tabelle unten). Der Text steht im HTML-Teil unterhalb von `---`. |
-| **Seitentitel & Google-Beschreibung**| oben in der jeweiligen Seite: `title="…"` und `description="…"` (jede Seite braucht eigene Werte) |
-| **Firmenname, Adresse, Telefon, E-Mail** | `src/config/firma.ts` (eine Stelle für Footer, Kontakt, Impressum, Google-Daten)        |
-| **Farben**                           | `src/styles/global.css`, Abschnitt 1 – je Bereich 5 Farbwerte                              |
-| **Menüpunkte Weihnachten**           | `src/components/HeaderWeihnachten.astro` – Liste `menue` ganz oben                         |
-| **Menüpunkte Werbetechnik**          | `src/components/HeaderWerbung.astro` – Liste `menue` ganz oben                             |
-| **Sprungmenü auf den Hauptseiten**   | `subMenue` oben in `src/pages/weihnachtsbeleuchtung/index.astro` bzw. `werbetechnik/index.astro` |
-| **Links im Footer**                  | `src/components/Footer.astro` (oben) und Mini-Footer der Startseite in `src/layouts/LayoutWeiche.astro` |
-| **Texte der Startseite (Split-Screen)** | `src/pages/index.astro` – Liste `haelften` oben                                         |
+| **Texte einer Seite**                | `src/content/pages/*.json` (Start, Weihnachten, Werbetechnik, Allgemein) und `src/content/legal.json` (Impressum, Datenschutz). **In den `.astro`-Dateien steht kein Text.** |
+| **Seitentitel & Google-Beschreibung**| in der JSON-Datei der Seite: Block `seo` (`title`, `description`; jede Seite braucht eigene Werte) |
+| **Firmenname, Adresse, Telefon, E-Mail** | `src/config/firma.ts`. In den JSON-Texten stehen dafür Platzhalter wie `{name}`, `{ort}`, `{telefon}`, `{email}` |
+| **Farben**                           | `src/styles/global.css`, Abschnitt 1 – je Bereich Hintergrund- und Akzentfarben             |
+| **Menüpunkte, Buttons im Header**    | `src/content/site.json` → `navigation` (je Bereich `weihnachten`, `werbetechnik`, `neutral`) |
+| **Sprungmenü auf den Hauptseiten**   | `subnav` in `src/content/pages/weihnachten.json` bzw. `werbetechnik.json` (`href` = `id` des Abschnitts) |
+| **Links im Footer**                  | `src/content/site.json` → `footer` und `startFooter` (Mini-Footer der Startseite)           |
+| **Texte der Startseite (Split-Screen)** | `src/content/pages/start.json` → `halves`                                               |
 | **Logo / Favicon**                   | `public/favicon.svg` (wird auch als Logo im Header verwendet)                             |
 
 ### Bilder
 
-- **Referenz-Galerien:** Bild einfach in `src/assets/weihnachten/` bzw. `src/assets/werbetechnik/` legen (`.jpg`, `.png`, `.webp`). Es erscheint automatisch in der Galerie und in der Vorschau auf der Bereichs-Hauptseite.
-  - Dateinamen sprechend wählen, z. B. `marktplatz-musterstadt.jpg` → Alt-Text „Marktplatz Musterstadt“.
+- **Referenz-Galerien:** Bild einfach in `src/assets/weihnachten/` bzw. `src/assets/werbetechnik/` legen (`.jpg`, `.png`, `.webp`). Es erscheint dann automatisch in der Galerie und in der Vorschau auf der Bereichs-Hauptseite.
+  - Dateinamen sprechend wählen, z. B. `marktplatz-musterstadt.jpg`.
+  - **Pflicht:** in `src/content/bilder.json` einen Eintrag mit Alt-Text ergänzen (Schlüssel: Ordner → Dateiname ohne Endung). Fehlt er, bricht der Build mit einer Meldung ab.
   - Reihenfolge = alphabetisch nach Dateiname (bei Bedarf `01-…`, `02-…` voranstellen).
-  - Eigener Alt-Text oder Bildunterschrift: in `referenzen.astro` im Block `texte` ergänzen.
+  - Optionale Bildunterschrift: ebenfalls in `bilder.json` (`caption`).
 - **Standbilder der Startseite:** `src/assets/startseite/weihnachten-poster.jpg` und `werbetechnik-poster.jpg` ersetzen (gleicher Dateiname).
 - Bilder in guter Qualität ablegen (ca. 2000 px Breite genügt) – Astro verkleinert und komprimiert sie beim Build automatisch.
 
@@ -144,10 +144,19 @@ src/config/firma.ts        Firmendaten (zentral)
 src/styles/global.css      Farben, Schrift, Grundstile (Tailwind v4)
 src/layouts/LayoutBase     <html>/<head>, SEO-Tags – Basis aller Layouts
 src/layouts/LayoutWeiche   Startseite (ohne Header)
-src/layouts/LayoutWeihnachten / LayoutWerbung / LayoutNeutral
-src/components/            Header (je Bereich), BereichsHeader (gemeinsames Markup), Footer, ReferenzGalerie
-src/lib/galerie.ts         sammelt Bilder eines Ordners für die Galerie
+src/layouts/LayoutSeite    alle Seiten mit Header/Footer (Bereich steuert die Farben)
+src/components/            SiteHeader, Footer, SectionHero (Slider), SectionText, SectionGallery,
+                           BereichsStart, Textseite, Referenzseite, ReferenzGalerie
+src/content/               ALLE Texte als JSON (site, pages/*, legal, bilder)
+src/lib/content.ts         lädt und typisiert die JSON-Dateien, setzt Firmendaten ein
+src/lib/bilder.ts          löst Bildverweise aus den JSON-Dateien auf (src/assets/)
+src/scripts/site.ts        Verhalten: Header, Slider, Einblenden beim Scrollen
+src/styles/site.css        Aussehen (Design im Stil des Templates „kavelle“)
+scripts/check-content.mjs  prüft: keine festen Texte in .astro-Dateien (npm run check:content)
 scripts/check-site.mjs     automatischer Qualitäts-Check für dist/
 ```
 
-JavaScript im Browser gibt es nur an drei Stellen, jeweils wenige Zeilen: Großansicht der Galerie, Hervorhebung auf der Kontaktseite, Abschalten der Videos bei „Bewegung reduzieren“. Alles funktioniert auch ohne JavaScript.
+JavaScript im Browser (`src/scripts/site.ts` plus drei kleine Skripte): Header beim Scrollen, Slider, Einblenden beim Scrollen, Großansicht der Galerie, Hervorhebung auf der Kontaktseite, Abschalten der Videos bei „Bewegung reduzieren“. Alle Inhalte sind auch ohne JavaScript lesbar.
+
+### Design-Vorlage
+Das Aussehen (Schriften, Slider, Header, Karten) ist vom MIT-lizenzierten Astro-Template [kavelle](https://github.com/formgong-hq/kavelle-astro) (© 2026 Formgong) übernommen und angepasst. Die Schriften DM Sans und Italiana (SIL OFL 1.1) liegen selbst gehostet in `public/fonts/`, die Lizenztexte daneben.

@@ -3,7 +3,7 @@
 // Startseite – 50/50 Split-Screen-Weiche
 // Desktop: links Weihnachtsbeleuchtung, rechts Werbetechnik.
 // Mobil:   oben Weihnachtsbeleuchtung, unten Werbetechnik.
-// Jede Hälfte ist komplett anklickbar.
+// Jede Hälfte ist komplett anklickbar. Texte: src/content/pages/start.json.
 //
 // HINTERGRUND-VIDEOS: Dateien einfach in public/videos/ ablegen:
 //   weihnachten-loop.webm + weihnachten-loop.mp4
@@ -12,38 +12,16 @@
 // STANDBILDER (Poster): src/assets/startseite/*-poster.jpg
 //
 // Die Videos werden über Git LFS versioniert (siehe README.md). Wurde das
-// Projekt ohne LFS geklont, liegen statt der Videos nur kleine Platzhalter-
-// Textdateien ("LFS-Pointer") im Ordner – diese werden wie fehlende Videos behandelt.
+// Projekt ohne LFS geklont, liegen statt der Videos nur kleine Pointer-
+// Textdateien im Ordner – diese werden wie fehlende Videos behandelt.
 // =============================================================================
 import { closeSync, existsSync, openSync, readSync } from 'node:fs';
 import { join } from 'node:path';
 import { Image, getImage } from 'astro:assets';
 import LayoutWeiche from '../layouts/LayoutWeiche.astro';
 import { firma, localBusinessJsonLd } from '../config/firma';
-import posterWeihnachten from '../assets/startseite/weihnachten-poster.jpg';
-import posterWerbetechnik from '../assets/startseite/werbetechnik-poster.jpg';
-
-// Texte der beiden Hälften – hier anpassen
-const haelften = [
-  {
-    href: '/weihnachtsbeleuchtung/',
-    bereich: 'weihnachten',
-    dachzeile: 'Für Städte, Kommunen & Gewerbe',
-    titel: 'Weihnachtsbeleuchtung',
-    nutzen: 'Planung, Montage und Wartung festlicher Beleuchtung – alles aus einer Hand.',
-    poster: posterWeihnachten,
-    video: 'weihnachten-loop',
-  },
-  {
-    href: '/werbetechnik/',
-    bereich: 'werbetechnik',
-    dachzeile: 'Für Unternehmen jeder Größe',
-    titel: 'Werbetechnik',
-    nutzen: 'Lichtwerbung, Fahrzeugbeschriftung und Beschilderung, die gesehen wird.',
-    poster: posterWerbetechnik,
-    video: 'werbetechnik-loop',
-  },
-] as const;
+import { start } from '../lib/content';
+import { bildDatei } from '../lib/bilder';
 
 // Beim Build prüfen, ob echte Videodateien vorhanden sind (kein LFS-Pointer)
 const videoOrdner = join(process.cwd(), 'public', 'videos');
@@ -57,44 +35,32 @@ function istVideo(dateiname: string): boolean {
   return !anfang.toString('utf8').startsWith('version https://git-lfs');
 }
 
-// Poster für <video> erzeugen
 const eintraege = await Promise.all(
-  haelften.map(async (h) => {
-    const webm = istVideo(`${h.video}.webm`);
-    const mp4 = istVideo(`${h.video}.mp4`);
-    const poster = await getImage({ src: h.poster, width: 1280, format: 'webp' });
-    return { ...h, webm, mp4, posterUrl: poster.src };
+  start.halves.map(async (h) => {
+    const poster = bildDatei(h.poster);
+    const posterUrl = (await getImage({ src: poster, width: 1280, format: 'webp' })).src;
+    return { ...h, poster, posterUrl, webm: istVideo(`${h.video}.webm`), mp4: istVideo(`${h.video}.mp4`) };
   }),
 );
 
 const jsonLd = JSON.stringify(localBusinessJsonLd(Astro.site));
 ---
 
-<LayoutWeiche
-  title={`${firma.name} – Weihnachtsbeleuchtung & Werbetechnik`}
-  description="Professionelle Weihnachtsbeleuchtung für Städte, Kommunen und Gewerbe sowie Werbetechnik: Lichtwerbung, Fahrzeugbeschriftung und Beschilderung."
->
+<LayoutWeiche seo={start.seo}>
   <script type="application/ld+json" slot="head" set:html={jsonLd} />
 
   <!-- Genau eine H1 pro Seite: für Screenreader und Google, optisch versteckt -->
-  <h1 class="sr-only">{firma.name} – Weihnachtsbeleuchtung und Werbetechnik</h1>
+  <h1 class="sr-only">{start.heading}</h1>
 
-  <!-- Logo-Pille oben mittig -->
-  <div
-    class="fixed top-3 left-1/2 z-20 flex w-max -translate-x-1/2 items-center gap-2 rounded-full bg-white/90 px-4 py-1.5 text-sm font-bold whitespace-nowrap text-slate-900 shadow-lg backdrop-blur-sm"
-  >
-    <img src="/favicon.svg" alt="" width="24" height="24" />
-    {firma.name}
+  <div class="start-logo">
+    <img src="/favicon.svg" alt="" width="26" height="26" />
+    <span>{firma.name}</span>
   </div>
 
-  <div class="grid h-dvh grid-rows-2 md:grid-cols-2 md:grid-rows-1">
+  <div class="split-screen">
     {
       eintraege.map((h) => (
-        <a
-          href={h.href}
-          data-bereich={h.bereich}
-          class="group relative flex items-center justify-center overflow-hidden px-6 text-center text-white md:items-end md:pb-28"
-        >
+        <a href={h.href} data-bereich={h.area} class="half">
           {/* Standbild – immer vorhanden, auch ohne Video */}
           <Image
             src={h.poster}
@@ -103,13 +69,12 @@ const jsonLd = JSON.stringify(localBusinessJsonLd(Astro.site));
             sizes="(min-width: 768px) 50vw, 100vw"
             loading="eager"
             fetchpriority="high"
-            class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
 
           {/* Video nur, wenn Dateien in public/videos/ liegen; bei "Bewegung reduzieren" ausgeblendet */}
           {(h.webm || h.mp4) && (
             <video
-              class="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
+              class="motion-reduce:hidden"
               autoplay
               loop
               muted
@@ -124,15 +89,11 @@ const jsonLd = JSON.stringify(localBusinessJsonLd(Astro.site));
             </video>
           )}
 
-          {/* Dunkler Verlauf für bessere Lesbarkeit */}
-          <div class="absolute inset-0 bg-linear-to-t from-black/85 via-black/45 to-black/20" />
-
-          <div class="relative z-10 max-w-md">
-            <p class="mb-2 text-xs font-semibold tracking-widest text-akzent uppercase sm:text-sm">{h.dachzeile}</p>
-            {/* Schriftgröße wächst mit der Bildschirmbreite, damit "Weihnachtsbeleuchtung" immer in eine Zeile passt */}
-            <h2 class="mb-3 text-2xl font-bold break-words sm:text-4xl md:text-[min(3.2vw,3rem)]">{h.titel}</h2>
-            <p class="mb-5 text-sm text-white/85 sm:text-base">{h.nutzen}</p>
-            <span class="btn-akzent group-hover:bg-akzent-hover">Bereich entdecken →</span>
+          <div class="half-in">
+            <p class="eyebrow">{h.eyebrow}</p>
+            <h2>{h.title}</h2>
+            <p class="text">{h.text}</p>
+            <span class="btn">{h.button} <span class="arr" aria-hidden="true">→</span></span>
           </div>
         </a>
       ))

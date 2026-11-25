@@ -1,118 +1,58 @@
 /* =============================================================================
-   Globale Styles + FARBEN der Website
+   Globale Styles – Design im Stil des Astro-Templates "kavelle" (MIT).
    -----------------------------------------------------------------------------
-   Hier (und nur hier) werden die Farben der beiden Bereiche festgelegt.
-   Jede Seite setzt am <body> das Attribut data-bereich="weihnachten" oder
-   data-bereich="werbetechnik". Je nach Bereich gelten die passenden Variablen.
+   Hier (und in site.css) steckt NUR das Aussehen. Texte stehen in src/content/.
 
-   In den Komponenten werden die Farben über Tailwind-Klassen genutzt, z. B.
-     bg-grund, bg-grund-hell, text-akzent, bg-akzent, text-auf-akzent, border-akzent
-   Ändert man hier einen Farbwert, ändert er sich auf der ganzen Website.
+   Farben: Jede Seite setzt am <body> das Attribut data-bereich="weihnachten"
+   oder data-bereich="werbetechnik" (neutrale Seiten: kein Attribut).
+   Je nach Bereich gelten die passenden Variablen aus Abschnitt 1.
    ============================================================================= */
 
 @import "tailwindcss";
+@import "./fonts.css";
+@import "./site.css";
 
 /* --- 1. Farbwerte je Bereich ------------------------------------------------ */
 
-/* Neutral (Startseite, Über uns, Kontakt, Impressum, Datenschutz) */
+/* Neutral (Startseite, Über uns, Kontakt, Impressum, Datenschutz): Grün auf Anthrazit */
 :root {
-  --farbe-grund: #1e293b;        /* Hintergrund Header/Footer (Slate) */
-  --farbe-grund-hell: #334155;   /* etwas hellere Flächen */
-  --farbe-akzent: #f59e0b;       /* Akzent für Buttons/Links */
-  --farbe-akzent-hover: #fbbf24; /* Akzent beim Überfahren mit der Maus */
-  --farbe-auf-akzent: #0f172a;   /* Textfarbe AUF Akzent-Flächen (Buttons) */
+  --bg: #121414;          /* Seitenhintergrund */
+  --bg-2: #0b0c0c;       /* dunkle Flächen (Footer, abgesetzte Abschnitte) */
+  --ink: #e6e4df;        /* Textfarbe */
+  --dim: #9a9a96;        /* gedämpfter Text */
+  --accent: #34c49a;     /* Akzent für Buttons/Links */
+  --accent-ink: #34c49a; /* Akzent als Textfarbe auf hellen Flächen (ausreichend Kontrast) */
+  --on-accent: #0b1c16;  /* Textfarbe AUF Akzent-Flächen */
+  --light: #e7e4dd;      /* helle Flächen (Kontakt, Karten) */
+  --light-ink: #151716;  /* Textfarbe auf hellen Flächen */
+  --display: "Italiana", "Didot", "Bodoni 72", serif;
+  --sans: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  --pad: clamp(16px, 2.9vw, 42px);
+  --head: 80px;
+  --sub: 48px;           /* Höhe des Sub-Menüs auf den Bereichs-Startseiten */
+  --ease: cubic-bezier(.22, .9, .3, 1);
 }
 
-/* Weihnachtsbeleuchtung: Gold/Amber auf Dunkelblau */
+/* Weihnachtsbeleuchtung: Gold auf Nachtblau */
 [data-bereich="weihnachten"] {
-  --farbe-grund: #0b1d3a;
-  --farbe-grund-hell: #13294f;
-  --farbe-akzent: #f5b301;
-  --farbe-akzent-hover: #ffcd3c;
-  --farbe-auf-akzent: #0b1d3a;
+  --bg: #0b1226;
+  --bg-2: #070c1a;
+  --accent: #f5b301;
+  --accent-ink: #8a6500;
+  --on-accent: #1a1300;
 }
 
-/* Werbetechnik: Sky-Blau auf Anthrazit/Slate */
+/* Werbetechnik: Himmelblau auf Anthrazit */
 [data-bereich="werbetechnik"] {
-  --farbe-grund: #1f2328;
-  --farbe-grund-hell: #2d333b;
-  --farbe-akzent: #38bdf8;
-  --farbe-akzent-hover: #7dd3fc;
-  --farbe-auf-akzent: #0c1a24;
+  --bg: #16191d;
+  --bg-2: #0e1013;
+  --accent: #38bdf8;
+  --accent-ink: #0b6a96;
+  --on-accent: #07202e;
 }
 
-/* --- 2. Farben als Tailwind-Klassen verfügbar machen ------------------------
-   (Nicht ändern – das verbindet die Variablen oben mit den Klassennamen.) */
-@theme inline {
-  --color-grund: var(--farbe-grund);
-  --color-grund-hell: var(--farbe-grund-hell);
-  --color-akzent: var(--farbe-akzent);
-  --color-akzent-hover: var(--farbe-akzent-hover);
-  --color-auf-akzent: var(--farbe-auf-akzent);
-}
-
-/* --- 3. Schrift: System-Schriften (keine externen Fonts → DSGVO-konform) ---- */
+/* --- 2. Schrift: selbst gehostet (public/fonts/) → keine externen Anfragen --- */
 @theme {
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, sans-serif;
-}
-
-/* --- 4. Grundeinstellungen -------------------------------------------------- */
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-  }
-
-  /* Abschnitte mit id (Anker-Ziele) nicht unter dem Sticky-Header verstecken.
-     Wert = Höhe Header + Sub-Menü (ca. 4rem + 3rem) + etwas Luft. */
-  section[id],
-  [data-anker] {
-    scroll-margin-top: 8rem;
-  }
-
-  /* Lange deutsche Wörter (z. B. "Weihnachtsbeleuchtung") auf dem Handy
-     automatisch trennen statt über den Rand laufen lassen */
-  h1,
-  h2,
-  h3 {
-    hyphens: auto;
-    overflow-wrap: break-word;
-  }
-
-  /* Sichtbarer Fokus-Rahmen für Tastatur-Nutzer */
-  :focus-visible {
-    outline: 3px solid var(--farbe-akzent);
-    outline-offset: 2px;
-  }
-}
-
-/* --- 5. Wiederverwendbare Bausteine ---------------------------------------- */
-@layer components {
-  /* Haupt-Button in Akzentfarbe */
-  .btn-akzent {
-    @apply inline-flex items-center gap-2 rounded-full bg-akzent px-5 py-2.5 font-semibold text-auf-akzent transition-colors hover:bg-akzent-hover;
-  }
-
-  /* Fließtext-Bereich der Unterseiten */
-  .inhalt {
-    @apply mx-auto max-w-3xl px-4 py-12 sm:py-16;
-  }
-  .inhalt h1 {
-    @apply mb-6 text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl;
-  }
-  .inhalt h2 {
-    @apply mt-10 mb-3 text-2xl font-semibold text-slate-900;
-  }
-  .inhalt p {
-    @apply mb-4 leading-relaxed text-slate-700;
-  }
-  .inhalt ul {
-    @apply mb-4 list-disc space-y-1 pl-6 text-slate-700;
-  }
+  --font-sans: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Italiana", "Didot", "Bodoni 72", serif;
 }

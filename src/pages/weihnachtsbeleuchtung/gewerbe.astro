@@ -1,31 +1,10 @@
 ---
-// Weihnachtsbeleuchtung – Detailseite "Gewerbe"
-import LayoutWeihnachten from '../../layouts/LayoutWeihnachten.astro';
+// Weihnachtsbeleuchtung – Unterseite. Inhalte: src/content/pages/weihnachten.json → "gewerbe".
+import LayoutSeite from '../../layouts/LayoutSeite.astro';
+import Textseite from '../../components/Textseite.astro';
+import { weihnachten } from '../../lib/content';
 ---
 
-<LayoutWeihnachten
-  title="Weihnachtsbeleuchtung für Gewerbe & Unternehmen"
-  description="Festliche Beleuchtung für Einkaufszentren, Hotels, Autohäuser und Firmengebäude – individuell geplant, montiert und gewartet."
->
-  <article class="inhalt">
-    <h1>Weihnachtsbeleuchtung für Gewerbe</h1>
-    <p>
-      Platzhaltertext: Ob Einkaufszentrum, Hotel, Autohaus oder Firmensitz – mit der passenden Beleuchtung wird Ihr
-      Gebäude in der Adventszeit zum Blickfang.
-    </p>
-
-    <h2>Typische Projekte</h2>
-    <ul>
-      <li>Platzhalter: Fassaden- und Dachbeleuchtung</li>
-      <li>Platzhalter: Dekoration von Eingangsbereichen</li>
-      <li>Platzhalter: Weihnachtsbäume für Innenhöfe und Foyers</li>
-    </ul>
-
-    <h2>Rundum-Service</h2>
-    <p>Platzhaltertext: Wir kümmern uns um alles – von der Planung über die Montage bis zur Einlagerung nach der Saison.</p>
-
-    <p class="mt-8">
-      <a href="/kontakt/?bereich=weihnachten" class="btn-akzent">Unverbindlich anfragen →</a>
-    </p>
-  </article>
-</LayoutWeihnachten>
+<LayoutSeite seo={weihnachten.gewerbe.seo} bereich="weihnachten">
+  <Textseite inhalt={weihnachten.gewerbe} />
+</LayoutSeite>

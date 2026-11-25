@@ -1,53 +1,54 @@
 ---
 // =============================================================================
 // LayoutBase – Grundgerüst für ALLE Seiten (<html>, <head>, SEO-Meta-Tags).
-// Wird nicht direkt von Seiten benutzt, sondern von den anderen Layouts:
-//   LayoutWeiche, LayoutWeihnachten, LayoutWerbung, LayoutNeutral.
+// Wird nicht direkt von Seiten benutzt, sondern von LayoutWeiche und LayoutSeite.
+// Texte (Titel, Beschreibung) kommen von der Seite aus src/content/.
 // =============================================================================
 import '../styles/global.css';
 import { firma } from '../config/firma';
+import { site, type Seo } from '../lib/content';
 
 interface Props {
-  /** Seitentitel (erscheint im Browser-Tab und bei Google). */
-  title: string;
-  /** Kurzbeschreibung der Seite für Google (ca. 120–160 Zeichen). */
-  description: string;
+  seo: Seo;
   /** Bereich der Seite – steuert die Farben (siehe src/styles/global.css). */
   bereich?: 'weihnachten' | 'werbetechnik';
 }
 
-const { title, description, bereich } = Astro.props;
+const { seo, bereich } = Astro.props;
 
-// Vollständiger Titel, z. B. "Gewerbe | Musterfirma GmbH"
-const vollerTitel = title.includes(firma.name) ? title : `${title} | ${firma.name}`;
+// Vollständiger Titel: "<Seitentitel> | <Firmenname>"
+const vollerTitel = seo.title.includes(firma.name) ? seo.title : `${seo.title} | ${firma.name}`;
 
 // Canonical-URL = Domain aus astro.config.mjs + aktueller Pfad
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="de">
+<html lang={site.lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{vollerTitel}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={seo.description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Open Graph (Vorschau beim Teilen in sozialen Netzwerken / Messengern) -->
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale" content={site.locale} />
     <meta property="og:site_name" content={firma.name} />
     <meta property="og:title" content={vollerTitel} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={seo.description} />
     <meta property="og:url" content={canonical} />
 
     <!-- Platz für seitenspezifische Ergänzungen, z. B. strukturierte Daten -->
     <slot name="head" />
   </head>
-  <body data-bereich={bereich} class="min-h-screen bg-white font-sans text-slate-800 antialiased">
+  <body data-bereich={bereich}>
     <slot />
+    <script>
+      import '../scripts/site.ts';
+    </script>
   </body>
 </html>

@@ -1,0 +1,55 @@
+---
+// =============================================================================
+// Textseite – Seitenrumpf für Unterseiten, Über uns, Impressum, Datenschutz, 404.
+// Alle Inhalte kommen als Objekt aus src/content/ (Typ "Textseite" in src/lib/content.ts):
+//   title, lead, sections[{ heading, paragraphs, lines, list, linkList }], actions[]
+// =============================================================================
+import type { Textseite } from '../lib/content';
+
+interface Props {
+  inhalt: Textseite;
+  /** Überschrift und Buttons zentrieren (z. B. 404) */
+  zentriert?: boolean;
+}
+
+const { inhalt, zentriert = false } = Astro.props;
+---
+
+<article class:list={['page', { center: zentriert }]}>
+  <div class="page-in">
+    <h1 data-in="down">{inhalt.title}</h1>
+    {inhalt.lead && <p class="lead-text" data-in="up">{inhalt.lead}</p>}
+
+    {
+      inhalt.sections?.map((s) => (
+        <section class="page-sec">
+          <h2>{s.heading}</h2>
+          {s.paragraphs?.map((p) => <p>{p}</p>)}
+          {s.lines && <p>{s.lines.map((zeile, i) => (<>{i > 0 && <br />}{zeile}</>))}</p>}
+          {s.list && <ul>{s.list.map((punkt) => <li>{punkt}</li>)}</ul>}
+          {s.linkList && (
+            <ul>
+              {s.linkList.map((l) => (
+                <li><a href={l.href}>{l.label}</a>{' '}{l.text}</li>
+              ))}
+            </ul>
+          )}
+        </section>
+      ))
+    }
+
+    {
+      inhalt.actions && (
+        <p class="actions">
+          {inhalt.actions.map((a) =>
+            a.style === 'link' ? (
+              <a href={a.href}>{a.label}</a>
+            ) : (
+              <a class="btn" href={a.href}>{a.label} <span class="arr" aria-hidden="true">→</span></a>
+            ),
+          )}
+        </p>
+      )
+    }
+  </div>
+</article>

@@ -1,50 +1,44 @@
 ---
 // =============================================================================
 // Footer – gemeinsamer Fuß für alle Seiten (außer der Startseite).
-// Firmendaten kommen aus src/config/firma.ts.
+// Texte und Links: src/content/site.json → "footer". Firmendaten: src/config/firma.ts.
 // =============================================================================
 import { firma, telLink } from '../config/firma';
+import { site } from '../lib/content';
 
-const bereichsLinks = [
-  { text: 'Weihnachtsbeleuchtung', href: '/weihnachtsbeleuchtung/' },
-  { text: 'Werbetechnik', href: '/werbetechnik/' },
-];
-
-const infoLinks = [
-  { text: 'Über uns', href: '/ueber-uns/' },
-  { text: 'Kontakt', href: '/kontakt/' },
-  { text: 'Impressum', href: '/impressum/' },
-  { text: 'Datenschutz', href: '/datenschutz/' },
-];
-
-const jahr = new Date().getFullYear();
+const f = site.footer;
 ---
 
-<footer class="bg-grund text-sm text-white/80">
-  <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-3">
+<footer class="site-footer">
+  <div class="f-grid">
     <div>
-      <p class="mb-2 font-semibold text-white">{firma.name}</p>
-      <address class="not-italic leading-relaxed">
-        {firma.adresse.strasse}<br />
-        {firma.adresse.plz} {firma.adresse.ort}<br />
-        Tel. <a href={telLink(firma.telefon)} class="hover:text-akzent">{firma.telefon}</a><br />
-        <a href={`mailto:${firma.email}`} class="hover:text-akzent">{firma.email}</a>
-      </address>
+      <a class="logo" href="/" aria-label={site.navigation.neutral.homeLabel.replace('{kurzname}', firma.kurzname)}>
+        <img src="/favicon.svg" alt="" width="34" height="34" />
+        <span class="name">{firma.kurzname}</span>
+      </a>
+      <p class="f-about">{f.about}</p>
     </div>
 
-    <nav aria-label="Bereiche">
-      <p class="mb-2 font-semibold text-white">Unsere Bereiche</p>
-      <ul class="space-y-1">
-        {bereichsLinks.map((l) => <li><a href={l.href} class="hover:text-akzent">{l.text}</a></li>)}
-      </ul>
+    <nav aria-label={f.areasLabel}>
+      <h2>{f.areasHeading}</h2>
+      <ul>{f.areas.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
     </nav>
 
-    <nav aria-label="Informationen">
-      <p class="mb-2 font-semibold text-white">Informationen</p>
-      <ul class="space-y-1">
-        {infoLinks.map((l) => <li><a href={l.href} class="hover:text-akzent">{l.text}</a></li>)}
-      </ul>
+    <nav aria-label={f.infoLabel}>
+      <h2>{f.infoHeading}</h2>
+      <ul>{f.info.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
     </nav>
+
+    <div class="f-contact">
+      <h2>{f.contactHeading}</h2>
+      <address>
+        {firma.name}<br />
+        {firma.adresse.strasse}<br />
+        {firma.adresse.plz} {firma.adresse.ort}
+      </address>
+      <a class="tel" href={telLink(firma.telefon)}>{f.phonePrefix} {firma.telefon}</a>
+      <a href={`mailto:${firma.email}`}>{firma.email}</a>
+    </div>
   </div>
-  <p class="border-t border-white/10 py-4 text-center text-xs text-white/60">© {jahr} {firma.name}</p>
+  <p class="f-bottom">{f.copyright}</p>
 </footer>
