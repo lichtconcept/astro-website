@@ -6,31 +6,31 @@
 // =============================================================================
 
 export const firma = {
-  name: 'Musterfirma GmbH',
-  kurzname: 'Musterfirma',
+  name: 'Lichtconcept GmbH',
+  kurzname: 'Lichtconcept',
 
   adresse: {
-    strasse: 'Musterstraße 1',
-    plz: '12345',
-    ort: 'Musterstadt',
+    strasse: 'Am Entenfeld 10',
+    plz: '83236',
+    ort: 'Übersee',
     land: 'DE',
   },
 
-  telefon: '+49 123 456789-0',
-  email: 'info@ihre-firma.de',
+  telefon: '+49 8642 595209-0',
+  email: 'mail@lichtconcept.net',
 
   // Ansprechpartner je Bereich (Kontaktseite)
   weihnachten: {
     titel: 'Weihnachtsbeleuchtung',
-    ansprechpartner: 'Max Mustermann',
-    telefon: '+49 123 456789-10',
-    email: 'weihnachten@ihre-firma.de',
+    ansprechpartner: 'Elke Kroner und Anna Neuhauser',
+    telefon: '+49 8642 595209-0',
+    email: 'mail@lichtconcept.net',
   },
   werbetechnik: {
     titel: 'Werbetechnik',
-    ansprechpartner: 'Erika Musterfrau',
-    telefon: '+49 123 456789-20',
-    email: 'werbetechnik@ihre-firma.de',
+    ansprechpartner: 'Joachim Schlund',
+    telefon: '+49 8642 595209-5',
+    email: 'werbetechnik@lichtconcept.net',
   },
 } as const;
 
