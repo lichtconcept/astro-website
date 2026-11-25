@@ -4,7 +4,7 @@ Guidance for coding agents working in this repository. [README.md](README.md) (G
 
 ## Project
 
-Static website of Lichtconcept GmbH with two business areas: Weihnachtsbeleuchtung, Christmas lighting (`/weihnachtsbeleuchtung/`), and Werbetechnik, sign making (`/werbetechnik/`). Astro 7, Tailwind CSS v4, TypeScript. No CMS, no database, no backend. The visible site is German only.
+Static website of lichtconcept.GmbH with two business areas: Weihnachtsbeleuchtung, Christmas lighting (`/weihnachtsbeleuchtung/`), and Werbetechnik, sign making (`/werbetechnik/`). Astro 7, Tailwind CSS v4, TypeScript. No CMS, no database, no backend. The visible site is German only.
 
 ## Commands
 

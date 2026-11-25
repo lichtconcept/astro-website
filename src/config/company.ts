@@ -5,8 +5,8 @@
 // =============================================================================
 
 export const company = {
-  name: 'Lichtconcept GmbH',
-  shortName: 'Lichtconcept',
+  name: 'lichtconcept.GmbH',
+  shortName: 'lichtconcept',
 
   address: {
     street: 'Am Entenfeld 10',
