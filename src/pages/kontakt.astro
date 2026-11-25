@@ -3,7 +3,7 @@
 // Kontakt
 // Zwei Kontaktblöcke (je Bereich). Kommt man über einen Anfrage-Button
 // (z. B. /kontakt/?bereich=weihnachten), wird der passende Block hervorgehoben.
-// Texte: src/content/pages/contact.json → "seo". Kontaktdaten: src/config/company.ts.
+// Texte: src/content/pages/general.json → "contact". Kontaktdaten: src/config/company.ts.
 // =============================================================================
 import LayoutPage from '../layouts/LayoutPage.astro';
 import { company, telHref } from '../config/company';
@@ -13,37 +13,39 @@ const contact = general.contact;
 const cards = contact.blocks.map((block) => ({ ...block, ...company[block.area] }));
 ---
 
-<LayoutPage seo={contact.seo} solidHeader>
-  <article class="contact">
-    <h1 data-in="down">{contact.title}</h1>
-    <p class="lead" data-in="up">{contact.lead}</p>
+<LayoutPage seo={contact.seo}>
+  <article class="page contact">
+    <div class="page-in">
+      <h1 data-in="down">{contact.title}</h1>
+      <p class="lead-text" data-in="up">{contact.lead}</p>
 
-    <div class="cards">
-      {
-        cards.map((card) => (
-          <section id={card.area} data-area={card.area} data-contact-card={card.area} class="card" data-in="up">
-            <p class="eyebrow">{contact.labels.area}</p>
-            <h2>{card.title}</h2>
-            <dl>
-              <dt>{contact.labels.person}</dt>
-              <dd>{card.contactPerson}</dd>
-              <dt>{contact.labels.phone}</dt>
-              <dd><a href={telHref(card.phone)}>{card.phone}</a></dd>
-              <dt>{contact.labels.email}</dt>
-              <dd><a href={`mailto:${card.email}`}>{card.email}</a></dd>
-            </dl>
-            <a href={`mailto:${card.email}?subject=${encodeURIComponent(card.subject)}`} class="btn">
-              {contact.labels.write} <span class="arr" aria-hidden="true">→</span>
-            </a>
-          </section>
-        ))
-      }
+      <div class="cards">
+        {
+          cards.map((card) => (
+            <section id={card.area} data-area={card.area} data-contact-card={card.area} class="card" data-in="up">
+              <p class="eyebrow">{contact.labels.area}</p>
+              <h2>{card.title}</h2>
+              <dl>
+                <dt>{contact.labels.person}</dt>
+                <dd>{card.contactPerson}</dd>
+                <dt>{contact.labels.phone}</dt>
+                <dd><a href={telHref(card.phone)}>{card.phone}</a></dd>
+                <dt>{contact.labels.email}</dt>
+                <dd><a href={`mailto:${card.email}`}>{card.email}</a></dd>
+              </dl>
+              <a href={`mailto:${card.email}?subject=${encodeURIComponent(card.subject)}`} class="btn">
+                {contact.labels.write} <span class="arr" aria-hidden="true">→</span>
+              </a>
+            </section>
+          ))
+        }
+      </div>
+
+      <p class="general">
+        {contact.labels.general}: {company.name}, {company.address.street}, {company.address.zip} {company.address.city} · {contact.labels.phoneShort}{' '}
+        <a href={telHref(company.phone)}>{company.phone}</a>
+      </p>
     </div>
-
-    <p class="general">
-      {contact.labels.general}: {company.name}, {company.address.street}, {company.address.zip} {company.address.city} · {contact.labels.phoneShort}{' '}
-      <a href={telHref(company.phone)}>{company.phone}</a>
-    </p>
   </article>
 
   <!-- Passenden Kontaktblock hervorheben, z. B. bei /kontakt/?bereich=werbetechnik -->

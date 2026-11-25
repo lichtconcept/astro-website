@@ -9,11 +9,9 @@ import { site, type Area } from '../lib/content';
 
 interface Props {
   area?: Area;
-  /** Kopfzeile von Anfang an dunkel (für Seiten mit hellem Hintergrund, z. B. Kontakt) */
-  solid?: boolean;
 }
 
-const { area, solid = false } = Astro.props;
+const { area } = Astro.props;
 const nav = site.navigation[area ?? 'neutral'];
 
 // Menü in zwei Hälften teilen: links und rechts vom Logo
@@ -26,7 +24,7 @@ const currentPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : Astr
 const ariaCurrent = (href: string) => (href === currentPath ? 'page' : undefined);
 ---
 
-<header class:list={['top-bar', { always: solid }]} data-top-bar>
+<header class="top-bar" data-top-bar>
   <nav class="nav-l" aria-label={nav.navLabel}>
     {leftItems.map((p) => <a href={p.href} aria-current={ariaCurrent(p.href)}>{p.label}</a>)}
   </nav>

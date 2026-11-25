@@ -23,7 +23,7 @@
   --accent: #34c49a;     /* Akzent für Buttons/Links */
   --accent-ink: #34c49a; /* Akzent als Textfarbe auf hellen Flächen (ausreichend Kontrast) */
   --on-accent: #0b1c16;  /* Textfarbe AUF Akzent-Flächen */
-  --light: #e7e4dd;      /* helle Flächen (Kontakt, Karten) */
+  --light: #e7e4dd;      /* helle Flächen (Karten) */
   --light-ink: #151716;  /* Textfarbe auf hellen Flächen */
   --display: "Italiana", "Didot", "Bodoni 72", serif;
   --sans: "DM Sans", "Helvetica Neue", Arial, sans-serif;

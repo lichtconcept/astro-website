@@ -14,16 +14,14 @@ import type { Area, Seo } from '../lib/content';
 interface Props {
   seo: Seo;
   area?: Area;
-  /** Kopfzeile von Anfang an dunkel (Seiten mit hellem Hintergrund) */
-  solidHeader?: boolean;
 }
 
-const { seo, area, solidHeader = false } = Astro.props;
+const { seo, area } = Astro.props;
 ---
 
 <LayoutBase seo={seo} area={area}>
   <slot name="head" slot="head" />
-  <SiteHeader area={area} solid={solidHeader} />
+  <SiteHeader area={area} />
   <main>
     <slot />
   </main>
