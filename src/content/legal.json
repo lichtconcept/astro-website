@@ -10,8 +10,8 @@
       { "heading": "Angaben gemäß § 5 DDG", "lines": ["{name}", "{street}", "{zip} {city}"] },
       { "heading": "Vertreten durch", "lines": ["{managingDirectorTitle}: {managingDirector}"] },
       { "heading": "Kontakt", "lines": ["Telefon: {phone}", "E-Mail: {email}"] },
-      { "heading": "Registereintrag", "paragraphs": ["Platzhalter: Registergericht, Registernummer"] },
-      { "heading": "Umsatzsteuer-ID", "paragraphs": ["Platzhalter: DE000000000"] }
+      { "heading": "Registereintrag", "lines": ["Registergericht: {registerCourt}", "Registernummer: {registerNumber}"] },
+      { "heading": "Umsatzsteuer-ID", "paragraphs": ["{vatId}"] }
     ]
   },
   "privacy": {

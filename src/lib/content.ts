@@ -142,6 +142,9 @@ const values: Record<string, string> = {
   email: company.email,
   managingDirectorTitle: company.managingDirector.title,
   managingDirector: company.managingDirector.name,
+  registerCourt: company.register.court,
+  registerNumber: company.register.number,
+  vatId: company.vatId,
   year: String(new Date().getFullYear()),
 };
 

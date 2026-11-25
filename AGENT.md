@@ -83,7 +83,7 @@ scripts/                 check-site.mjs, check-content.mjs
 ## Content
 
 - Import content from `src/lib/content.ts`, never from the JSON files directly.
-- Texts may use `{name}`, `{shortName}`, `{street}`, `{zip}`, `{city}`, `{phone}`, `{email}`, `{managingDirectorTitle}`, `{managingDirector}` and `{year}`. An unknown placeholder fails the build.
+- Texts may use `{name}`, `{shortName}`, `{street}`, `{zip}`, `{city}`, `{phone}`, `{email}`, `{managingDirectorTitle}`, `{managingDirector}`, `{registerCourt}`, `{registerNumber}`, `{vatId}` and `{year}`. An unknown placeholder fails the build.
 - Image references are `folder/file-name` without extension, for example `weihnachten/lichttor-ortseingang`.
 - Every image used in a slider, card, section or gallery needs an entry in `images.json`; a missing file or entry fails the build. Decorative start-page posters need none.
 - Galleries show all images of a folder, sorted by file name.

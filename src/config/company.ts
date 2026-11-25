@@ -24,6 +24,13 @@ export const company = {
     name: 'Peter Poremba',
   },
 
+  // Registereintrag und Umsatzsteuer (Impressum)
+  register: {
+    court: 'Traunstein',
+    number: 'HRB 18524',
+  },
+  vatId: 'DE 261 176 673',
+
   // Ansprechpartner je Bereich (Kontaktseite)
   weihnachten: {
     title: 'Weihnachtsbeleuchtung',
