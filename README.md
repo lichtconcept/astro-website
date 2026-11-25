@@ -162,4 +162,4 @@ scripts/check-site.mjs     automatischer Qualitäts-Check für dist/
 JavaScript im Browser (`src/scripts/site.ts` plus drei kleine Skripte): Header beim Scrollen, Slider, Einblenden beim Scrollen, Großansicht der Galerie, Hervorhebung auf der Kontaktseite, Abschalten der Videos bei „Bewegung reduzieren“. Alle Inhalte sind auch ohne JavaScript lesbar.
 
 ### Design-Vorlage
-Das Aussehen (Schriften, Slider, Header, Karten) ist vom MIT-lizenzierten Astro-Template [kavelle](https://github.com/formgong-hq/kavelle-astro) (© 2026 Formgong) übernommen und angepasst. Die Schriften DM Sans und Italiana (SIL OFL 1.1) liegen selbst gehostet in `public/fonts/`, die Lizenztexte daneben.
+Das Aussehen (Schriften, Slider, Header, Karten) ist vom MIT-lizenzierten Astro-Template [kavelle](https://github.com/formgong-hq/kavelle-astro) (© 2026 Formgong) übernommen und angepasst. Der Lizenztext liegt in [`public/licenses/kavelle-MIT.txt`](public/licenses/kavelle-MIT.txt) und wird mit der Website ausgeliefert – bitte nicht entfernen. Die Schriften DM Sans und Italiana (SIL OFL 1.1) liegen selbst gehostet in `public/fonts/`, die Lizenztexte daneben.
