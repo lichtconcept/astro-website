@@ -28,6 +28,31 @@
     },
     "sections": [
       {
+        "id": "leistungen",
+        "heading": "Unsere Leistungen",
+        "text": "Platzhaltertext: Gestaltung, Produktion und Montage aus einer Hand – wählen Sie, was Sie brauchen.",
+        "cards": [
+          {
+            "title": "Lichtwerbung",
+            "text": "Leuchtbuchstaben, Leuchtkästen und Pylone.",
+            "href": "/werbetechnik/lichtwerbung/",
+            "image": "werbetechnik/leuchtreklame-fassade"
+          },
+          {
+            "title": "Fahrzeug\u00adbeschriftung",
+            "text": "Einzelne Firmenwagen und ganze Flotten.",
+            "href": "/werbetechnik/fahrzeugbeschriftung/",
+            "image": "werbetechnik/fahrzeugbeschriftung-transporter"
+          },
+          {
+            "title": "Beschilderung",
+            "text": "Firmenschilder, Bauschilder und Schaufenster.",
+            "href": "/werbetechnik/#beschilderung",
+            "image": "werbetechnik/schaufensterbeschriftung"
+          }
+        ]
+      },
+      {
         "id": "lichtwerbung",
         "heading": "Lichtwerbung",
         "text": "Platzhaltertext: Leuchtbuchstaben, Leuchtkästen und Pylone in LED-Technik – energiesparend, langlebig und auch nachts gut sichtbar.",
