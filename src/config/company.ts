@@ -52,7 +52,7 @@ export function telHref(phone: string): string {
 }
 
 /** JSON-LD "LocalBusiness" für Suchmaschinen (Startseite + Über uns). */
-export function localBusinessJsonLd(site: URL | undefined) {
+export function localBusinessJsonLd(site: URL | undefined, description: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -67,7 +67,6 @@ export function localBusinessJsonLd(site: URL | undefined) {
       addressLocality: company.address.city,
       addressCountry: company.address.country,
     },
-    description:
-      'Professionelle Weihnachtsbeleuchtung für Städte, Kommunen und Gewerbe sowie Werbetechnik: Lichtwerbung, Fahrzeugbeschriftung und Beschilderung.',
+    description,
   };
 }

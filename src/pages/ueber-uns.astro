@@ -2,10 +2,10 @@
 // Über uns. Inhalte: src/content/pages/general.json → "about".
 import LayoutPage from '../layouts/LayoutPage.astro';
 import TextPage from '../components/TextPage.astro';
-import { general } from '../lib/content';
+import { general, home } from '../lib/content';
 import { localBusinessJsonLd } from '../config/company';
 
-const jsonLd = JSON.stringify(localBusinessJsonLd(Astro.site));
+const jsonLd = JSON.stringify(localBusinessJsonLd(Astro.site, home.seo.description));
 ---
 
 <LayoutPage seo={general.about.seo}>

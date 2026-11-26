@@ -43,7 +43,7 @@ const entries = await Promise.all(
   }),
 );
 
-const jsonLd = JSON.stringify(localBusinessJsonLd(Astro.site));
+const jsonLd = JSON.stringify(localBusinessJsonLd(Astro.site, home.seo.description));
 ---
 
 <LayoutHome seo={home.seo}>
