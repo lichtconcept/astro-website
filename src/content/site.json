@@ -92,6 +92,8 @@
     ],
     "contactHeading": "Kontakt",
     "phonePrefix": "Tel.",
+    "socialLabel": "Soziale Netzwerke",
+    "socialNames": { "instagram": "Instagram", "pinterest": "Pinterest", "whatsapp": "WhatsApp" },
     "copyright": "© {year} {name}"
   }
 }

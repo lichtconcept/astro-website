@@ -5,6 +5,7 @@
 // =============================================================================
 import { company, telHref } from '../config/company';
 import { site } from '../lib/content';
+import SocialLinks from './SocialLinks.astro';
 
 const footer = site.footer;
 ---
@@ -38,6 +39,7 @@ const footer = site.footer;
       </address>
       <a class="tel" href={telHref(company.phone)}>{footer.phonePrefix} {company.phone}</a>
       <a href={`mailto:${company.email}`}>{company.email}</a>
+      <SocialLinks />
     </div>
   </div>
   <p class="f-bottom">{footer.copyright}</p>

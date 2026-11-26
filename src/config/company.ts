@@ -4,6 +4,8 @@
 // und in den Texten aus src/content/ (Platzhalter wie {name} oder {city}).
 // =============================================================================
 
+export type SocialNetwork = 'instagram' | 'pinterest' | 'whatsapp';
+
 export const company = {
   name: 'lichtconcept.GmbH',
   shortName: 'lichtconcept',
@@ -27,6 +29,15 @@ export const company = {
     number: 'HRB 18524',
   },
   vatId: 'DE 261 176 673',
+
+  // Profile in sozialen Netzwerken (Symbole im Footer). Vollständige Adresse mit
+  // https:// eintragen, WhatsApp als https://wa.me/49…; leer = kein Symbol.
+  // Wer hier etwas einträgt, muss es in der Datenschutzerklärung erwähnen.
+  social: {
+    instagram: '',
+    pinterest: '',
+    whatsapp: '',
+  } as Record<SocialNetwork, string>,
 
   // Ansprechpartner je Bereich (Kontaktseite)
   weihnachten: {

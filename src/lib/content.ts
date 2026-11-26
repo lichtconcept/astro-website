@@ -6,7 +6,7 @@
 //   Firmendaten aus src/config/company.ts gefüllt (eine Quelle für Firmendaten).
 // - Die Typen unten sorgen dafür, dass `npm run check` fehlende Felder meldet.
 // =============================================================================
-import { company } from '../config/company';
+import { company, type SocialNetwork } from '../config/company';
 import siteJson from '../content/site.json';
 import imagesJson from '../content/images.json';
 import homeJson from '../content/pages/home.json';
@@ -61,6 +61,8 @@ export interface Site {
     info: Link[];
     contactHeading: string;
     phonePrefix: string;
+    socialLabel: string;
+    socialNames: Record<SocialNetwork, string>;
     copyright: string;
   };
 }

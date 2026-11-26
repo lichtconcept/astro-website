@@ -1,0 +1,46 @@
+---
+// =============================================================================
+// SocialLinks – runde Symbole zu den Profilen in sozialen Netzwerken (kavelle,
+// MIT-Lizenz). Reine Links, es wird nichts von fremden Servern geladen.
+// Adressen: src/config/company.ts → "social" (leer = kein Symbol).
+// Beschriftungen: src/content/site.json → "footer".
+// =============================================================================
+import { company, type SocialNetwork } from '../config/company';
+import { site } from '../lib/content';
+
+const networks = (Object.keys(company.social) as SocialNetwork[]).filter((network) => company.social[network]);
+---
+
+{
+  networks.length > 0 && (
+    <ul class="social" aria-label={site.footer.socialLabel}>
+      {networks.map((network) => (
+        <li>
+          <a href={company.social[network]} aria-label={site.footer.socialNames[network]} rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              {network === 'instagram' && (
+                <>
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" />
+                </>
+              )}
+              {network === 'pinterest' && (
+                <>
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M11 8.5c3-1 5.5.6 5 3.4-.5 2.6-3.6 3.4-4.6 1.6M11.5 9.5 9 21" />
+                </>
+              )}
+              {network === 'whatsapp' && (
+                <>
+                  <path d="M4 20l1.4-4A8 8 0 1 1 8 18.6z" />
+                  <path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 1c-1-.5-2-1.5-2.5-2.5l1-1-1-2z" />
+                </>
+              )}
+            </svg>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}
