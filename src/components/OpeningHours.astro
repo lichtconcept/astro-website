@@ -8,10 +8,13 @@ import { company } from '../config/company';
 import { site } from '../lib/content';
 
 const labels = site.labels.openingHours;
-const lines = company.openingHours.map(({ from, to, opens, closes }) => {
+// Einträge mit denselben Tagen (z. B. vor und nach der Mittagspause) in eine Zeile
+const timesByDays = new Map<string, string[]>();
+for (const { from, to, opens, closes } of company.openingHours) {
   const days = to ? `${labels.days[from]} – ${labels.days[to]}` : labels.days[from];
-  return `${days}: ${opens} – ${closes} ${labels.timeSuffix}`;
-});
+  timesByDays.set(days, [...(timesByDays.get(days) ?? []), `${opens} – ${closes}`]);
+}
+const lines = [...timesByDays].map(([days, times]) => `${days}: ${times.join(` ${labels.and} `)} ${labels.timeSuffix}`);
 ---
 
 {

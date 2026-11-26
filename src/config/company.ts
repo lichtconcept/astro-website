@@ -51,7 +51,11 @@ export const company = {
 
   // Öffnungszeiten (Footer, Kontaktseite, strukturierte Daten); leer = nicht anzeigen.
   // Bei einer Mittagspause zwei Einträge für dieselben Tage anlegen.
-  openingHours: [] as OpeningPeriod[],
+  openingHours: [
+    { from: 'Monday', to: 'Thursday', opens: '08:00', closes: '12:00' },
+    { from: 'Monday', to: 'Thursday', opens: '13:00', closes: '17:00' },
+    { from: 'Friday', opens: '08:00', closes: '13:00' },
+  ] as OpeningPeriod[],
 
   // Profile in sozialen Netzwerken (Symbole im Footer). Vollständige Adresse mit
   // https:// eintragen, WhatsApp als https://wa.me/49…; leer = kein Symbol.

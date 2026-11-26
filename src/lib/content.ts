@@ -48,7 +48,7 @@ export interface Site {
     nextSlide: string;
     sectionsNav: string;
     gallery: { dialog: string; close: string };
-    openingHours: { heading: string; timeSuffix: string; days: Record<Weekday, string> };
+    openingHours: { heading: string; timeSuffix: string; and: string; days: Record<Weekday, string> };
   };
   navigation: Record<Area | 'neutral', NavigationArea>;
   startFooter: { label: string; links: Link[] };

@@ -16,6 +16,7 @@
     "openingHours": {
       "heading": "Öffnungszeiten",
       "timeSuffix": "Uhr",
+      "and": "&",
       "days": {
         "Monday": "Mo",
         "Tuesday": "Di",
