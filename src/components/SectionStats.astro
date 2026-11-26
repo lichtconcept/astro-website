@@ -1,0 +1,26 @@
+---
+// =============================================================================
+// SectionStats – Zahlenband (kavelle), z. B. auf "Über uns".
+// Inhalte: src/content/pages/general.json → "about.stats" (gedacht für vier Werte).
+// Reine Ganzzahlen zählen beim Einblenden hoch (src/scripts/site.ts), alles andere
+// bleibt unverändert stehen. Ohne JavaScript steht sofort der Endwert da.
+// =============================================================================
+import type { Stats } from '../lib/content';
+
+interface Props {
+  stats: Stats;
+}
+
+const { stats } = Astro.props;
+---
+
+<div class="nums" role="group" aria-label={stats.label} data-in="up">
+  {
+    stats.items.map((item) => (
+      <div>
+        <b data-count>{item.value}</b>
+        <span>{item.label}</span>
+      </div>
+    ))
+  }
+</div>

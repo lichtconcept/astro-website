@@ -84,6 +84,21 @@ if (slides.length) {
   show(0);
 }
 
+// Zahlen zählen beim Einblenden hoch (nur reine Ganzzahlen ohne führende Null)
+const countUp = (element: HTMLElement) => {
+  const text = element.textContent?.trim() ?? '';
+  if (!/^[1-9]\d*$/.test(text)) return;
+  const end = Number(text);
+  let start: number | undefined;
+  const step = (time: number) => {
+    start ??= time;
+    const progress = Math.min(1, (time - start) / 1400);
+    element.textContent = String(Math.round(end * (1 - (1 - progress) ** 3)));
+    if (progress < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+};
+
 // Einblenden beim Scrollen
 const revealElements = queryAll<HTMLElement>('[data-in]');
 if (!reducedMotion && 'IntersectionObserver' in window) {
@@ -93,6 +108,7 @@ if (!reducedMotion && 'IntersectionObserver' in window) {
         if (!e.isIntersecting) return;
         e.target.classList.add('in');
         observer.unobserve(e.target);
+        queryAll<HTMLElement>('[data-count]', e.target).forEach(countUp);
       }),
     { rootMargin: '0px 0px -12% 0px' },
   );

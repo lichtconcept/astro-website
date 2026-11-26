@@ -124,8 +124,15 @@ export interface Portrait {
   button?: Link;
 }
 
+/** Zahlenband auf "Über uns" */
+export interface Stats {
+  label: string;
+  items: { value: string; label: string }[];
+}
+
 export interface AboutPageContent extends TextPageContent {
   portrait?: Portrait;
+  stats?: Stats;
 }
 
 export interface ReferencePageContent {

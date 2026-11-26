@@ -16,6 +16,15 @@
       "signRole": "Platzhalter: Funktion",
       "button": { "label": "Ansprechpartner finden", "href": "/kontakt/" }
     },
+    "stats": {
+      "label": "Der Betrieb in Zahlen",
+      "items": [
+        { "value": "00", "label": "Platzhalter: Jahre Erfahrung" },
+        { "value": "00", "label": "Platzhalter: Projekte" },
+        { "value": "00", "label": "Platzhalter: Städte & Gemeinden" },
+        { "value": "00", "label": "Platzhalter: Menschen im Team" }
+      ]
+    },
     "sections": [
       {
         "heading": "Zwei Bereiche – ein Team",

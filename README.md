@@ -20,6 +20,7 @@ Kein CMS, keine Datenbank: Texte und Bilder liegen direkt in den Dateien. `npm r
 | **Links im Footer**                  | `src/content/site.json` → `footer` und `startFooter` (Mini-Footer der Startseite)           |
 | **Texte der Startseite (Split-Screen)** | `src/content/pages/home.json` → `halves`                                               |
 | **Porträt auf „Über uns“**           | `src/content/pages/general.json` → `about.portrait`; Foto in `src/assets/about/` (Hochformat 4:5). Block löschen = Porträt ausblenden |
+| **Zahlenband auf „Über uns“**        | `src/content/pages/general.json` → `about.stats` (vier Werte; ganze Zahlen ohne Tausenderpunkt zählen hoch). Block löschen = ausblenden |
 | **Logo / Favicon**                   | `public/favicon.svg` (wird auch als Logo im Header verwendet)                             |
 
 ### Bilder
@@ -151,7 +152,7 @@ src/layouts/LayoutBase     <html>/<head>, SEO-Tags – Basis aller Layouts
 src/layouts/LayoutHome     Startseite (ohne Header)
 src/layouts/LayoutPage     alle Seiten mit Header/Footer (Bereich steuert die Farben)
 src/components/            SiteHeader, Footer, SectionHero (Slider), SectionText, SectionGallery,
-                           SectionAbout, AreaHome, TextPage, ReferencePage, ReferenceGallery
+                           SectionAbout, SectionStats, AreaHome, TextPage, ReferencePage, ReferenceGallery
 src/content/               ALLE Texte als JSON (site, pages/*, legal, images)
 src/lib/content.ts         lädt und typisiert die JSON-Dateien, setzt Firmendaten ein
 src/lib/images.ts          löst Bildverweise aus den JSON-Dateien auf (src/assets/)
@@ -160,7 +161,7 @@ scripts/check-content.mjs  prüft: keine festen Texte in .astro-Dateien (npm run
 scripts/check-site.mjs     automatischer Qualitäts-Check für dist/
 ```
 
-JavaScript im Browser (`src/scripts/site.ts` plus drei kleine Skripte): Header beim Scrollen, Slider, Einblenden beim Scrollen, Großansicht der Galerie, Hervorhebung auf der Kontaktseite, Abschalten der Videos bei „Bewegung reduzieren“. Alle Inhalte sind auch ohne JavaScript lesbar.
+JavaScript im Browser (`src/scripts/site.ts` plus drei kleine Skripte): Header beim Scrollen, Slider, Einblenden beim Scrollen, Hochzählen der Zahlen, Großansicht der Galerie, Hervorhebung auf der Kontaktseite, Abschalten der Videos bei „Bewegung reduzieren“. Alle Inhalte sind auch ohne JavaScript lesbar.
 
 ### Design-Vorlage
 Das Aussehen (Schriften, Slider, Header, Karten) ist vom MIT-lizenzierten Astro-Template [kavelle](https://github.com/formgong-hq/kavelle-astro) (© 2026 Formgong) übernommen und angepasst. Der Lizenztext liegt in [`public/licenses/kavelle-MIT.txt`](public/licenses/kavelle-MIT.txt) und wird mit der Website ausgeliefert – bitte nicht entfernen. Die Schriften DM Sans und Italiana (SIL OFL 1.1) liegen selbst gehostet in `public/fonts/`, die Lizenztexte daneben.
