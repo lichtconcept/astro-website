@@ -17,7 +17,7 @@ function daysBetween(from: Weekday, to: Weekday): Weekday[] {
 }
 
 /** Ein Zeitfenster, z. B. { from: 'Monday', to: 'Friday', opens: '08:00', closes: '17:00' } */
-export interface OpeningHours {
+export interface OpeningPeriod {
   from: Weekday;
   /** weglassen, wenn das Zeitfenster nur für einen Tag gilt */
   to?: Weekday;
@@ -51,7 +51,7 @@ export const company = {
 
   // Öffnungszeiten (Footer, Kontaktseite, strukturierte Daten); leer = nicht anzeigen.
   // Bei einer Mittagspause zwei Einträge für dieselben Tage anlegen.
-  openingHours: [] as OpeningHours[],
+  openingHours: [] as OpeningPeriod[],
 
   // Profile in sozialen Netzwerken (Symbole im Footer). Vollständige Adresse mit
   // https:// eintragen, WhatsApp als https://wa.me/49…; leer = kein Symbol.

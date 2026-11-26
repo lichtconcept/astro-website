@@ -88,7 +88,7 @@
     },
     "outro": {
       "heading": "Werbetechnik anfragen",
-      "lines": ["Machen wir Sie", "sichtbar"],
+      "lines": ["Platzhalter: Machen wir Sie", "sichtbar"],
       "text": "Erzählen Sie uns von Ihrem Vorhaben – wir freuen uns auf Ihre Anfrage.",
       "button": { "label": "Projekt anfragen", "href": "/kontakt/?bereich=werbetechnik" }
     }

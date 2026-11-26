@@ -75,7 +75,7 @@
     },
     "outro": {
       "heading": "Weihnachtsbeleuchtung anfragen",
-      "lines": ["Bringen wir Ihre Stadt", "zum Strahlen"],
+      "lines": ["Platzhalter: Bringen wir Ihre Stadt", "zum Strahlen"],
       "text": "Erzählen Sie uns von Ihrem Vorhaben – wir freuen uns auf Ihre Anfrage.",
       "button": { "label": "Anfrage stellen", "href": "/kontakt/?bereich=weihnachten" }
     }

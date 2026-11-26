@@ -4,6 +4,7 @@
 // Inhalte: src/content/pages/general.json → "about.stats" (gedacht für vier Werte).
 // Reine Ganzzahlen zählen beim Einblenden hoch (src/scripts/site.ts), alles andere
 // bleibt unverändert stehen. Ohne JavaScript steht sofort der Endwert da.
+// Screenreader lesen nur die versteckte Kopie mit dem Endwert, nie Zwischenstände.
 // =============================================================================
 import type { Stats } from '../lib/content';
 
@@ -18,7 +19,8 @@ const { stats } = Astro.props;
   {
     stats.items.map((item) => (
       <div>
-        <b data-count>{item.value}</b>
+        <b data-count aria-hidden="true">{item.value}</b>
+        <span class="sr-only">{item.value}</span>
         <span>{item.label}</span>
       </div>
     ))
