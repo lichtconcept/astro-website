@@ -113,6 +113,22 @@ section { padding: 120px 0; }
 .svc a:hover .ph img { transform: scale(1.06); }
 .svc .top p { padding-right: 70px; }
 
+/* Referenzen-Vorschau: seitlich scrollbare Reihe */
+.row { display: flex; gap: 42px; margin-top: 56px; padding: 0 var(--pad); list-style: none; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--pad); }
+.row li { flex: 0 0 min(620px, 80vw); scroll-snap-align: start; }
+.row a { display: block; aspect-ratio: 4 / 3; }
+.row a::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0, 0, 0, .65), rgba(0, 0, 0, 0) 45%); }
+.row img { transition: transform 1.2s var(--ease); }
+.row a:hover img { transform: scale(1.05); }
+.row .label { position: absolute; z-index: 1; left: 30px; right: 70px; bottom: 26px; font: 400 26px/1.2 var(--display); color: #fff; hyphens: auto; }
+.row .arr { position: absolute; z-index: 1; right: 30px; bottom: 28px; color: var(--accent); transition: transform .5s var(--ease); }
+.row a:hover .arr { transform: translateX(6px); }
+.row a:focus-visible { outline-offset: -4px; }
+/* Nur mit JavaScript: ziehbar, deshalb ohne Rollbalken */
+.row.draggable { cursor: grab; scrollbar-width: none; }
+.row.draggable a { cursor: inherit; }
+.row.drag { cursor: grabbing; scroll-snap-type: none; user-select: none; }
+
 /* Referenzen: Raster */
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: 56px; padding: 0 var(--pad); }
 .grid figure { background: #1d2120; }
@@ -260,6 +276,9 @@ section { padding: 120px 0; }
   .page h1 { font-size: 38px; }
   .page h2 { font-size: 26px; }
   .page { padding-top: calc(var(--head) + 56px); }
+  .row { gap: 16px; }
+  .row .label { left: 18px; bottom: 16px; font-size: 22px; }
+  .row .arr { right: 18px; bottom: 16px; }
   .outro { padding: 80px 0; }
   .marquee { font-size: 40px; }
   .about { grid-template-columns: 1fr; gap: 32px; }

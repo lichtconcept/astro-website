@@ -86,7 +86,7 @@ scripts/                 check-site.mjs, check-content.mjs
 - Texts may use `{name}`, `{shortName}`, `{street}`, `{zip}`, `{city}`, `{phone}`, `{email}`, `{managingDirector}`, `{registerCourt}`, `{registerNumber}`, `{vatId}` and `{year}`. An unknown placeholder fails the build.
 - Image references are `folder/file-name` without extension, for example `weihnachten/lichttor-ortseingang`.
 - Every image used in a slider, card, section or gallery needs an entry in `images.json`; a missing file or entry fails the build. Decorative start-page posters need none.
-- Galleries show all images of a folder, sorted by file name.
+- Galleries show all images of a folder, sorted by file name. The preview row on the area start pages shows the first `gallery.count` images, with their `label` from `images.json` on the picture.
 
 **Missing JSON keys are not detected.** `content.ts` uses type assertions (`as Site`, `as never`), so a removed or misspelled key passes `check`, `build` and `check:site` and renders as empty text. After editing JSON structure, compare it with the interfaces in `content.ts` and look at the page.
 
@@ -121,7 +121,7 @@ scripts/                 check-site.mjs, check-content.mjs
 
 **Add a section to an area start page:** add it to `landing.sections` and, if it should appear in the sub-menu, to `landing.subnav` with `href` equal to `#<id>`.
 
-**Add a gallery image:** put the file in `src/assets/<area>/` and add its entry to `images.json`.
+**Add a gallery image:** put the file in `src/assets/<area>/` and add its entry (`alt`, `label`) to `images.json`.
 
 **Change the domain:** update `astro.config.mjs` (`site`), `public/robots.txt`, `public/CNAME` and the README.
 

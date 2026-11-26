@@ -84,6 +84,47 @@ if (slides.length) {
   show(0);
 }
 
+// Referenz-Reihe mit der Maus ziehen (Touch und Tastatur scrollen von selbst)
+queryAll<HTMLElement>('[data-drag-row]').forEach((row) => {
+  let dragging = false;
+  let moved = false;
+  let startX = 0;
+  let startScroll = 0;
+  row.classList.add('draggable');
+  row.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    dragging = true;
+    startX = e.clientX;
+    startScroll = row.scrollLeft;
+  });
+  addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    const distance = e.clientX - startX;
+    if (Math.abs(distance) > 4) {
+      moved = true;
+      row.classList.add('drag');
+    }
+    if (moved) row.scrollLeft = startScroll - distance;
+  });
+  const stop = () => {
+    dragging = false;
+    row.classList.remove('drag');
+    // Der Klick nach dem Loslassen kommt noch vor diesem Zurücksetzen
+    setTimeout(() => (moved = false));
+  };
+  addEventListener('pointerup', stop);
+  addEventListener('pointercancel', stop);
+  // Nach dem Ziehen darf der Klick den Link nicht öffnen
+  row.addEventListener(
+    'click',
+    (e) => {
+      if (moved) e.preventDefault();
+    },
+    true,
+  );
+  row.addEventListener('dragstart', (e) => e.preventDefault());
+});
+
 // Zahlen zählen beim Einblenden hoch (nur reine Ganzzahlen ohne führende Null)
 const countUp = (element: HTMLElement) => {
   const text = element.textContent?.trim() ?? '';

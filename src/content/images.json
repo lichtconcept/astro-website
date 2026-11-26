@@ -6,46 +6,58 @@
   },
   "weihnachten": {
     "beleuchtete-fassade": {
-      "alt": "Festlich beleuchtete Fassade"
+      "alt": "Festlich beleuchtete Fassade",
+      "label": "Fassaden"
     },
     "lichterketten-fussgaengerzone": {
       "alt": "Lichterketten über einer Fußgängerzone",
+      "label": "Fußgängerzonen",
       "caption": "Platzhalter: Fußgängerzone Beispielort"
     },
     "lichttor-ortseingang": {
-      "alt": "Lichttor am Ortseingang"
+      "alt": "Lichttor am Ortseingang",
+      "label": "Ortseingänge"
     },
     "marktplatz-weihnachtsbaum": {
       "alt": "Beleuchteter Weihnachtsbaum auf dem Marktplatz",
+      "label": "Marktplätze",
       "caption": "Platzhalter: Marktplatz Musterstadt, 2025"
     },
     "sternenhimmel-einkaufszentrum": {
-      "alt": "Sternenhimmel aus Lichtern in einem Einkaufszentrum"
+      "alt": "Sternenhimmel aus Lichtern in einem Einkaufszentrum",
+      "label": "Einkaufszentren"
     },
     "tannengirlanden-rathaus": {
-      "alt": "Tannengirlanden mit Beleuchtung am Rathaus"
+      "alt": "Tannengirlanden mit Beleuchtung am Rathaus",
+      "label": "Rathäuser"
     }
   },
   "werbetechnik": {
     "bauschild-wohnanlage": {
-      "alt": "Bauschild vor einer Wohnanlage"
+      "alt": "Bauschild vor einer Wohnanlage",
+      "label": "Bauschilder"
     },
     "fahrzeugbeschriftung-transporter": {
       "alt": "Beschrifteter Transporter",
+      "label": "Fahrzeuge",
       "caption": "Platzhalter: Flottenbeschriftung Transporter"
     },
     "leuchtbuchstaben-praxis": {
-      "alt": "Leuchtbuchstaben an einer Praxis"
+      "alt": "Leuchtbuchstaben an einer Praxis",
+      "label": "Leuchtbuchstaben"
     },
     "leuchtreklame-fassade": {
       "alt": "Leuchtreklame mit Einzelbuchstaben an einer Firmenfassade",
+      "label": "Leuchtreklame",
       "caption": "Platzhalter: Leuchtbuchstaben, Musterfirma AG"
     },
     "pylon-autohaus": {
-      "alt": "Beleuchteter Pylon vor einem Autohaus"
+      "alt": "Beleuchteter Pylon vor einem Autohaus",
+      "label": "Pylone"
     },
     "schaufensterbeschriftung": {
-      "alt": "Beschriftetes Schaufenster"
+      "alt": "Beschriftetes Schaufenster",
+      "label": "Schaufenster"
     }
   }
 }

@@ -160,7 +160,8 @@ export interface Contact {
   blocks: { area: Area; subject: string }[];
 }
 
-export type ImageInfo = { alt: string; caption?: string };
+/** label steht in der Referenz-Reihe der Bereichs-Startseiten auf dem Bild */
+export type ImageInfo = { alt: string; label?: string; caption?: string };
 
 // --- Firmendaten in Texte einsetzen ----------------------------------------------
 const values: Record<string, string> = {

@@ -1,7 +1,9 @@
 ---
 // =============================================================================
 // SectionGallery – Vorschau der Referenzen auf einer Bereichs-Startseite
-// (die ersten Bilder eines Ordners aus src/assets/). Texte: src/content/pages/.
+// (die ersten Bilder eines Ordners aus src/assets/) als seitlich scrollbare
+// Reihe mit Titel auf dem Bild (kavelle). Mit der Maus ziehbar (src/scripts/site.ts).
+// Texte: src/content/pages/, Bildtitel: src/content/images.json ("label").
 // =============================================================================
 import { Image } from 'astro:assets';
 import { folderImages } from '../lib/images';
@@ -18,16 +20,18 @@ const preview = folderImages(gallery.folder).slice(0, gallery.count);
 
 <section id={gallery.id} class:list={{ alt: index % 2 === 1 }} aria-labelledby={`${gallery.id}-h`}>
   <h2 id={`${gallery.id}-h`} class="h2" data-in="down">{gallery.heading}</h2>
-  <div class="grid">
+  <ul class="row" data-drag-row>
     {
-      preview.map((image, i) => (
-        <figure data-in="up" style={`transition-delay:${i * 0.12}s`}>
-          <span class="thumb">
-            <Image src={image.src} alt={image.alt} widths={[400, 800]} sizes="(min-width: 1100px) 30vw, (min-width: 640px) 50vw, 100vw" loading="lazy" />
-          </span>
-        </figure>
+      preview.map((image) => (
+        <li data-in="up">
+          <a class="ph" href={gallery.link.href}>
+            <Image src={image.src} alt={image.alt} widths={[600, 900, 1240]} sizes="(min-width: 780px) 620px, 80vw" loading="lazy" />
+            {image.label && <span class="label">{image.label}</span>}
+            <span class="arr" aria-hidden="true">→</span>
+          </a>
+        </li>
       ))
     }
-  </div>
+  </ul>
   <p class="section-cta" data-in="up"><a class="btn" href={gallery.link.href}>{gallery.link.label} <span class="arr" aria-hidden="true">→</span></a></p>
 </section>

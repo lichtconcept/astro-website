@@ -31,6 +31,7 @@ Kein CMS, keine Datenbank: Texte und Bilder liegen direkt in den Dateien. `npm r
   - **Pflicht:** in `src/content/images.json` einen Eintrag mit Alt-Text ergänzen (Schlüssel: Ordner → Dateiname ohne Endung). Fehlt er, bricht der Build mit einer Meldung ab.
   - Reihenfolge = alphabetisch nach Dateiname (bei Bedarf `01-…`, `02-…` voranstellen).
   - Optionale Bildunterschrift: ebenfalls in `images.json` (`caption`).
+  - Kurzer Titel (`label`): steht in der Referenz-Reihe der Bereichs-Hauptseite auf dem Bild. Wie viele Bilder die Reihe zeigt, legt `gallery.count` in der JSON-Datei des Bereichs fest.
 - **Standbilder der Startseite:** `src/assets/home/weihnachten-poster.jpg` und `werbetechnik-poster.jpg` ersetzen (gleicher Dateiname).
 - Bilder in guter Qualität ablegen (ca. 2000 px Breite genügt) – Astro verkleinert und komprimiert sie beim Build automatisch.
 
@@ -162,7 +163,7 @@ scripts/check-content.mjs  prüft: keine festen Texte in .astro-Dateien (npm run
 scripts/check-site.mjs     automatischer Qualitäts-Check für dist/
 ```
 
-JavaScript im Browser (`src/scripts/site.ts` plus drei kleine Skripte): Header beim Scrollen, Slider, Einblenden beim Scrollen, Hochzählen der Zahlen, Großansicht der Galerie, Hervorhebung auf der Kontaktseite, Abschalten der Videos bei „Bewegung reduzieren“. Alle Inhalte sind auch ohne JavaScript lesbar.
+JavaScript im Browser (`src/scripts/site.ts` plus drei kleine Skripte): Header beim Scrollen, Slider, Einblenden beim Scrollen, Hochzählen der Zahlen, Ziehen der Referenz-Reihe, Großansicht der Galerie, Hervorhebung auf der Kontaktseite, Abschalten der Videos bei „Bewegung reduzieren“. Alle Inhalte sind auch ohne JavaScript lesbar.
 
 ### Design-Vorlage
 Das Aussehen (Schriften, Slider, Header, Karten) ist vom MIT-lizenzierten Astro-Template [kavelle](https://github.com/formgong-hq/kavelle-astro) (© 2026 Formgong) übernommen und angepasst. Der Lizenztext liegt in [`public/licenses/kavelle-MIT.txt`](public/licenses/kavelle-MIT.txt) und wird mit der Website ausgeliefert – bitte nicht entfernen. Die Schriften DM Sans und Italiana (SIL OFL 1.1) liegen selbst gehostet in `public/fonts/`, die Lizenztexte daneben.
