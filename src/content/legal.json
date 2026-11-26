@@ -8,7 +8,7 @@
     "lead": "Platzhalter – bitte durch das rechtlich geprüfte Impressum ersetzen.",
     "sections": [
       { "heading": "Angaben gemäß § 5 DDG", "lines": ["{name}", "{street}", "{zip} {city}"] },
-      { "heading": "Vertreten durch", "lines": ["{managingDirectorTitle}: {managingDirector}"] },
+      { "heading": "Vertreten durch", "lines": ["Geschäftsführer: {managingDirector}"] },
       { "heading": "Kontakt", "lines": ["Telefon: {phone}", "E-Mail: {email}"] },
       { "heading": "Registereintrag", "lines": ["Registergericht: {registerCourt}", "Registernummer: {registerNumber}"] },
       { "heading": "Umsatzsteuer-ID", "paragraphs": ["{vatId}"] }

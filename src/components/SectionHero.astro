@@ -14,11 +14,11 @@ const { hero } = Astro.props;
 const slides = hero.slides.map((s) => ({ ...s, ...findImage(s.image) }));
 ---
 
-<section class="hero" aria-roledescription="carousel" aria-label={hero.heading}>
+<section class="hero" aria-roledescription={site.labels.carousel} aria-label={hero.heading}>
   <h1 class="sr-only">{hero.heading}</h1>
   {
     slides.map((s, i) => (
-      <article class:list={['slide', { on: i === 0 }]} aria-roledescription="slide" aria-label={s.title} data-slide>
+      <article class:list={['slide', { on: i === 0 }]} aria-roledescription={site.labels.slide} aria-label={s.title} data-slide>
         <Image
           src={s.src}
           alt={s.alt}

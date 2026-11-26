@@ -42,6 +42,8 @@ export interface Site {
   labels: {
     more: string;
     menu: string;
+    carousel: string;
+    slide: string;
     previousSlide: string;
     nextSlide: string;
     sectionsNav: string;
@@ -140,8 +142,7 @@ const values: Record<string, string> = {
   city: company.address.city,
   phone: company.phone,
   email: company.email,
-  managingDirectorTitle: company.managingDirector.title,
-  managingDirector: company.managingDirector.name,
+  managingDirector: company.managingDirector,
   registerCourt: company.register.court,
   registerNumber: company.register.number,
   vatId: company.vatId,

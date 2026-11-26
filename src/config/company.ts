@@ -19,10 +19,7 @@ export const company = {
   email: 'mail@lichtconcept.net',
 
   // Geschäftsführung (Impressum)
-  managingDirector: {
-    title: 'Geschäftsführer',
-    name: 'Peter Poremba',
-  },
+  managingDirector: 'Peter Poremba',
 
   // Registereintrag und Umsatzsteuer (Impressum)
   register: {
@@ -33,13 +30,11 @@ export const company = {
 
   // Ansprechpartner je Bereich (Kontaktseite)
   weihnachten: {
-    title: 'Weihnachtsbeleuchtung',
-    contactPerson: 'Elke Kroner und Anna Neuhauser',
+    contactPerson: 'Elke Kroner & Anna Neuhauser',
     phone: '+49 8642 595209-0',
     email: 'mail@lichtconcept.net',
   },
   werbetechnik: {
-    title: 'Werbetechnik',
     contactPerson: 'Joachim Schlund',
     phone: '+49 8642 595209-5',
     email: 'werbetechnik@lichtconcept.net',

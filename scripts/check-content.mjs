@@ -40,7 +40,7 @@ for (const file of astroFiles(SRC)) {
   const name = relative(process.cwd(), file);
 
   // Texte in Attributen, die Leser sehen oder vorgelesen bekommen
-  for (const m of text.matchAll(/\s(alt|aria-label|title|placeholder)="([^"]*[A-Za-zÄÖÜäöüß][^"]*)"/g))
+  for (const m of text.matchAll(/\s(alt|aria-label|aria-roledescription|title|placeholder)="([^"]*[A-Za-zÄÖÜäöüß][^"]*)"/g))
     errors.push(`${name}: fester Text im Attribut ${m[1]}="${m[2]}"`);
 
   // Texte zwischen Tags

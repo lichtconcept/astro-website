@@ -7,7 +7,7 @@
 // =============================================================================
 import LayoutPage from '../layouts/LayoutPage.astro';
 import { company, telHref } from '../config/company';
-import { general } from '../lib/content';
+import { general, site } from '../lib/content';
 
 const contact = general.contact;
 const cards = contact.blocks.map((block) => ({ ...block, ...company[block.area] }));
@@ -24,7 +24,7 @@ const cards = contact.blocks.map((block) => ({ ...block, ...company[block.area] 
           cards.map((card) => (
             <section id={card.area} data-area={card.area} data-contact-card={card.area} class="card" data-in="up">
               <p class="eyebrow">{contact.labels.area}</p>
-              <h2>{card.title}</h2>
+              <h2>{site.navigation[card.area].name}</h2>
               <dl>
                 <dt>{contact.labels.person}</dt>
                 <dd>{card.contactPerson}</dd>
