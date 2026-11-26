@@ -114,6 +114,20 @@ export interface TextPageContent {
   actions?: ActionLink[];
 }
 
+/** Porträt auf "Über uns" */
+export interface Portrait {
+  image: string;
+  heading: string;
+  paragraphs: string[];
+  signName: string;
+  signRole: string;
+  button?: Link;
+}
+
+export interface AboutPageContent extends TextPageContent {
+  portrait?: Portrait;
+}
+
 export interface ReferencePageContent {
   seo: Seo;
   title: string;
@@ -177,6 +191,6 @@ export const werbetechnik: {
   vehicles: TextPageContent;
   references: ReferencePageContent;
 } = interpolate(werbetechnikJson as never);
-export const general: { about: TextPageContent; contact: Contact; notFound: TextPageContent } = interpolate(generalJson as never);
+export const general: { about: AboutPageContent; contact: Contact; notFound: TextPageContent } = interpolate(generalJson as never);
 export const legal: { imprint: TextPageContent; privacy: TextPageContent } = interpolate(legalJson as never);
 export const imageTexts: Record<string, Record<string, ImageInfo>> = imagesJson;

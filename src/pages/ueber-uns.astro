@@ -2,6 +2,7 @@
 // Über uns. Inhalte: src/content/pages/general.json → "about".
 import LayoutPage from '../layouts/LayoutPage.astro';
 import TextPage from '../components/TextPage.astro';
+import SectionAbout from '../components/SectionAbout.astro';
 import { general, home } from '../lib/content';
 import { localBusinessJsonLd } from '../config/company';
 
@@ -10,5 +11,7 @@ const jsonLd = JSON.stringify(localBusinessJsonLd(Astro.site, home.seo.descripti
 
 <LayoutPage seo={general.about.seo}>
   <script type="application/ld+json" slot="head" set:html={jsonLd} />
-  <TextPage content={general.about} />
+  <TextPage content={general.about}>
+    {general.about.portrait && <SectionAbout portrait={general.about.portrait} />}
+  </TextPage>
 </LayoutPage>

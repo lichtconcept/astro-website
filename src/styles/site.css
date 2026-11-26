@@ -147,6 +147,14 @@ section { padding: 120px 0; }
 .page.center .actions { justify-content: center; }
 .page-sec { padding: 0; } /* ohne den großen Abstand der Startseiten-Abschnitte */
 
+/* Porträt mit Unterschrift (Über uns) */
+.about { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); align-items: center; gap: 44px; margin-top: 56px; padding: 0; }
+.about .ph { aspect-ratio: 4 / 5; }
+.page .about h2 { margin-top: 0; font-size: 36px; line-height: 1.15; }
+.about-txt .sign { margin-top: 28px; color: #fff; }
+.about-txt .sign b { display: block; }
+.about-txt .btn { margin-top: 28px; }
+
 /* --- Kontakt: Textseite mit zwei Karten in den Bereichsfarben ------------------- */
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(370px, 100%), 1fr)); gap: 24px; margin-top: 56px; }
 .card { padding: 34px clamp(20px, 6vw, 28px); border: 1px solid rgba(255, 255, 255, .12); background: var(--bg); transition: border-color .4s, box-shadow .4s; }
@@ -234,6 +242,9 @@ section { padding: 120px 0; }
   .page h1 { font-size: 38px; }
   .page h2 { font-size: 26px; }
   .page { padding-top: calc(var(--head) + 56px); }
+  .about { grid-template-columns: 1fr; gap: 32px; }
+  .about .ph { width: 100%; max-width: 420px; }
+  .page .about h2 { font-size: 30px; }
 }
 @media (max-width: 560px) {
   .f-grid { grid-template-columns: 1fr; }

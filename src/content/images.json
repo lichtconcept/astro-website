@@ -1,4 +1,9 @@
 {
+  "about": {
+    "portraet-platzhalter": {
+      "alt": "Platzhalter: Porträt"
+    }
+  },
   "weihnachten": {
     "beleuchtete-fassade": {
       "alt": "Festlich beleuchtete Fassade"

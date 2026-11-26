@@ -19,6 +19,7 @@ Kein CMS, keine Datenbank: Texte und Bilder liegen direkt in den Dateien. `npm r
 | **Sprungmenü auf den Hauptseiten**   | `subnav` in `src/content/pages/weihnachten.json` bzw. `werbetechnik.json` (`href` = `id` des Abschnitts) |
 | **Links im Footer**                  | `src/content/site.json` → `footer` und `startFooter` (Mini-Footer der Startseite)           |
 | **Texte der Startseite (Split-Screen)** | `src/content/pages/home.json` → `halves`                                               |
+| **Porträt auf „Über uns“**           | `src/content/pages/general.json` → `about.portrait`; Foto in `src/assets/about/` (Hochformat 4:5). Block löschen = Porträt ausblenden |
 | **Logo / Favicon**                   | `public/favicon.svg` (wird auch als Logo im Header verwendet)                             |
 
 ### Bilder
@@ -150,7 +151,7 @@ src/layouts/LayoutBase     <html>/<head>, SEO-Tags – Basis aller Layouts
 src/layouts/LayoutHome     Startseite (ohne Header)
 src/layouts/LayoutPage     alle Seiten mit Header/Footer (Bereich steuert die Farben)
 src/components/            SiteHeader, Footer, SectionHero (Slider), SectionText, SectionGallery,
-                           AreaHome, TextPage, ReferencePage, ReferenceGallery
+                           SectionAbout, AreaHome, TextPage, ReferencePage, ReferenceGallery
 src/content/               ALLE Texte als JSON (site, pages/*, legal, images)
 src/lib/content.ts         lädt und typisiert die JSON-Dateien, setzt Firmendaten ein
 src/lib/images.ts          löst Bildverweise aus den JSON-Dateien auf (src/assets/)

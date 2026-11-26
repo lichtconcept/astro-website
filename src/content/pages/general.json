@@ -6,6 +6,16 @@
     },
     "title": "Über uns",
     "lead": "Platzhaltertext: {name} ist ein Familienunternehmen aus {city}. Seit vielen Jahren sind wir in zwei Bereichen zu Hause: professionelle Weihnachtsbeleuchtung und Werbetechnik.",
+    "portrait": {
+      "image": "about/portraet-platzhalter",
+      "heading": "Platzhalter: Licht, das zu Ihnen passt",
+      "paragraphs": [
+        "Platzhaltertext: Hier steht in eigenen Worten, wofür der Betrieb steht und was Kundinnen und Kunden von der Zusammenarbeit erwarten können."
+      ],
+      "signName": "Platzhalter: Name",
+      "signRole": "Platzhalter: Funktion",
+      "button": { "label": "Ansprechpartner finden", "href": "/kontakt/" }
+    },
     "sections": [
       {
         "heading": "Zwei Bereiche – ein Team",

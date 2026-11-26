@@ -1,0 +1,29 @@
+---
+// =============================================================================
+// SectionAbout – Porträt mit Überschrift, Text, Unterschrift und Button (kavelle).
+// Inhalte: src/content/pages/general.json → "about.portrait".
+// Bild: src/assets/, Alt-Text: src/content/images.json.
+// =============================================================================
+import { Image } from 'astro:assets';
+import { findImage } from '../lib/images';
+import type { Portrait } from '../lib/content';
+
+interface Props {
+  portrait: Portrait;
+}
+
+const { portrait } = Astro.props;
+const image = findImage(portrait.image);
+---
+
+<section class="about" aria-labelledby="portrait-h">
+  <div class="ph" data-in="right">
+    <Image src={image.src} alt={image.alt} widths={[400, 600, 800]} sizes="(min-width: 860px) 340px, 90vw" loading="lazy" />
+  </div>
+  <div class="about-txt" data-in="left">
+    <h2 id="portrait-h">{portrait.heading}</h2>
+    {portrait.paragraphs.map((p) => <p>{p}</p>)}
+    <p class="sign"><b>{portrait.signName}</b>{portrait.signRole}</p>
+    {portrait.button && <a class="btn" href={portrait.button.href}>{portrait.button.label} <span class="arr" aria-hidden="true">→</span></a>}
+  </div>
+</section>

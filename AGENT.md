@@ -65,7 +65,7 @@ The package name `firmen-website` is still German.
 src/pages/               routes (German file names = URLs), thin: load content, pick layout
 src/layouts/             LayoutBase (head, SEO) → LayoutHome (start page), LayoutPage (all others)
 src/components/          SiteHeader, Footer, SectionHero, SectionText, SectionGallery,
-                         AreaHome, TextPage, ReferencePage, ReferenceGallery
+                         SectionAbout, AreaHome, TextPage, ReferencePage, ReferenceGallery
 src/content/site.json    navigation, footer, shared labels
 src/content/pages/       home, weihnachten, werbetechnik, general (about, contact, 404)
 src/content/legal.json   imprint, privacy

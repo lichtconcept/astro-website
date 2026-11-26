@@ -20,6 +20,9 @@ const { content, centered = false } = Astro.props;
     <h1 data-in="down">{content.title}</h1>
     {content.lead && <p class="lead-text" data-in="up">{content.lead}</p>}
 
+    <!-- Platz für zusätzliche Blöcke zwischen Einleitung und Abschnitten -->
+    <slot />
+
     {
       content.sections?.map((s) => (
         <section class="page-sec">
