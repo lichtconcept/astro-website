@@ -6,6 +6,18 @@
 
 export type SocialNetwork = 'instagram' | 'pinterest' | 'whatsapp';
 
+const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as const;
+export type Weekday = (typeof weekdays)[number];
+
+/** Ein Zeitfenster, z. B. { from: 'Monday', to: 'Friday', opens: '08:00', closes: '17:00' } */
+export interface OpeningHours {
+  from: Weekday;
+  /** weglassen, wenn das Zeitfenster nur für einen Tag gilt */
+  to?: Weekday;
+  opens: string;
+  closes: string;
+}
+
 export const company = {
   name: 'lichtconcept.GmbH',
   shortName: 'lichtconcept',
@@ -29,6 +41,10 @@ export const company = {
     number: 'HRB 18524',
   },
   vatId: 'DE 261 176 673',
+
+  // Öffnungszeiten (Footer, Kontaktseite, strukturierte Daten); leer = nicht anzeigen.
+  // Bei einer Mittagspause zwei Einträge für dieselben Tage anlegen.
+  openingHours: [] as OpeningHours[],
 
   // Profile in sozialen Netzwerken (Symbole im Footer). Vollständige Adresse mit
   // https:// eintragen, WhatsApp als https://wa.me/49…; leer = kein Symbol.
@@ -74,5 +90,14 @@ export function localBusinessJsonLd(site: URL | undefined, description: string) 
       addressCountry: company.address.country,
     },
     description,
+    // fehlt in der Ausgabe, solange keine Öffnungszeiten eingetragen sind
+    openingHoursSpecification: company.openingHours.length
+      ? company.openingHours.map(({ from, to = from, opens, closes }) => ({
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: weekdays.slice(weekdays.indexOf(from), weekdays.indexOf(to) + 1),
+          opens,
+          closes,
+        }))
+      : undefined,
   };
 }

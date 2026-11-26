@@ -14,6 +14,7 @@ Kein CMS, keine Datenbank: Texte und Bilder liegen direkt in den Dateien. `npm r
 | **Texte einer Seite**                | `src/content/pages/*.json` (`home` = Startseite, `weihnachten` = Weihnachtsbeleuchtung, `werbetechnik` = Werbetechnik, `general` = Über uns, Kontakt, 404) und `src/content/legal.json` (Impressum, Datenschutz). **In den `.astro`-Dateien steht kein Text.** |
 | **Seitentitel & Google-Beschreibung**| in der JSON-Datei der Seite: Block `seo` (`title`, `description`; jede Seite braucht eigene Werte) |
 | **Firmenname, Adresse, Telefon, E-Mail** | `src/config/company.ts`. In den JSON-Texten stehen dafür Platzhalter wie `{name}`, `{city}`, `{phone}`, `{email}` |
+| **Öffnungszeiten**                   | `src/config/company.ts` → `openingHours` (Beispiel steht dort im Kommentar; leer = nicht angezeigt) |
 | **Soziale Netzwerke (Footer)**       | `src/config/company.ts` → `social` (leer = kein Symbol); Datenschutzerklärung ergänzen |
 | **Farben**                           | `src/styles/global.css`, Abschnitt 1 – je Bereich Hintergrund- und Akzentfarben             |
 | **Menüpunkte, Buttons im Header**    | `src/content/site.json` → `navigation` (je Bereich `weihnachten`, `werbetechnik`, `neutral`) |
@@ -154,7 +155,7 @@ src/styles/site.css        Aussehen (Design im Stil des Templates „kavelle“)
 src/layouts/LayoutBase     <html>/<head>, SEO-Tags – Basis aller Layouts
 src/layouts/LayoutHome     Startseite (ohne Header)
 src/layouts/LayoutPage     alle Seiten mit Header/Footer (Bereich steuert die Farben)
-src/components/            SiteHeader, Footer, SectionHero (Slider), SectionText, SectionGallery, SectionOutro, SocialLinks,
+src/components/            SiteHeader, Footer, SectionHero (Slider), SectionText, SectionGallery, SectionOutro, SocialLinks, OpeningHours,
                            SectionAbout, SectionStats, AreaHome, TextPage, ReferencePage, ReferenceGallery
 src/content/               ALLE Texte als JSON (site, pages/*, legal, images)
 src/lib/content.ts         lädt und typisiert die JSON-Dateien, setzt Firmendaten ein

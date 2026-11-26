@@ -230,6 +230,9 @@ section { padding: 120px 0; }
 .f-about { margin-top: 14px; max-width: 30ch; }
 .f-contact address { font-style: normal; }
 .f-contact .tel { display: block; margin-top: 14px; font-size: 18px; color: #fff; }
+.hours { margin-top: 18px; }
+.hours b, .hours span { display: block; }
+.contact .hours { font-size: 14px; color: var(--dim); }
 .social { display: flex; gap: 14px; margin-top: 18px; }
 .social a { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #3a3d3c; border-radius: 50%; transition: color .3s, border-color .3s; }
 .social a:hover { border-color: var(--accent); }

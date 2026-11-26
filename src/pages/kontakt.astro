@@ -6,6 +6,7 @@
 // Texte: src/content/pages/general.json → "contact". Kontaktdaten: src/config/company.ts.
 // =============================================================================
 import LayoutPage from '../layouts/LayoutPage.astro';
+import OpeningHours from '../components/OpeningHours.astro';
 import { company, telHref } from '../config/company';
 import { general, site } from '../lib/content';
 
@@ -45,6 +46,7 @@ const cards = contact.blocks.map((block) => ({ ...block, ...company[block.area] 
         {contact.labels.general}: {company.name}, {company.address.street}, {company.address.zip} {company.address.city} · {contact.labels.phoneShort}{' '}
         <a href={telHref(company.phone)}>{company.phone}</a>
       </p>
+      <OpeningHours />
     </div>
   </article>
 

@@ -1,0 +1,24 @@
+---
+// =============================================================================
+// OpeningHours – Öffnungszeiten (Footer und Kontaktseite).
+// Zeiten: src/config/company.ts → "openingHours" (leer = nichts anzeigen).
+// Beschriftungen: src/content/site.json → "labels.openingHours".
+// =============================================================================
+import { company } from '../config/company';
+import { site } from '../lib/content';
+
+const labels = site.labels.openingHours;
+const lines = company.openingHours.map(({ from, to, opens, closes }) => {
+  const days = to ? `${labels.days[from]} – ${labels.days[to]}` : labels.days[from];
+  return `${days}: ${opens} – ${closes} ${labels.timeSuffix}`;
+});
+---
+
+{
+  lines.length > 0 && (
+    <p class="hours">
+      <b>{labels.heading}</b>
+      {lines.map((line) => <span>{line}</span>)}
+    </p>
+  )
+}

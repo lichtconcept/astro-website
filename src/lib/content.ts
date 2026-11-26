@@ -6,7 +6,7 @@
 //   Firmendaten aus src/config/company.ts gefüllt (eine Quelle für Firmendaten).
 // - Die Typen unten sorgen dafür, dass `npm run check` fehlende Felder meldet.
 // =============================================================================
-import { company, type SocialNetwork } from '../config/company';
+import { company, type SocialNetwork, type Weekday } from '../config/company';
 import siteJson from '../content/site.json';
 import imagesJson from '../content/images.json';
 import homeJson from '../content/pages/home.json';
@@ -48,6 +48,7 @@ export interface Site {
     nextSlide: string;
     sectionsNav: string;
     gallery: { dialog: string; close: string };
+    openingHours: { heading: string; timeSuffix: string; days: Record<Weekday, string> };
   };
   navigation: Record<Area | 'neutral', NavigationArea>;
   startFooter: { label: string; links: Link[] };

@@ -6,6 +6,7 @@
 import { company, telHref } from '../config/company';
 import { site } from '../lib/content';
 import SocialLinks from './SocialLinks.astro';
+import OpeningHours from './OpeningHours.astro';
 
 const footer = site.footer;
 ---
@@ -39,6 +40,7 @@ const footer = site.footer;
       </address>
       <a class="tel" href={telHref(company.phone)}>{footer.phonePrefix} {company.phone}</a>
       <a href={`mailto:${company.email}`}>{company.email}</a>
+      <OpeningHours />
       <SocialLinks />
     </div>
   </div>

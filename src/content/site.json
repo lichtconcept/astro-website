@@ -12,6 +12,19 @@
     "gallery": {
       "dialog": "Großansicht",
       "close": "Schließen ✕"
+    },
+    "openingHours": {
+      "heading": "Öffnungszeiten",
+      "timeSuffix": "Uhr",
+      "days": {
+        "Monday": "Mo",
+        "Tuesday": "Di",
+        "Wednesday": "Mi",
+        "Thursday": "Do",
+        "Friday": "Fr",
+        "Saturday": "Sa",
+        "Sunday": "So"
+      }
     }
   },
   "navigation": {
