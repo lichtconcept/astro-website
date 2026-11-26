@@ -1,0 +1,33 @@
+---
+// =============================================================================
+// SectionOutro – heller Abschluss einer Bereichs-Startseite mit zwei laufenden
+// Überschriften (kavelle) und Button zum Kontakt.
+// Inhalte: src/content/pages/<bereich>.json → "landing.outro".
+// Die Laufschrift ist Dekoration (aria-hidden); Screenreader bekommen "heading".
+// Sie hält bei Mauszeiger oder Tastaturfokus im Abschnitt an und steht bei
+// "Bewegung reduzieren" still (siehe site.css).
+// =============================================================================
+import type { Outro } from '../lib/content';
+
+interface Props {
+  outro: Outro;
+}
+
+const { outro } = Astro.props;
+// Jede Zeile mehrfach (gerade Anzahl), damit die Schleife auch auf sehr breiten
+// Bildschirmen ohne Lücke läuft
+const copies = Array.from({ length: 24 });
+---
+
+<section class="outro" aria-labelledby="outro-h">
+  <h2 class="sr-only" id="outro-h">{outro.heading}</h2>
+  {
+    outro.lines.map((line, i) => (
+      <div class:list={['marquee', { reverse: i % 2 === 1 }]} aria-hidden="true">
+        {copies.map(() => <span>{line}</span>)}
+      </div>
+    ))
+  }
+  <p class="sub">{outro.text}</p>
+  <p class="section-cta"><a class="btn" href={outro.button.href}>{outro.button.label} <span class="arr" aria-hidden="true">→</span></a></p>
+</section>

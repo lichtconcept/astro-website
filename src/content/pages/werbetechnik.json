@@ -85,6 +85,12 @@
       "folder": "werbetechnik",
       "count": 3,
       "link": { "label": "Alle Referenzen ansehen", "href": "/werbetechnik/referenzen/" }
+    },
+    "outro": {
+      "heading": "Werbetechnik anfragen",
+      "lines": ["Machen wir Sie", "sichtbar"],
+      "text": "Erzählen Sie uns von Ihrem Vorhaben – wir freuen uns auf Ihre Anfrage.",
+      "button": { "label": "Projekt anfragen", "href": "/kontakt/?bereich=werbetechnik" }
     }
   },
   "illuminatedSigns": {

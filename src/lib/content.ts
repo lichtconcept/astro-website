@@ -90,6 +90,13 @@ export interface Section {
   image?: string;
   cards?: Card[];
 }
+/** Heller Abschluss mit Laufschrift; "heading" ist die Überschrift für Screenreader */
+export interface Outro {
+  heading: string;
+  lines: string[];
+  text: string;
+  button: Link;
+}
 export interface Landing {
   seo: Seo;
   hero: { heading: string; button: Link; slides: { image: string; title: string }[] };
@@ -97,6 +104,7 @@ export interface Landing {
   intro: { eyebrow: string; title: string; text: string; button: Link };
   sections: Section[];
   gallery: { id: string; heading: string; folder: string; count: number; link: Link };
+  outro?: Outro;
 }
 
 /** Textseite: Detailseiten, Über uns, Impressum, Datenschutz, 404 */

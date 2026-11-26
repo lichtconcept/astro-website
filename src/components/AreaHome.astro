@@ -1,13 +1,14 @@
 ---
 // =============================================================================
 // AreaHome – Aufbau der Startseiten beider Bereiche:
-// Slider → Sub-Menü (Anker) → Einleitung → Abschnitte → Referenzen-Vorschau.
+// Slider → Sub-Menü (Anker) → Einleitung → Abschnitte → Referenzen-Vorschau → Abschluss.
 // Alle Inhalte kommen als "landing"-Objekt aus src/content/pages/. Die "id" eines
 // Abschnitts muss zum "href" im Sub-Menü passen (Prüfung: npm run check:site).
 // =============================================================================
 import SectionHero from './SectionHero.astro';
 import SectionText from './SectionText.astro';
 import SectionGallery from './SectionGallery.astro';
+import SectionOutro from './SectionOutro.astro';
 import { site, type Landing } from '../lib/content';
 
 interface Props {
@@ -34,3 +35,4 @@ const { landing } = Astro.props;
 
 {landing.sections.map((section, i) => <SectionText section={section} index={i + 1} />)}
 <SectionGallery gallery={landing.gallery} index={landing.sections.length + 1} />
+{landing.outro && <SectionOutro outro={landing.outro} />}

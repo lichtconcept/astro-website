@@ -72,6 +72,12 @@
       "folder": "weihnachten",
       "count": 3,
       "link": { "label": "Alle Referenzen ansehen", "href": "/weihnachtsbeleuchtung/referenzen/" }
+    },
+    "outro": {
+      "heading": "Weihnachtsbeleuchtung anfragen",
+      "lines": ["Bringen wir Ihre Stadt", "zum Strahlen"],
+      "text": "Erzählen Sie uns von Ihrem Vorhaben – wir freuen uns auf Ihre Anfrage.",
+      "button": { "label": "Anfrage stellen", "href": "/kontakt/?bereich=weihnachten" }
     }
   },
   "municipalities": {

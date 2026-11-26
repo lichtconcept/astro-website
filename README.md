@@ -17,6 +17,7 @@ Kein CMS, keine Datenbank: Texte und Bilder liegen direkt in den Dateien. `npm r
 | **Farben**                           | `src/styles/global.css`, Abschnitt 1 – je Bereich Hintergrund- und Akzentfarben             |
 | **Menüpunkte, Buttons im Header**    | `src/content/site.json` → `navigation` (je Bereich `weihnachten`, `werbetechnik`, `neutral`) |
 | **Sprungmenü auf den Hauptseiten**   | `subnav` in `src/content/pages/weihnachten.json` bzw. `werbetechnik.json` (`href` = `id` des Abschnitts) |
+| **Abschluss mit Laufschrift**        | `landing.outro` in `src/content/pages/weihnachten.json` bzw. `werbetechnik.json` (`lines` = die beiden laufenden Zeilen; kurze Zeilen verwenden) |
 | **Links im Footer**                  | `src/content/site.json` → `footer` und `startFooter` (Mini-Footer der Startseite)           |
 | **Texte der Startseite (Split-Screen)** | `src/content/pages/home.json` → `halves`                                               |
 | **Porträt auf „Über uns“**           | `src/content/pages/general.json` → `about.portrait`; Foto in `src/assets/about/` (Hochformat 4:5). Block löschen = Porträt ausblenden |
@@ -151,7 +152,7 @@ src/styles/site.css        Aussehen (Design im Stil des Templates „kavelle“)
 src/layouts/LayoutBase     <html>/<head>, SEO-Tags – Basis aller Layouts
 src/layouts/LayoutHome     Startseite (ohne Header)
 src/layouts/LayoutPage     alle Seiten mit Header/Footer (Bereich steuert die Farben)
-src/components/            SiteHeader, Footer, SectionHero (Slider), SectionText, SectionGallery,
+src/components/            SiteHeader, Footer, SectionHero (Slider), SectionText, SectionGallery, SectionOutro,
                            SectionAbout, SectionStats, AreaHome, TextPage, ReferencePage, ReferenceGallery
 src/content/               ALLE Texte als JSON (site, pages/*, legal, images)
 src/lib/content.ts         lädt und typisiert die JSON-Dateien, setzt Firmendaten ein
