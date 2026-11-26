@@ -9,6 +9,13 @@ export type SocialNetwork = 'instagram' | 'pinterest' | 'whatsapp';
 const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as const;
 export type Weekday = (typeof weekdays)[number];
 
+/** Alle Tage von "from" bis "to", auch über das Wochenende hinweg (z. B. Samstag – Montag) */
+function daysBetween(from: Weekday, to: Weekday): Weekday[] {
+  const start = weekdays.indexOf(from);
+  const count = ((weekdays.indexOf(to) - start + 7) % 7) + 1;
+  return Array.from({ length: count }, (_, i) => weekdays[(start + i) % 7]);
+}
+
 /** Ein Zeitfenster, z. B. { from: 'Monday', to: 'Friday', opens: '08:00', closes: '17:00' } */
 export interface OpeningHours {
   from: Weekday;
@@ -94,7 +101,7 @@ export function localBusinessJsonLd(site: URL | undefined, description: string) 
     openingHoursSpecification: company.openingHours.length
       ? company.openingHours.map(({ from, to = from, opens, closes }) => ({
           '@type': 'OpeningHoursSpecification',
-          dayOfWeek: weekdays.slice(weekdays.indexOf(from), weekdays.indexOf(to) + 1),
+          dayOfWeek: daysBetween(from, to),
           opens,
           closes,
         }))

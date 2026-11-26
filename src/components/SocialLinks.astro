@@ -16,7 +16,7 @@ const networks = (Object.keys(company.social) as SocialNetwork[]).filter((networ
     <ul class="social" aria-label={site.footer.socialLabel}>
       {networks.map((network) => (
         <li>
-          <a href={company.social[network]} aria-label={site.footer.socialNames[network]} rel="noopener noreferrer">
+          <a href={company.social[network]} aria-label={site.footer.socialNames[network]} rel="noreferrer">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
               {network === 'instagram' && (
                 <>
